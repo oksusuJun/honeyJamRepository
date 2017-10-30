@@ -27,6 +27,10 @@ input {
 	margin-top: 17.5px;
 	font-size: 18px;
 }
+p{
+text-align: left;
+
+}
 </style>
 </head>
 <body>
