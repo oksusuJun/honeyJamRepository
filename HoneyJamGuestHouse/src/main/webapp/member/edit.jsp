@@ -11,8 +11,8 @@
 <form action="${initParam.rootPath }/memberEdit" method="post">
 email : ${sessionScope.loginMember.email }<br>
 password : <input type="password" name="password"><br>
-nickname : <input type="text" name="text" value="${sessionScope.loginMember.nickname }"><br>
-phone number : <input type="text" name="text" value="${sessionScope.loginMember.phoneNum }"><br>
+nickname : <input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"><br>
+phone number : <input type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }"><br>
 <p>
 <button type="submit">제출</button>
 </form>
