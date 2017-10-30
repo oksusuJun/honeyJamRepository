@@ -6,10 +6,9 @@
 	 <welcome-file>main.jsp</welcome-file>
   </welcome-file-list>
   
-  
   <context-param>
   	<param-name>rootPath</param-name>
-  	<param-value>/guesthouse</param-value>
+  	<param-value>/HoneyJamGuestHouse</param-value>
   </context-param>
    
 </web-app>
