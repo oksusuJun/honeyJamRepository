@@ -47,6 +47,11 @@ header {
 	border-right: 1px solid #000;
 	height: 100%;
 }
+.header_left_img > a > img{
+	width: 80%;
+	height: 80%;
+	margin-top: 5px;
+}
 
 .header_left_menu {
 	float: left;
@@ -114,7 +119,7 @@ header {
 <header>
 	<div class="header_left">
 		<div class="header_left_img">
-			<img src="${initParam.rootPath }/main.jsp" alt="img" title="img">
+			<a href="${initParam.rootPath }/main.jsp"> <img src="/HoneyJamGuestHouse/img/logo.png" alt="img" title="img"></a>
 		</div>
 		<div class="header_left_menu">
 			<ul class="mainmenu">
