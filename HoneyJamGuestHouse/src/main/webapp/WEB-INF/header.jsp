@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".mainmenu > li").on("mouseover", function() {
@@ -110,7 +111,7 @@ header {
 <header>
 	<div class="header_left">
 		<div class="header_left_img">
-			<img src="#" alt="img" title="img">
+			<img src="${initParam.rootPath }/main.jsp" alt="img" title="img">
 		</div>
 		<div class="header_left_menu">
 			<ul class="mainmenu">
@@ -140,10 +141,21 @@ header {
 		</div>
 	</div>
 	<div class="header_right">
-		<ul>
-			<li><a href="#">login</a></li>
-			<li><a href="#">mypage</a></li>
-		</ul>
+		<c:choose>
+			<c:when test="${sessionScope.loginMember != null}">
+				<ul>
+					<li><a href="${initParam.rootPath }/logout">logout</a></li>
+					<li><a href="${initParam.rootPath }/member/mypage.jsp">mypage</a></li>
+				</ul>
+			</c:when>
+
+			<c:otherwise>
+				<ul>
+					<li><a href="${initParam.rootPath }/member/login.jsp">login</a></li>
+					<li><a href="${initParam.rootPath }/member/mypage.jsp">mypage</a></li>
+				</ul>
+			</c:otherwise>
+		</c:choose>
 
 	</div>
 </header>
