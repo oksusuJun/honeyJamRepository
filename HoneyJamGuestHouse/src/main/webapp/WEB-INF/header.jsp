@@ -120,25 +120,24 @@ header {
 			<ul class="mainmenu">
 				<li><a href="#">소개</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">2인실</a></li>
+						<li><a href="#">4인실</a></li>
+						<li><a href="#">6인실</a></li>
+						<li><a href="#">8인실</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">
-				<li><a href="#">메뉴1</a>
+				<li><a href="#">예약</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">예약하기</a></li>
+						<li><a href="#">예약조회</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">
 				<li><a href="#">커뮤니티</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">QnA</a></li>
+						<li><a href="#">리뷰게시판</a></li>
 					</ul></li>
 			</ul>
 		</div>

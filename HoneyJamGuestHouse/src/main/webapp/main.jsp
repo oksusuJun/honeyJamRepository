@@ -32,12 +32,20 @@ input {
 	width: 1080px;
 	height: 300px;
 }
-.text_p{
-	padding-left: 10%;
+
+.text_p {
+	padding-left: 8%;
+	padding-top: 70px;
 }
-.text_p > p{
-	font-size: 40px;
+
+.text_p>p {
+	font-size: 50px;
 	text-align: left;
+}
+
+.p1 {
+	color: pink;
+	font-weight: bold;
 }
 </style>
 </head>
@@ -46,7 +54,7 @@ input {
 	<div class="contents">
 		<div class="text">
 			<div class="text_p">
-				<p>GuestHouse</p>
+				<p class="p1">GuestHouse</p>
 				<p>독특한 숙소를 예약하고, 현지인처럼</p>
 				<p>살아보세요</p>
 			</div>
