@@ -2,6 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>HoneyJamGuestHouse</display-name>
   <welcome-file-list>
-    <welcome-file>main.jsp</welcome-file>
+
+	 <welcome-file>main.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <context-param>
+  	<param-name>rootPath</param-name>
+  	<param-value>/guesthouse</param-value>
+  </context-param>
+   
 </web-app>
