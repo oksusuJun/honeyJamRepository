@@ -73,7 +73,7 @@ function checkVals(){
 </script>
 <body>
 <div class="logo">
-		<a href="#"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
+		<a href="${initParam.rootPath }/main.jsp"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
 </div>
 <div class="join_form">
 	<form action="${initParam.rootPath}/memberInsert" method="post" name="join_form">
