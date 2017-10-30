@@ -93,13 +93,13 @@
 				</div>
 				<div class="info_bot">
 					<div>
-						<a href="#"><img src="main_icon1.png"></a>
+						<a href="#"><img src="/HoneyJamGuestHouse/img/main_icon1.png"></a>
 					</div>
 					<div>
-						<a href="#"><img src="main_icon2.png"></a>
+						<a href="#"><img src="/HoneyJamGuestHouse/img/main_icon2.png"></a>
 					</div>
 					<div>
-						<a href="#"><img src="main_icon3.png"></a>
+						<a href="#"><img src="/HoneyJamGuestHouse/img/main_icon3.png"></a>
 					</div>
 				</div>
 			</div>

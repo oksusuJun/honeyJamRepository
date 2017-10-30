@@ -36,8 +36,7 @@ private static MemberDaoImpl instance;
 
 	@Override
 	public int deleteMemberById(SqlSession session, String email) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.delete(makeSqlId("deleteMemberById"),email);
 	}
 
 	@Override
