@@ -14,7 +14,12 @@ admin number(1) not null
 );
 
 select * from MEMBER
-
+UPDATE member
+SET password = 'testtest',
+	nickname = 'test-1',
+	phone_num = '01012645456',
+	admin = 1
+WHERE email = 'test@test.com'
 
 
 drop table room cascade constraint;
