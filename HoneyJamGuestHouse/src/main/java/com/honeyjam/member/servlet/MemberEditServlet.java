@@ -13,16 +13,12 @@ import com.honeyjam.member.service.MemberService;
 import com.honeyjam.member.service.MemberServiceImpl;
 import com.honeyjam.vo.Member;
 
-/**
- * Servlet implementation class MemberEditServlet
- */
+
 @WebServlet("/memberEdit")
 public class MemberEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
