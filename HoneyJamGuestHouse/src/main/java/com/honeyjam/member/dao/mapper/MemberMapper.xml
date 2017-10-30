@@ -44,5 +44,12 @@
 		<include refid="select-sql" />
 		WHERE phone_num = #{value}
 	</select>
+	
+	<delete id="deleteMemberById" parameterType="string">
+		delete from member where email = #{value}
+	</delete>
+	
+	<select id="selectBoardById" parameterType="string">
+	</select>
 
 </mapper>

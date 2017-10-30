@@ -48,13 +48,12 @@ Password : <input type="password" name="password"><br>
 <button type="button" onclick="checkVals();">회원가입</button>
 </form>
 
-<br>
-
-
 
 <c:if test="${requestScope.errorMessage != null}">
-<span style="color:red"> ${requestScope.content}</span><br>
-<span style="color:red">오류 : ${requestScope.errorMessage}</span>
+<script>
+	alert("에러: "+"${requestScope.errorMessage}");
+</script>
+
 </c:if>
 
 

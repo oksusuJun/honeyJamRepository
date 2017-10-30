@@ -100,8 +100,15 @@ public class MemberServiceImpl implements MemberService {
 
 		@Override
 		public void removeMemberById(String email) {
-			// TODO Auto-generated method stub
-
+				SqlSession session = null;
+				try {
+					session=factory.openSession();
+					dao.deleteMemberById(session, email);
+					session.commit();
+				}finally {
+					session.close();
+				}
+			
 		}
 
 

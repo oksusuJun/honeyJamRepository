@@ -20,7 +20,9 @@ password : <input type="password" name="password"><br>
 
 
 <c:if test="${requestScope.errorMessage !=null}">
-	<span style="color:red"> 오류: ${requestScope.errorMessage}</span>
+	<script>
+	alert("에러: "+ "${requestScope.errorMessage }");
+	</script>
 </c:if>
 </body>
 </html> 
