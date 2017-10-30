@@ -8,7 +8,7 @@
 <body>
 <h1>회원조회</h1>
 email : ${sessionScope.loginMember.email }<br>
-password : ${sessionScope.loginMember.password }<br>
+password : 안알랴줌ㅋ<br>
 nickname : ${sessionScope.loginMember.nickname }<br>
 phone number : ${sessionScope.loginMember.phoneNum }<br>
 

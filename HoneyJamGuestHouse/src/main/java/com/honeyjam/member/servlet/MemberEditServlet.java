@@ -35,7 +35,10 @@ public class MemberEditServlet extends HttpServlet {
 		
 		//2. 회원정보수정한거 DB에 저장
 		MemberService service = MemberServiceImpl.getInstance();
-		service.updateMember(new Member(email,password,nickname,phoneNum,1));
+		Member newMember = new Member(email,password,nickname,phoneNum,1);
+		service.updateMember(newMember);
+		
+		session.setAttribute("loginMember", newMember);
 	
 		//3. 응답처리
 		request.getRequestDispatcher("/member/myinfo.jsp").forward(request, response);
