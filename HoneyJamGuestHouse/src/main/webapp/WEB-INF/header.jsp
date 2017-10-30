@@ -109,6 +109,8 @@ header {
 	background: #fff;
 	cursor: pointer;
 	border: 1px solid #000;
+	outline: none;
+	border: 0px;
 }
 
 .header_right>ul>li>a {

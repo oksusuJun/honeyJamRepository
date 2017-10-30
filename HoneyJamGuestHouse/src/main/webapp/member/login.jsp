@@ -1,26 +1,112 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HoneyJam</title>
+<style type="text/css">
+* {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+.loginform {
+	width: 400px;
+}
+
+.loginform>form>button {
+	width: 400px;
+	height: 70px;
+	background: pink;
+	color: #fff;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 70px;
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+}
+
+form {
+	text-align: center;
+}
+
+input {
+	width: 400px;
+	height: 50px;
+	margin-top: 20px;
+}
+
+.loginform_help {
+	width: 100%;
+	height: 30px;
+	text-align: left;
+	line-height: 30px;
+	margin-top: 10px;
+}
+
+.loginform_help>a {
+	color: #008489;
+}
+
+.loginform_bot {
+	margin-top: 20px;
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	border-top: 1px solid #dce0e0;
+}
+
+.loginform_bot>a>button {
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	outline: 0;
+	border: 1px solid pink;
+	border-radius: 5px;
+	background: #fff;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.logo {
+	margin-top: 30px;
+	width: 400px;
+	text-align: center;
+	height: 100px;
+	line-height: 125px;
+}
+</style>
 </head>
 
 <body>
-<a href="${initParam.rootPath }/main.jsp">메인으로 </a>
-<hr>
+	<div class="logo">
+		<a href="#"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
+	</div>
+	<div class="loginform">
+		<form action="${initParam.rootPath }/login" method="post">
+			<input type="text" name="email" placeholder="Id(Email)"><br> <input type="password" name="password"
+				placeholder="password"><br>
 
+			<div class="loginform_help">
+				<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a>
+			</div>
+			<button type="submit">로그인</button>
+			<div class="loginform_bot">
+				꿀잼게스트하우스 계정이 없으세요? <a href="#"><button>회원가입</button></a>
+			</div>
 
-<form action="${initParam.rootPath }/login" method="post">
-id(email) : <input type="text" name="email"><br>
-password : <input type="password" name="password"><br>
-<button>로그인</button>
-</form>
+		</form>
 
+	</div>
 
+	<!-- 
 <c:if test="${requestScope.errorMessage !=null}">
 	<span style="color:red"> 오류: ${requestScope.errorMessage}</span>
-</c:if>
+</c:if> -->
 </body>
-</html> 
+</html>
