@@ -27,18 +27,34 @@ input {
 	margin-top: 17.5px;
 	font-size: 18px;
 }
+
+.text {
+	width: 1080px;
+	height: 300px;
+}
+.text_p{
+	padding-left: 10%;
+}
+.text_p > p{
+	font-size: 40px;
+	text-align: left;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	<div class="contents">
-	<p>GuestHouse</p>
-	<p>독특한 숙소를 예약하고, 현지인처럼 </p>
-	<p>살아보세요</p>
+		<div class="text">
+			<div class="text_p">
+				<p>GuestHouse</p>
+				<p>독특한 숙소를 예약하고, 현지인처럼</p>
+				<p>살아보세요</p>
+			</div>
+		</div>
 		<form class="nav" action="">
 			<input type="text" name="checkin" placeholder="checkin"> <input type="text" name="checkout" placeholder="checkout">
-			<input type="text" name="people" placeholder="인원수"> <input type="text" name="gender" placeholder="성별"> 
-			<input type="submit" name="search" value="검색" style="width: 100px; height: 60px;">
+			<input type="text" name="people" placeholder="인원수"> <input type="text" name="gender" placeholder="성별"> <input
+				type="submit" name="search" value="검색" style="width: 100px; height: 60px;">
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

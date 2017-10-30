@@ -147,15 +147,15 @@ header {
 		<c:choose>
 			<c:when test="${sessionScope.loginMember != null}">
 				<ul>
-					<li><a href="${initParam.rootPath }/logout">logout</a></li>
-					<li><a href="${initParam.rootPath }/member/mypage.jsp">mypage</a></li>
+					<li><a href="${initParam.rootPath }/logout">로그아웃</a></li>
+					<li><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
 				</ul>
 			</c:when>
 
 			<c:otherwise>
 				<ul>
-					<li><a href="${initParam.rootPath }/member/login.jsp">login</a></li>
-					<li><a href="${initParam.rootPath }/member/mypage.jsp">mypage</a></li>
+					<li><a href="${initParam.rootPath }/member/login.jsp">로그인</a></li>
+					<li><a href="${initParam.rootPath }/member/join.jsp">회원가입</a></li>
 				</ul>
 			</c:otherwise>
 		</c:choose>
