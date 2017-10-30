@@ -31,8 +31,7 @@ private static MemberDaoImpl instance;
 
 	@Override
 	public int updateMemberById(SqlSession session, Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.update(makeSqlId("updateMemberById"), member);
 	}
 
 	@Override

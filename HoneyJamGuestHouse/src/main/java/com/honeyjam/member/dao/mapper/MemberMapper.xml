@@ -20,7 +20,14 @@
 		<result column="admin" property="admin"/>
 	</resultMap>
 	
-	
+	<update id="updateMemberById" parameterType="member">
+		UPDATE member
+		SET password = #{password},
+			nickname = #{nickname},
+			phone_num = #{phoneNum},
+			admin = #{admin}
+		WHERE email = #{email}
+	</update>
 	
 	
 
