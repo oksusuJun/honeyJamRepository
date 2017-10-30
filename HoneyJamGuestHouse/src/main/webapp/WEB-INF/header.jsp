@@ -83,11 +83,12 @@ header {
 	float: none;
 	height: 30px;
 	height: 40px;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .submenu>li>a {
 	line-height: 40px;
+	color: #fff;
 }
 
 .header_right {
