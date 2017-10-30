@@ -7,16 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-email : ${sessionScope.loginMember.email }
-password : 
-<c:choose>
-	<c:when test="${sessionScope.loginMember.password == null }">
-		${sessionScope.loginMember.password}
-	</c:when>
-	<c:otherwise>
-		<c:set target="${sessionScope.loginMember }" property="password" value='<input type="password" name="password">'/>
-	</c:otherwise>
-</c:choose>
-
+<h1>회원정보수정</h1>
+<form action="${initParam.rootPath }/memberEdit" method="post">
+email : ${sessionScope.loginMember.email }<br>
+password : <input type="password" name="password"><br>
+nickname : <input type="text" name="text" value="${sessionScope.loginMember.nickname }"><br>
+phone number : <input type="text" name="text" value="${sessionScope.loginMember.phoneNum }"><br>
+<p>
+<button type="submit">제출</button>
+</form>
 </body>
 </html>

@@ -94,8 +94,14 @@ public class MemberServiceImpl implements MemberService {
 
 		@Override
 		public void updateMember(Member newData) {
-			// TODO Auto-generated method stub
-
+			SqlSession session = null;
+			try {
+				session = factory.openSession();
+				dao.updateMemberById(session, newData);
+				session.commit();
+			}finally {
+				session.close();
+			}
 		}
 
 		@Override
