@@ -97,7 +97,7 @@ input {
 			</div>
 			<button type="submit">로그인</button>
 			<div class="loginform_bot">
-				꿀잼게스트하우스 계정이 없으세요? <a href="#"><button>회원가입</button></a>
+				꿀잼게스트하우스 계정이 없으세요? <a href="${initParam.rootPath }/member/join.jsp"><button>회원가입</button></a>
 			</div>
 
 		</form>
