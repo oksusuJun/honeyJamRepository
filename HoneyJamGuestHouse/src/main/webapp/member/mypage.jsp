@@ -17,8 +17,5 @@
 <a href="${initParam.rootPath }/member/delete.jsp">탈퇴 </a><br>
 
 
-
-
-
 </body>
 </html> 
