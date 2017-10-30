@@ -1,5 +1,8 @@
 drop table Member cascade constraint;
-/* Member Table */
+/*
+ * 	#### Member Table ####
+ *  admin - 0 : 관리자 || 1 : 회원
+ */
 create table Member (
 	email varchar2(50) primary key,
 	password varchar2(20) not null,
@@ -11,6 +14,7 @@ create table Member (
 select * from Member
 
 /* ############### Dummy Data ################### */
+
 insert into MEMBER values('mem1@hj.com', '1111', '회원1', '010-1111-1111', 1);
 insert into MEMBER values('mem2@hj.com', '2222', '회원2', '010-2222-2222', 1);
 insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
@@ -18,7 +22,10 @@ insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
 
 
 drop table Reservation cascade constraint;
-/* Reservation Table */
+/* 
+ * #### Reservation Table ####
+ * payment_state - 0 : 
+ */
 create table Reservation (
 	reservation_id	number(10) primary key,
 	member_id	varchar2(50),
@@ -52,7 +59,9 @@ select * from reserved_room
 */
 
 drop table Room cascade constraint;
-/* Room */
+/*
+ * #### Room Table####
+ */
 create table Room (
 	room_id	number(3) primary key,
 	room_name varchar2(10) not null,
