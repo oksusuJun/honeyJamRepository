@@ -47,6 +47,11 @@ header {
 	border-right: 1px solid #000;
 	height: 100%;
 }
+.header_left_img > a > img{
+	width: 80%;
+	height: 80%;
+	margin-top: 5px;
+}
 
 .header_left_menu {
 	float: left;
@@ -104,6 +109,8 @@ header {
 	background: #fff;
 	cursor: pointer;
 	border: 1px solid #000;
+	outline: none;
+	border: 0px;
 }
 
 .header_right>ul>li>a {
@@ -114,31 +121,30 @@ header {
 <header>
 	<div class="header_left">
 		<div class="header_left_img">
-			<img src="${initParam.rootPath }/main.jsp" alt="img" title="img">
+			<a href="${initParam.rootPath }/main.jsp"> <img src="/HoneyJamGuestHouse/img/logo.png" alt="img" title="img"></a>
 		</div>
 		<div class="header_left_menu">
 			<ul class="mainmenu">
 				<li><a href="#">소개</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">2인실</a></li>
+						<li><a href="#">4인실</a></li>
+						<li><a href="#">6인실</a></li>
+						<li><a href="#">8인실</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">
-				<li><a href="#">메뉴1</a>
+				<li><a href="#">예약</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">예약하기</a></li>
+						<li><a href="#">예약조회</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">
 				<li><a href="#">커뮤니티</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">QnA</a></li>
+						<li><a href="#">리뷰게시판</a></li>
 					</ul></li>
 			</ul>
 		</div>

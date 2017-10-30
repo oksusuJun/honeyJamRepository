@@ -1,11 +1,49 @@
-<%@ page contentType="text/html;charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=utf-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
+<style type="text/css">
+	*{
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+		text-decoration: none;
+
+	}
+	.logo{
+		margin-top: 30px;
+		width: 400px;
+		text-align: center;
+		height: 100px;
+		line-height: 125px;
+	}
+	.join_form{
+		width: 400px;
+		text-align: center;
+	}
+
+	input{
+		width: 400px;
+		height: 50px;
+		margin-top: 20px;
+	}
+	.join_form >form >  button{
+		width: 400px;
+		height: 70px;
+		background: pink;
+		color: #fff;
+		margin-top: 10px;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 70px;
+		outline: 0;
+		border: 0;
+	}
+</style>
 </head>
 
 <script>
@@ -34,19 +72,20 @@ function checkVals(){
 
 </script>
 <body>
-<a href="${initParam.rootPath }/main.jsp">메인으로 </a>
-<hr>
-<h1>회원가입</h1>
-<form action="${initParam.rootPath}/memberInsert" method="post" name="join_form">
+<div class="logo">
+		<a href="#"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
+</div>
+<div class="join_form">
+	<form action="${initParam.rootPath}/memberInsert" method="post" name="join_form">
+ID(email) : 	<input type="text" name="email" placeholder="ID(email)"><br>
+Password :	<input type="password" name="password" placeholder="Password "><br>
+닉네임 :  	<input type="text" name="nickname" placeholder="닉네임"><br>
+휴대폰번호 : 	<input type="text" name="phoneNum" placeholder="휴대폰번호 "><br> 
 
-
-ID(email) : <input type="text" name="email"><br>
-Password : <input type="password" name="password"><br>
-닉네임 : <input type="text" name="nickname"><br>
-휴대폰번호 : <input type="text" name="phoneNum"><br> 
 
 <button type="button" onclick="checkVals();">회원가입</button>
 </form>
+</div>
 
 
 <c:if test="${requestScope.errorMessage != null}">
@@ -55,7 +94,6 @@ Password : <input type="password" name="password"><br>
 </script>
 
 </c:if>
-
 
 
 
