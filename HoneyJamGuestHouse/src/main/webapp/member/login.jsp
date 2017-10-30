@@ -61,7 +61,7 @@ input {
 	border-top: 1px solid #dce0e0;
 }
 
-.loginform_bot>a>button {
+.loginform_bot>button {
 	width: 100px;
 	height: 30px;
 	text-align: center;
@@ -85,7 +85,7 @@ input {
 
 <body>
 	<div class="logo">
-		<a href="#"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
+		<a href="${initParam.rootPath }/main.jsp	"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
 	</div>
 	<div class="loginform">
 		<form action="${initParam.rootPath }/login" method="post">
@@ -97,16 +97,13 @@ input {
 			</div>
 			<button type="submit">로그인</button>
 			<div class="loginform_bot">
-				꿀잼게스트하우스 계정이 없으세요? <a href="${initParam.rootPath }/member/join.jsp"><button>회원가입</button></a>
+				꿀잼게스트하우스 계정이 없으세요? <button><a href="${initParam.rootPath }/member/join.jsp">회원가입</a></button>
 			</div>
 
 		</form>
 
 	</div>
 
-	<!-- 
-<c:if test="${requestScope.errorMessage !=null}">
-	<span style="color:red"> 오류: ${requestScope.errorMessage}</span>
-</c:if> -->
+	
 </body>
 </html>
