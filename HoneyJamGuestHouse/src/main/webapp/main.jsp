@@ -50,8 +50,10 @@ input {
 	font-weight: bold;
 }
 .submit{
+background:#FF5A5F;
 width: 100px;
-height: 60px;
+height: 58px;
+color: #fff;
 }
 </style>
 </head>
@@ -67,7 +69,7 @@ height: 60px;
 		</div>
 		<form class="nav" action="">
 			<input type="text" name="checkin" placeholder="checkin">
-			 <input type="text" name="checkout" placeholder="checkout">
+			<input type="text" name="checkout" placeholder="checkout">
 			<input type="text" name="people" placeholder="인원수"> 
 			<input type="text" name="gender" placeholder="성별"> 
 			<input type="submit" name="search" class="submit" value="검색">
