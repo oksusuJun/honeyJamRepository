@@ -16,7 +16,7 @@
 닉네임 : ${sessionScope.loginMember.nickname}<br>
 전화번호 : ${sessionScope.loginMember.phoneNum }<br>
 
-
+<a href="${initParam.rootPath }/member/edit.jsp">내 정보 수정</a>
 
 </body>
 </html> 
