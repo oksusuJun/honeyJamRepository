@@ -26,6 +26,8 @@ input {
 	height: 60px;
 	margin-top: 17.5px;
 	font-size: 18px;
+	outline: none;
+	border: 0px;
 }
 
 .text {
@@ -47,6 +49,12 @@ input {
 	color: pink;
 	font-weight: bold;
 }
+.submit{
+background:#FF5A5F;
+width: 100px;
+height: 58px;
+color: #fff;
+}
 </style>
 </head>
 <body>
@@ -60,9 +68,11 @@ input {
 			</div>
 		</div>
 		<form class="nav" action="">
-			<input type="text" name="checkin" placeholder="checkin"> <input type="text" name="checkout" placeholder="checkout">
-			<input type="text" name="people" placeholder="인원수"> <input type="text" name="gender" placeholder="성별"> <input
-				type="submit" name="search" value="검색" style="width: 100px; height: 60px;">
+			<input type="text" name="checkin" placeholder="checkin">
+			<input type="text" name="checkout" placeholder="checkout">
+			<input type="text" name="people" placeholder="인원수"> 
+			<input type="text" name="gender" placeholder="성별"> 
+			<input type="submit" name="search" class="submit" value="검색">
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

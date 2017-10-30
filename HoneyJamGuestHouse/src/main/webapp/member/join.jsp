@@ -77,10 +77,10 @@ function checkVals(){
 </div>
 <div class="join_form">
 	<form action="${initParam.rootPath}/memberInsert" method="post" name="join_form">
-ID(email) : 	<input type="text" name="email" placeholder="ID(email)"><br>
-Password :	<input type="password" name="password" placeholder="Password "><br>
-닉네임 :  	<input type="text" name="nickname" placeholder="닉네임"><br>
-휴대폰번호 : 	<input type="text" name="phoneNum" placeholder="휴대폰번호 "><br> 
+<input type="text" name="email" placeholder="ID(email)"><br>
+<input type="password" name="password" placeholder="Password "><br>
+<input type="text" name="nickname" placeholder="닉네임"><br>
+<input type="text" name="phoneNum" placeholder="휴대폰번호 "><br> 
 
 
 <button type="button" onclick="checkVals();">회원가입</button>
