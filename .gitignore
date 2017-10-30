@@ -1,0 +1,6 @@
+*.class
+*.bak
+*.exe
+bin/
+target/
+build/
