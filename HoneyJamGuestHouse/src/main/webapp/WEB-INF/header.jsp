@@ -1,14 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<script src="jquery-1.12.3.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(function() {
+	$(document).ready(function() {
 		$(".mainmenu > li").on("mouseover", function() {
 			$(this).children(".submenu").stop().slideDown();
-		})
+		});
 		$(".mainmenu > li").on("mouseleave", function() {
 			$(this).children(".submenu").stop().slideUp();
-		})
-	})
+		});
+	});
 </script>
 <style type="text/css">
 * {
