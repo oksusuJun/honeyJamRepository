@@ -71,6 +71,7 @@ create sequence board_seq;
 
 --dummy data
 insert into member values ('aaa@com','0000','bbb','010',1);
+insert into member values ('b@com','0000','ccc','011',1);
 insert into room values(101,'female','ok',6,4);
 insert into reservation values(1,'aaa@com','2017-10-19','2017-10-24',2,101,'female');
 insert into board values(1,'내용내용','제목','aaa@com','2017-09-28');

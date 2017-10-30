@@ -14,7 +14,7 @@ public interface MemberService {
 	
 	void addMember(Member member) throws DuplicatedIdException, DuplicatedNicknameException, DuplicatedPhoneException;
 	
-	void updateMember(Member newData);
+	void updateMember(Member newData) throws DuplicatedNicknameException, DuplicatedPhoneException;
 	
 	void removeMemberById(String email);
 
