@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.honeyjam.exception.DuplicatedNicknameException;
+import com.honeyjam.exception.DuplicatedPhoneException;
 import com.honeyjam.member.service.MemberService;
 import com.honeyjam.member.service.MemberServiceImpl;
 import com.honeyjam.vo.Member;
@@ -31,13 +33,22 @@ public class MemberEditServlet extends HttpServlet {
 		
 		//2. 회원정보수정한거 DB에 저장
 		MemberService service = MemberServiceImpl.getInstance();
-		Member newMember = new Member(email,password,nickname,phoneNum,1);
-		service.updateMember(newMember);
 		
-		session.setAttribute("loginMember", newMember);
-	
-		//3. 응답처리
-		request.getRequestDispatcher("/member/myinfo.jsp").forward(request, response);
+		try {
+			Member newMember = new Member(email,password,nickname,phoneNum,1);
+			service.updateMember(newMember);
+			session.setAttribute("loginMember", newMember);
+			request.getRequestDispatcher("/member/myinfo.jsp").forward(request, response);
+		}catch(DuplicatedNicknameException e) {
+			request.setAttribute("content", e.getDuplicateNickname());
+			request.setAttribute("errorMessage", e.getMessage());
+			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
+		}catch(DuplicatedPhoneException e) {
+			request.setAttribute("content", e.getDuplicatedPhone());
+			request.setAttribute("errorMessage", e.getMessage());
+			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
+		}
+
 		
 	}
 

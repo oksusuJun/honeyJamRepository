@@ -93,10 +93,15 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 		@Override
-		public void updateMember(Member newData) {
+		public void updateMember(Member newData) throws DuplicatedNicknameException, DuplicatedPhoneException {
 			SqlSession session = null;
 			try {
 				session = factory.openSession();
+				if(dao.selectMemberByNickname(session, newData.getNickname()) != null) {
+					throw new DuplicatedNicknameException("이미 등록된 닉네임 입니다.", newData.getNickname());
+				}else if(dao.selectMemberByPhone(session, newData.getPhoneNum())!= null) {
+					throw new DuplicatedPhoneException("중복된 전화번호 입니다.",newData.getPhoneNum());
+				}
 				dao.updateMemberById(session, newData);
 				session.commit();
 			}finally {

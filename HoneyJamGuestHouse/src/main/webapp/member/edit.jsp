@@ -16,5 +16,11 @@ phone number : <input type="text" name="phoneNum" value="${sessionScope.loginMem
 <p>
 <button type="submit">제출</button>
 </form>
+
+<c:if test="${requestScope.errorMessage != null }">
+<script>
+	alert("에러: "+"${requestScope.errorMessage}");
+</script>
+</c:if>
 </body>
 </html>
