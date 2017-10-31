@@ -36,7 +36,7 @@ function checkform(){
 </c:if>
 
 
-<jsp:include page="/member/mypage.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
 <br><br>
 

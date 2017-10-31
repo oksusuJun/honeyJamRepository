@@ -23,8 +23,7 @@ td, th {
 <c:if test="${sessionScope.loginMember ==null}">
 <jsp:forward page="/member/login.jsp"/> 
 </c:if>
-
-<jsp:include page="/member/mypage.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 <br><br>
 
 <h1>내방 예약조회</h1>
