@@ -86,19 +86,39 @@ input {
 </style>
 </head>
 
+<script>
+function checkVals(){
+	var f= document.login;
+	if(f.email.value.length == 0){
+		alert("이메일을 입력하세요");
+		f.email.focus();
+		return false;
+	}else if(f.password.value.length ==0){
+		alert("비밀번호를 입력하세요");
+		f.password.focus();
+		return false;
+	}else{
+		submit();
+	}
+	
+	
+}
+
+</script>
+
 <body>
 	<div class="logo">
 		<a href="${initParam.rootPath }/main.jsp	"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
 	</div>
 	<div class="loginform">
-		<form action="${initParam.rootPath }/login" method="post">
+		<form action="${initParam.rootPath }/login" method="post" name="login" onsubmit="return checkVals();">
 			<input type="text" name="email" placeholder="Id(Email)"><br> <input type="password" name="password"
 				placeholder="password"><br>
 
 			<div class="loginform_help">
 				<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a>
 			</div>
-			<button type="submit">로그인</button>
+			<button>로그인</button>
 			<div class="loginform_bot">
 				꿀잼게스트하우스 계정이 없으세요? <button><a href="${initParam.rootPath }/member/join.jsp">회원가입</a></button>
 			</div>

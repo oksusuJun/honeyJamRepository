@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<jsp:include page="/member/mypage.jsp"></jsp:include>
+<jsp:include page="/member/mypage.jsp"></jsp:include>
 	<br>
 	<br>
 	
@@ -16,7 +16,8 @@
 <jsp:forward page="/member/login.jsp"/> 
 </c:if>
 
-	<table>
+
+<table>
 	
 	<tr>
     <th>게시물 번호</th>
@@ -31,6 +32,10 @@
 	</c:forEach>
 	
 	</table>
+	
+	내용: <br>
+	${requstScope.num}
+
 
 
 </body>
