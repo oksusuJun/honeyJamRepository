@@ -1,8 +1,9 @@
 package com.honeyjam.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation implements Serializable{
 	private int reservationId;
 	private String email;
 	private Date checkIn;
