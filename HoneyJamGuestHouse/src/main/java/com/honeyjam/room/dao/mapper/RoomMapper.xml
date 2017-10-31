@@ -73,14 +73,19 @@
 	
 	<!-- 검색조건 - 인원&checkIn&checkOut 으로 조회 -->
 	<select id="selectRoomBySearch" parameterType="map" resultMap="searchRoom-resultmap">
+	<![CDATA[
+	SELECT 	a.room_id, 
+			a.available_bed, 
+			b.number_of_beds
+	FROM 	room a, 
+			reserved_room b
+	WHERE 	a.room_id = b.room_id
+	AND 	b.gender LIKE '%'||#{gender}||'%'
+	AND 	a.available_bed >= #{numberOfGuest}
+	AND 	b.check_in <= to_date(#{checkOut}, 'YYYYMMDD') 
+	AND 	b.check_out >= to_date(#{checkIn}, 'YYYYMMDD')
 	
-	SELECT a.room_id, a.available_bed, b.number_of_beds
-	FROM room a, reserved_room b
-	WHERE a.room_id = b.room_id
-	AND b.gender like '%'||#{gender}||'%'
-	AND a.available_bed &gt;= #{numberOfGuest}
-	AND b.check_in &lt;= to_date(#{checkOut}, 'YYYYMMDD') 
-	AND b.check_out &gt;= to_date(#{checkIn}, 'YYYYMMDD')
+	]]>
 	
 	</select>
 </mapper>	

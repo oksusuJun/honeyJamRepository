@@ -31,7 +31,7 @@
 	</sql>
 	
 	<resultMap type="reservation" id="reservation-join-member-resultmap" extends="reservation-resultmap">
-		<association property="member" resultMap=com.honeyjam.member.dao.mapper.memberMapper.member-resultmap"/>
+		<collection property="member" resultMap="com.honeyjam.member.dao.mapper.memberMapper.member-resultmap"/>
 	</resultMap>
 	
 	<resultMap type="reservation" id="reservation-resultmap">
@@ -51,6 +51,8 @@
 	
 	<select id="selectReservationById" parameterType="string" resultMap="reservation-join-member-resultmap">
 		<include refid="com.honeyjam.member.dao.mapper.memberMapper.select-member-join-reservation-sql"/>
+		WHERE m.email = r.email(+)
+		AND r.email = #{value}
 	</select>
 	
 	
