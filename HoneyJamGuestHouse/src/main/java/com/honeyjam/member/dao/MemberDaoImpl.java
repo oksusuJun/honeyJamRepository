@@ -31,14 +31,12 @@ private static MemberDaoImpl instance;
 
 	@Override
 	public int updateMemberById(SqlSession session, Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.update(makeSqlId("updateMemberById"), member);
 	}
 
 	@Override
 	public int deleteMemberById(SqlSession session, String email) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.delete(makeSqlId("deleteMemberById"),email);
 	}
 
 	@Override

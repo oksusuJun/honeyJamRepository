@@ -20,7 +20,14 @@
 		<result column="admin" property="admin"/>
 	</resultMap>
 	
-	
+	<update id="updateMemberById" parameterType="member">
+		UPDATE member
+		SET password = #{password},
+			nickname = #{nickname},
+			phone_num = #{phoneNum},
+			admin = #{admin}
+		WHERE email = #{email}
+	</update>
 	
 	
 
@@ -43,6 +50,13 @@
 	<select id="selectMemberByPhone" resultMap="member-resultmap" parameterType="string">
 		<include refid="select-sql" />
 		WHERE phone_num = #{value}
+	</select>
+	
+	<delete id="deleteMemberById" parameterType="string">
+		delete from member where email = #{value}
+	</delete>
+	
+	<select id="selectBoardById" parameterType="string">
 	</select>
 
 </mapper>

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".mainmenu > li").on("mouseover", function() {
@@ -45,6 +47,11 @@ header {
 	border-right: 1px solid #000;
 	height: 100%;
 }
+.header_left_img > a > img{
+	width: 80%;
+	height: 80%;
+	margin-top: 5px;
+}
 
 .header_left_menu {
 	float: left;
@@ -54,7 +61,9 @@ header {
 
 .mainmenu {
 	float: left;
-	width: 100px
+	width: 100px;
+	z-index: 10;
+	position: relative;
 }
 
 .mainmenu>li {
@@ -74,11 +83,12 @@ header {
 	float: none;
 	height: 30px;
 	height: 40px;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .submenu>li>a {
 	line-height: 40px;
+	color: #fff;
 }
 
 .header_right {
@@ -100,6 +110,8 @@ header {
 	background: #fff;
 	cursor: pointer;
 	border: 1px solid #000;
+	outline: none;
+	border: 0px;
 }
 
 .header_right>ul>li>a {
@@ -110,40 +122,50 @@ header {
 <header>
 	<div class="header_left">
 		<div class="header_left_img">
-			<img src="#" alt="img" title="img">
+			<a href="${initParam.rootPath }/main.jsp"> <img src="/HoneyJamGuestHouse/img/logo.png" alt="img" title="img"></a>
 		</div>
 		<div class="header_left_menu">
 			<ul class="mainmenu">
 				<li><a href="#">소개</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">2인실</a></li>
+						<li><a href="#">4인실</a></li>
+						<li><a href="#">6인실</a></li>
+						<li><a href="#">8인실</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">
-				<li><a href="#">메뉴1</a>
+				<li><a href="#">예약</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">예약하기</a></li>
+						<li><a href="#">예약조회</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">
 				<li><a href="#">커뮤니티</a>
 					<ul class="submenu">
-						<li><a href="#">서브메뉴1</a></li>
-						<li><a href="#">서브메뉴2</a></li>
-						<li><a href="#">서브메뉴3</a></li>
+						<li><a href="#">QnA</a></li>
+						<li><a href="#">리뷰게시판</a></li>
 					</ul></li>
 			</ul>
 		</div>
 	</div>
 	<div class="header_right">
-		<ul>
-			<li><a href="#">login</a></li>
-			<li><a href="#">mypage</a></li>
-		</ul>
+		<c:choose>
+			<c:when test="${sessionScope.loginMember != null}">
+				<ul>
+					<li><a href="${initParam.rootPath }/logout">로그아웃</a></li>
+					<li><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
+				</ul>
+			</c:when>
+
+			<c:otherwise>
+				<ul>
+					<li><a href="${initParam.rootPath }/member/login.jsp">로그인</a></li>
+					<li><a href="${initParam.rootPath }/member/join.jsp">회원가입</a></li>
+				</ul>
+			</c:otherwise>
+		</c:choose>
 
 	</div>
 </header>

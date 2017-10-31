@@ -24,7 +24,7 @@ insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
 drop table Reservation cascade constraint;
 /* 
  * #### Reservation Table ####
- * payment_state - 0 : 
+ * payment_state - 0 : 입급완료 || 1 : 입금대기
  */
 create table Reservation (
 	reservation_id	number(10) primary key,
