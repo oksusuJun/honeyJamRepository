@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<c:if test="${sessionScope.loginMember ==null}">
-<jsp:forward page="/member/login.jsp"/> 
-</c:if>
+
+
+
 
 <jsp:include page="/member/mypage.jsp"></jsp:include>
 <br><br>

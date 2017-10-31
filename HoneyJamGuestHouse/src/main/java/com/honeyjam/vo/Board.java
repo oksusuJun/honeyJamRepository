@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Board implements Serializable{
 	
-	private int item_num;
+	private int itemNum;
 	private String content;
 	private String title;
 	private Date writeDate;
@@ -15,16 +15,16 @@ public class Board implements Serializable{
 	
 	public Board() {}
 
-	public Board(int item_num, String content, String title, Date writeDate, String email) {
-		this.item_num = item_num;
+	public Board(int itemNum, String content, String title, Date writeDate, String email) {
+		this.itemNum = itemNum;
 		this.content = content;
 		this.title = title;
 		this.writeDate = writeDate;
 		this.email = email;
 	}
 
-	public Board(int item_num, String content, String title, Date writeDate, String email, Member member) {
-		this.item_num = item_num;
+	public Board(int itemNum, String content, String title, Date writeDate, String email, Member member) {
+		this.itemNum = itemNum;
 		this.content = content;
 		this.title = title;
 		this.writeDate = writeDate;
@@ -32,12 +32,12 @@ public class Board implements Serializable{
 		this.member = member;
 	}
 
-	public int getItem_num() {
-		return item_num;
+	public int getItemNum() {
+		return itemNum;
 	}
 
-	public void setItem_num(int item_num) {
-		this.item_num = item_num;
+	public void setItemNum(int itemNum) {
+		this.itemNum = itemNum;
 	}
 
 	public String getContent() {
@@ -82,7 +82,7 @@ public class Board implements Serializable{
 
 	@Override
 	public String toString() {
-		return String.format("Board [item_num=%s, content=%s, title=%s, writeDate=%s, email=%s, member=%s]", item_num,
+		return String.format("Board [itemNum=%s, content=%s, title=%s, writeDate=%s, email=%s, member=%s]", itemNum,
 				content, title, writeDate, email, member);
 	}
 
@@ -92,7 +92,7 @@ public class Board implements Serializable{
 		int result = 1;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + item_num;
+		result = prime * result + itemNum;
 		result = prime * result + ((member == null) ? 0 : member.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((writeDate == null) ? 0 : writeDate.hashCode());
@@ -118,7 +118,7 @@ public class Board implements Serializable{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (item_num != other.item_num)
+		if (itemNum != other.itemNum)
 			return false;
 		if (member == null) {
 			if (other.member != null)
@@ -137,6 +137,9 @@ public class Board implements Serializable{
 			return false;
 		return true;
 	}
+	
+	
+
 	
 	
 	
