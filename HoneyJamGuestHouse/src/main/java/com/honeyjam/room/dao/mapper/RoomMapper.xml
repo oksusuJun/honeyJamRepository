@@ -2,4 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.honeyjam.room.dao.mapper.RoomMapper">
 
-</mapper>
+	<sql id="selectRoom">
+		SELECT	room_id,
+				room_name, 
+				gender, 
+				max_bed, 
+				available_bed,
+				price
+		FROM 	room
+	</sql>
+	
+	<sql id="select-join-room">
+	SELECT 	a.room_id, 
+			a.available_bed, 
+			b.number_of_beds
+	FROM 	room a, 
+			reserved_room b
+	WHERE 	a.room_id = b.room_id
+	</sql>
+	
+	<sql id="search-room">
+	SELECT a.room_id, a.available_bed, b.number_of_beds
+	FROM room a, reserved_room b
+	WHERE a.room_id = b.room_id
+	AND b.gender like '%#{gender}%'
+	AND a.available_bed >= #{peopleNum}
+	AND b.check_in <= to_date(#{checkOut}, 'YYYYMMDD') 
+	AND b.check_out >= to_date(#{checkIn}, 'YYYYMMDD')
+	</sql>
+	
+	<resultMap type="room" id="room-resultmap">
+		<id column="room_id" property="roomId"/>
+		<result column="room_name" property="roomName"/>
+		<result column="gender" property="gender"/>
+		<result column="max_bed" property="maxBed"/>
+		<result column="available_bed" property="availableBed"/>
+		<result column="price" property="price"/>
+	</resultMap>
+	
+	<resultMap type="room" id="searchRoom-resultmap" extends="room-resultmap">
+		<association property="reservedRoom" javaType="reservedRoom">
+			<id column="reservedRoom_id" property="roomId" />
+			<result column="number_of_beds" property="numberOfBeds"/>
+		</association>
+	</resultMap>
+	
+	<!-- 방 전체 조회 -->
+	<select id="selectAllRoom" resultMap="room-resultmap">
+		<include refid="selectRoom"/>
+	</select>
+	
+	<!-- 인원으로 방 조회 -->
+	<select id="selectRoomByPeople" parameterType="_int" resultMap="room-resultmap">
+		<include refid="selectRoom" />
+		WHERE max_bed = #{value}
+	</select>
+	
+	<!-- 이름으로 방 조회 -->
+	<select id="selectRoomByRoomName" parameterType="string" resultMap="room-resultmap">
+		<include refid="selectRoom" />
+		WHERE room_name = #{value}
+	</select>
+	
+	<!-- 방 번호로 조회 -->
+	<select id="selectRoomByRoomNum" parameterType="_int" resultMap="room-resultmap">
+		<include refid="selectRoom"/>
+		WHERE room_id = #{value}
+	</select>
+
+	
+	<!-- 검색조건 - 인원&checkIn&checkOut 으로 조회 -->
+	<select id="selectRoomBySearch" parameterType="map" resultMap="searchRoom-resultmap">
+	
+	SELECT a.room_id, a.available_bed, b.number_of_beds
+	FROM room a, reserved_room b
+	WHERE a.room_id = b.room_id
+	AND b.gender like '%'||#{gender}||'%'
+	AND a.available_bed &gt;= #{numberOfGuest}
+	AND b.check_in &lt;= to_date(#{checkOut}, 'YYYYMMDD') 
+	AND b.check_out &gt;= to_date(#{checkIn}, 'YYYYMMDD')
+	
+	</select>
+</mapper>	
