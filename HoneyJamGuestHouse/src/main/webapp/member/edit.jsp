@@ -63,6 +63,37 @@
 .content h1 {
 	margin-bottom: 40px;
 }
+.text1{
+width: 165px;
+height: 59px;
+float: left;
+background: #f9f9f9;
+line-height: 60px;
+border-bottom: 1px solid gray; 
+border-right: 1px solid gray;
+}
+.text2{
+	width: 410px;
+	height: 59px;
+	float: right;
+	line-height: 60px;
+	border-bottom: 1px solid gray; 
+}
+.text2 > input {
+width: 200px;
+height: 27px;
+}
+form > button{
+margin-top : 30px;
+width: 95%;
+height: 60px;
+background: #fff;
+outline: none;
+border: 2px solid pink;
+border-radius: 5px;
+font-size: 20px;
+cursor: pointer;
+}
 </style>
 </head>
 
@@ -124,19 +155,6 @@
 </script>
 
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<c:if test="${sessionScope.loginMember ==null}">
 		<jsp:forward page="/member/login.jsp" />
 	</c:if>
@@ -157,11 +175,13 @@
 		<div class="content">
 			<h1>회원정보수정</h1>
 			<form action="${initParam.rootPath }/memberEdit" method="post" name="edit" onsubmit="return checkVals();">
-
-				email : ${sessionScope.loginMember.email }<br> 기존 비밀번호 : <input type="password" name="oldPass"><br> 새 비밀번호 :
-				<input type="password" name="password"><br> 새 비밀번호 한번 더 확인 : <input type="password" name="password1"><br>
-				nickname : <input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"><br> phone number : <input
-					type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }"><br>
+				<div class="text1" style="border-top: 1px solid gray">아이디(Email) :</div>
+				<div class="text2" style="border-top: 1px solid gray">${sessionScope.loginMember.email }</div>
+				<div class="text1">기존 비밀번호 :  </div><div class="text2"><input type="password" name="oldPass"></div>
+				<div class="text1">새 비밀번호 : </div><div class="text2"><input type="password" name="password"></div>
+				<div class="text1">새 비밀번호 재확인 : </div><div class="text2"><input type="password" name="password1"></div>
+				<div class="text1">닉네임 : </div><div class="text2"><input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"></div>
+				<div class="text1">전화번호 : </div><div class="text2"><input type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }"></div>
 				<button>정보수정</button>
 			</form>
 			<c:if test="${requestScope.errorMessage != null }">
