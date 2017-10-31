@@ -6,6 +6,64 @@
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+* {
+	margin: 0 auto;
+	padding: 0px;
+	text-align: center;
+	list-style: none;
+	text-decoration: none;
+	color: #000;
+}
+
+.body {
+	margin-top: 100px;
+	max-width: 960px;
+	min-width: 960px;
+}
+
+.body_left {
+	width: 17%;
+	float: left;
+}
+
+.myinfo {
+	width: 100%;
+	height: 200px;
+	float: left;
+	line-height: 200px;
+	background: #525f78;
+	color: #fff;
+}
+
+.menu {
+	width: 100%;
+	min-height: 200px;
+	float: left;
+	background: #a4a4a4;
+}
+
+.menu>a {
+	border-bottom: 0.1px solid grey;
+	color: #fff;
+	width: 90%;
+	float: left;
+	text-align: left;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10%;
+}
+
+.content {
+	width: 60%;
+	float: left;
+	padding-left: 10%;
+}
+
+.content h1 {
+	margin-bottom: 40px;
+}
+</style>
 </head>
 
 
@@ -67,27 +125,52 @@
 
 <body>
 
+
+
+
+
+
+
+
+
+
+
+
+
 	<c:if test="${sessionScope.loginMember ==null}">
 		<jsp:forward page="/member/login.jsp" />
 	</c:if>
 	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-	
 
-	<h1>회원정보수정</h1>
-	<form action="${initParam.rootPath }/memberEdit" method="post" name="edit" onsubmit="return checkVals();">
+	<div class="body">
+		<div class="body_left">
+			<div class="myinfo">
+				${sessionScope.loginMember.email } 님<br> 환영합니다.
+			</div>
+			<div class="menu">
+				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
+					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/member/myboard.jsp">내가
+					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
+			</div>
+		</div>
 
-		email : ${sessionScope.loginMember.email }<br> 기존 비밀번호 : <input type="password" name="oldPass"><br> 새 비밀번호 : <input
-			type="password" name="password"><br> 새 비밀번호 한번 더 확인 : <input type="password" name="password1"><br>
-		nickname : <input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"><br> phone number : <input
-			type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }"><br>
-		<button>정보수정</button>
-	</form>
+		<div class="content">
+			<h1>회원정보수정</h1>
+			<form action="${initParam.rootPath }/memberEdit" method="post" name="edit" onsubmit="return checkVals();">
 
-	<c:if test="${requestScope.errorMessage != null }">
-		<script>
-			alert("에러: " + "${requestScope.errorMessage}");
-		</script>
-	</c:if>
+				email : ${sessionScope.loginMember.email }<br> 기존 비밀번호 : <input type="password" name="oldPass"><br> 새 비밀번호 :
+				<input type="password" name="password"><br> 새 비밀번호 한번 더 확인 : <input type="password" name="password1"><br>
+				nickname : <input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"><br> phone number : <input
+					type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }"><br>
+				<button>정보수정</button>
+			</form>
+			<c:if test="${requestScope.errorMessage != null }">
+				<script>
+					alert("에러: " + "${requestScope.errorMessage}");
+				</script>
+			</c:if>
+		</div>
+	</div>
 
 </body>
 </html>
