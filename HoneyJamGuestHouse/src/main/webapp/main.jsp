@@ -108,7 +108,7 @@ option {
 				<p>살아보세요</p>
 			</div>
 		</div>
-		<form class="nav" action="">
+		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 			<input type="text" name="checkin" placeholder="checkin" class="calendar"> <input type="text" name="checkout"
 				placeholder="checkout" class="calendar"> <input type="text" name="people" placeholder="인원수" class="people"> <select
 				class="combobox" name="gender">
