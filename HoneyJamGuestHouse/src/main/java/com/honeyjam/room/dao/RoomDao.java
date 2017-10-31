@@ -42,6 +42,17 @@ public interface RoomDao {
 	Room selectRoomByRoomNum(SqlSession session, int roomNum);
 	
 	/**
+	 * 
+	 * @param session
+	 * @param gender
+	 * @return
+	 */
+	List<Room> selectAvailableRoomByGender(SqlSession session, String gender);
+	
+	
+	
+	
+	/**
 	 * 전달받은 검색조건 으로 방 조회
 	 * Service 에서 나머지 제약조건 추가
 	 * @param session

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <title>Insert title here</title>
 </head>
 <style>
@@ -55,7 +56,7 @@
 }
 
 .content {
-	width: 60%;
+	width: 70%;
 	float: left;
 	padding-left: 10%;
 }
@@ -66,13 +67,12 @@
 
 table {
 	border-collapse: collapse;
-	width: 500px;
+	width: 100%;
 }
 
 td, th {
 	border: 1px solid black;
 	text-align: center;
-	padding: 5px;
 }
 </style>
 
@@ -91,7 +91,7 @@ td, th {
 			</div>
 			<div class="menu">
 				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/member/myboard.jsp">내가
+					href="${initParam.rootPath}/reservationSelect">예약조회</a> <a href="${initParam.rootPath}/member/myboard.jsp">내가
 					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
 			</div>
 		</div>
@@ -116,14 +116,14 @@ td, th {
 				<tbody>
 					<c:forEach items="${requestScope.reservation }" var="reservation">
 						<tr>
-							<td>${reservation.reservationId }</td>
-							<td>${reservation.email }</td>
-							<td>${reservation.checkIn }</td>
-							<td>${reservation.checkOut }</td>
-							<td>${reservation.numberOfGuests }</td>
-							<td>${reservation.roomId }</td>
-							<td>${reservation.gender }</td>
-							<td>${reservation.paymentStatus }</td>
+							<td style="width: 70px;">${reservation.reservationId }</td>
+							<td style="width: 100px">${reservation.email }</td>
+							<td style="width: 150px">${reservation.checkIn }</td>
+							<td style="width: 150px">${reservation.checkOut }</td>
+							<td style="width: 50px">${reservation.numberOfGuests }</td>
+							<td style="width: 70px;">${reservation.roomId }</td>
+							<td style="width: 70px">${reservation.gender }</td>
+							<td style="width: 70px">${reservation.paymentStatus }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

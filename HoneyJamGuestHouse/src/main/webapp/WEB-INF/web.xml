@@ -8,4 +8,5 @@
     <param-name>rootPath</param-name>
     <param-value>/HoneyJamGuestHouse</param-value>
   </context-param>
+  <filter
 </web-app>

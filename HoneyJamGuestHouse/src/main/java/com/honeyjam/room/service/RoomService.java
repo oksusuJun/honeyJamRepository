@@ -46,6 +46,8 @@ public interface RoomService {
 	 */
 	Room findRoomByRoomId(int roomId);
 	
+	List<Room> findAvailableRoomByGender(String gender);
+	
 	//검색된 내용을 빼고 나머지 예약가능한 방 출력
 	List<Room> searchRoomReservation(String gender, Integer numberOfGuest, Date checkIn, Date checkOut);
 	
