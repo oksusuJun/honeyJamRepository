@@ -104,7 +104,11 @@ public class MemberServiceImpl implements MemberService {
 					}
 				}else if(dao.selectMemberByPhone(session, newData.getPhoneNum())!= null) {
 					if(!oldData.getPhoneNum().equals(newData.getPhoneNum())) {
+<<<<<<< HEAD
 					throw new DuplicatedPhoneException("중복된 전화번호 입니다.",newData.getPhoneNum());
+=======
+						throw new DuplicatedPhoneException("중복된 전화번호 입니다.",newData.getPhoneNum());
+>>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
 					}
 				}
 				dao.updateMemberById(session, newData);

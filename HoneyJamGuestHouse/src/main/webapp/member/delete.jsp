@@ -29,29 +29,30 @@ function checkform(){
 
 <body>
 
-<c:choose>
-			<c:when test="${sessionScope.loginMember != null}">
+
+
+<c:if test="${sessionScope.loginMember ==null}">
+<jsp:forward page="/member/login.jsp"/> 
+</c:if>
+
+
+<jsp:include page="/member/mypage.jsp"></jsp:include>
+
+<br><br>
+
 					탈퇴하려면 ID와 비밀번호를 다시한번 입력해주세요 
 					<form action="${initParam.rootPath}/deleteMember" method="post" name="delete_form">
 						ID(email) : <input type="text" name="email"><br>
 						password : <input type="password" name="password"><br>
 						<button type="button" onclick="checkform();">회원탈퇴</button>
 					</form>
-			</c:when>
-
-			<c:otherwise>
-					로그인 하세요 
-					<a href="${initParam.rootPath}/member/login.jsp">로그인창으로</a>
-				
-			</c:otherwise>
-</c:choose>
+			
 
 <c:if test="${requestScope.errorMessage != null}">
 	<script>
 		alert("에러: "+"${requestScope.errorMessage}");
 	</script>
 </c:if>
-
 
 
 

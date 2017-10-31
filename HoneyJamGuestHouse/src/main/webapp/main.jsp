@@ -3,6 +3,10 @@
 <html>
 <head>
 <title></title>
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
+<script src="/HoneyJamGuestHouse/scripts/jquery-ui.js"></script>
+<link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
+
 <style type="text/css">
 .contents {
 	width: 100%;
@@ -25,9 +29,24 @@ input {
 	width: 200px;
 	height: 60px;
 	margin-top: 17.5px;
+	font-size: 16px;
+	outline: none;
+	border: 0px;
+	text-align: center;
+}
+
+option {
+	font-size: 16px;
+}
+
+.combobox {
+	width: 200px;
+	height: 62px;
+	margin-top: 17.5px;
 	font-size: 18px;
 	outline: none;
 	border: 0px;
+	text-align: center;
 }
 
 .text {
@@ -49,13 +68,35 @@ input {
 	color: pink;
 	font-weight: bold;
 }
-.submit{
-background:#FF5A5F;
-width: 100px;
-height: 58px;
-color: #fff;
+
+.submit {
+	background: #FF5A5F;
+	width: 100px;
+	height: 58px;
+	color: #fff;
+}
+
+.people {
+	width: 200px;
+	height: 60px;
+	font-size: 18px;
+	outline: none;
+	border: 0px;
+	text-align: center;
+}
+
+::-webkit-input-placeholder {
+	text-align: center;
 }
 </style>
+<script type="text/javascript">
+	$(function() {
+		$(".calendar").datepicker({
+			buttonImageOnly : true,
+			numberOfMonths : 2
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
@@ -68,11 +109,13 @@ color: #fff;
 			</div>
 		</div>
 		<form class="nav" action="">
-			<input type="text" name="checkin" placeholder="checkin">
-			<input type="text" name="checkout" placeholder="checkout">
-			<input type="text" name="people" placeholder="인원수"> 
-			<input type="text" name="gender" placeholder="성별"> 
-			<input type="submit" name="search" class="submit" value="검색">
+			<input type="text" name="checkin" placeholder="checkin" class="calendar"> <input type="text" name="checkout"
+				placeholder="checkout" class="calendar"> <input type="text" name="people" placeholder="인원수" class="people"> <select
+				class="combobox" name="gender">
+				<option value="">성별을 선택해주세요</option>
+				<option value="남성">남성</option>
+				<option value="여성">여성</option>
+			</select> <input type="submit" name="search" class="submit" value="검색">
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>

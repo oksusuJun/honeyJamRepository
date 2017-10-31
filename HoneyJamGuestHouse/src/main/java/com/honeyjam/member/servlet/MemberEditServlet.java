@@ -40,17 +40,23 @@ public class MemberEditServlet extends HttpServlet {
 			session.setAttribute("loginMember", newMember);
 			request.getRequestDispatcher("/member/myinfo.jsp").forward(request, response);
 		}catch(DuplicatedNicknameException e) {
+<<<<<<< HEAD
 			if((member.getNickname()).equals(nickname)) {
 				return;
 			}
 			request.setAttribute("content", e.getDuplicateNickname());
+=======
+>>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
 			request.setAttribute("errorMessage", e.getMessage());
 			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
 		}catch(DuplicatedPhoneException e) {
+<<<<<<< HEAD
 			if((member.getPhoneNum()).equals(phoneNum)) {
 				return;
 			}
 			request.setAttribute("content", e.getDuplicatedPhone());
+=======
+>>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
 			request.setAttribute("errorMessage", e.getMessage());
 			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
 		}
