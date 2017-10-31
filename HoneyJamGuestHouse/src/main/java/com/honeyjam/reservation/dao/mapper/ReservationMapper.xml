@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.honeyjam.reservation.dao.mapper.ReservationMapper">
+<mapper namespace="com.honeyjam.reservation.dao.mapper.reservationMapper">
 
+	<sql id="column-sql">
+		reservation_id, 
+		email, 
+		check_in, 
+		check_out, 
+		number_of_guests, 
+		room_id, 
+		gender
+	</sql>
+	
+	<sql id="select-reservation-sql">
+		SELECT
+		<include refid="column-sql"/>
+		FROM reservation
+	</sql>
+	
+	<sql id="select-reservation-join-member-sql">
+		SELECT	r.reservation_id,
+				r.email,
+				r.check_in,
+				r.check_out,
+				r.number_of_guests,
+				r.room_id,
+				r.gender,
+				m.email, m.nickname, m.phone_num
+		FROM	reservation r, member m
+	</sql>
+	
+	<resultMap type="reservation" id="reservation-join-member-resultmap" extends="reservation-resultmap">
+		<association property="member" resultMap=com.honeyjam.member.dao.mapper.memberMapper.member-resultmap"/>
+	</resultMap>
+	
+	<resultMap type="reservation" id="reservation-resultmap">
+		<id column="reservation_id" property="reservationId"/>
+		<result column="email" property="email"/>
+		<result column="check_in" property="checkIn"/>
+		<result column="check_out" property="checkOut"/>
+		<result column="number_of_guests" property="numberOfGuests"/>
+		<result column="room_id" property="roomId"/>
+		<result column="gender" property="gender"/>
+	</resultMap>
+	
+
+	<insert id="insertReservation" parameterType="reservation">
+		INSERT INTO reservation VALUES (#{reservationId},#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender})
+	</insert>	
+	
+	<select id="selectReservationById" parameterType="string" resultMap="reservation-join-member-resultmap">
+		<include refid="com.honeyjam.member.dao.mapper.memberMapper.select-member-join-reservation-sql"/>
+	</select>
+	
+	
 </mapper>
+

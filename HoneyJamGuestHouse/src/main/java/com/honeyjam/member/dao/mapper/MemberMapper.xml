@@ -12,6 +12,14 @@
 		FROM member
 	</sql>
 	
+	<sql id="select-member-join-reservation-sql">
+		SELECT m.email,
+			   m.nickname,
+			   m.phone_num,
+			   r.reservation_id, r.check_in, r.check_out, r.number_of_guests, r.room_id, r.gender					
+		FROM member m, reservation r
+	</sql>
+	
 	<resultMap type="member" id="member-resultmap">
 		<id column="email" property="email"/>
 		<result column="password" property="password"/>

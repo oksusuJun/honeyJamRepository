@@ -80,7 +80,7 @@
 	FROM 	room a, 
 			reserved_room b
 	WHERE 	a.room_id = b.room_id
-	AND 	b.gender like '%'||#{gender}||'%'
+	AND 	b.gender LIKE '%'||#{gender}||'%'
 	AND 	a.available_bed >= #{numberOfGuest}
 	AND 	b.check_in <= to_date(#{checkOut}, 'YYYYMMDD') 
 	AND 	b.check_out >= to_date(#{checkIn}, 'YYYYMMDD')

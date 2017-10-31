@@ -2,4 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.honeyjam.board.dao.mapper.BoardMapper">
 
+
+	<sql id="select-board">
+		SELECT item_num, content, title, write_date, email
+		FROM board
+	</sql>
+
+	<resultMap type="board" id="board-resultmap">
+		<id column="item_num" property="itemNum" />
+		<result column="content" property="content" />
+		<result column="title" property="title" />
+		<result column="write_date" property="writeDate" />
+		<result column="email" property="email" />
+	</resultMap>
+
+	
+	<select id="selectItemsById" parameterType="String" resultMap="board-resultmap">
+		<include refid="select-board"/>
+		where email= #{value}
+	</select>
+
 </mapper>
