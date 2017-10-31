@@ -88,4 +88,16 @@ public class RoomServiceImpl implements RoomService{
 		}
 	}
 
+	@Override
+	public List<Room> findAvailableRoomByGender(String gender) {
+		try {
+			session = factory.openSession();
+			list = dao.selectAvailableRoomByGender(session, gender);
+			return list;
+		} finally {
+			session.close();
+		}
+	}
+
+	
 }
