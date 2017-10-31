@@ -1,6 +1,8 @@
 package com.honeyjam.room.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -36,26 +38,52 @@ public class RoomSearchServlet extends HttpServlet {
 //		Date checkIn = new Date();
 		
 		HttpSession session = request.getSession();
-		String gender = (String)session.getAttribute("gender");
-		Integer numberOfGuest = (Integer)session.getAttribute("people");
-		Date checkIn = (Date)session.getAttribute("checkin");
-		Date checkOut = (Date)session.getAttribute("checkout");
+		String gender = request.getParameter("gender");
+		Integer numberOfGuests = Integer.parseInt(request.getParameter("people"));
+		String checkInForm = request.getParameter("checkin");
+		String checkOutForm = request.getParameter("checkout");
+		
+		SimpleDateFormat dateForm = new SimpleDateFormat("dd/MM/yyyy");
+		
+		
+		try {
+			Date checkIn = dateForm.parse(checkInForm);
+			Date checkOut = dateForm.parse(checkOutForm);
+			System.out.println(checkInForm);
+			System.out.println(checkOutForm);
+			System.out.println(checkIn);
+			System.out.println(checkOut);
+			
+			RoomService service = RoomServiceImpl.getInstance();
+			
+			List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
+			
+			if (list.isEmpty()) {
+				// 예약 가능
+				/*추후 예약 진행화면으로 변경해야함 */
+				request.getRequestDispatcher("/test.jsp").forward(request, response);
 
+//				response.sendRedirect("/HoneyJamGuestHouse/test.jsp");
+			} else {
+				request.getRequestDispatcher("/member/reservation_view.jsp").forward(request, response);
+			}
+			
+//			request.getRequestDispatcher("/test.jsp").forward(request, response);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		
-		RoomService service = RoomServiceImpl.getInstance();
+	
 //		int availableBed = (Integer)request.getAttribute("availableBed");
 //		int numberOfBeds = (Integer)request.getAttribute("numberOfBeds");
 //		int guestNum = (Integer)request.getAttribute("people");
 		
 		
-		List<Room> list = service.searchRoomReservation(gender, numberOfGuest, checkIn, checkOut);
+	
 		
 		
-		if (list.isEmpty()) {
-			// 예약 가능
-			/*추후 예약 진행화면으로 변경해야함 */
-			response.sendRedirect("/HoneyJamGuestHouse/member/reservation_view.jsp");
+		
 //		} else {
 //			if((availableBed-numberOfBeds) >= guestNum) { // 예약 가능
 //				/*추후 예약 진행화면으로 변경해야함 */
@@ -63,7 +91,7 @@ public class RoomSearchServlet extends HttpServlet {
 //			}
 			
 //			request.getRequestDispatcher("/HoneyJamGuestHouse/main.jsp");
-		} request.getRequestDispatcher("/HoneyJamGuestHouse/main.jsp");
+		
 	}
 
 }

@@ -2,10 +2,10 @@ package com.honeyjam.room.dao;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.honeyjam.vo.ReservedRoom;
 import com.honeyjam.vo.Room;
 
 public interface RoomDao {
@@ -69,6 +69,8 @@ public interface RoomDao {
 				a < numberOfGuest -> 예약불가
 	*/
 	
+	
+	List<ReservedRoom> selectReservedRoomId(SqlSession session, String gender, Date checkIn, Date checkOut);
 	
 	
 	
