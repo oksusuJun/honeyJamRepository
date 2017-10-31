@@ -110,6 +110,7 @@ td, th {
 						<td>인원</td>
 						<td>방 번호</td>
 						<td>성별</td>
+						<td>방 결제현황</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -122,6 +123,7 @@ td, th {
 							<td>${reservation.numberOfGuests }</td>
 							<td>${reservation.roomId }</td>
 							<td>${reservation.gender }</td>
+							<td>${reservation.paymentStatus }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
