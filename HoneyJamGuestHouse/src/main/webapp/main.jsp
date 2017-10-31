@@ -1,117 +1,125 @@
-<%@ page contentType="text/html;charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>HoneyJam</title>
+<title></title>
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
+<script src="/HoneyJamGuestHouse/scripts/jquery-ui.js"></script>
+<link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
+
 <style type="text/css">
-* {
-	margin: 0 auto;
-	padding: 0px;
+.contents {
+	width: 100%;
+	height: 500px;
+}
+
+.nav {
+	width: 100%;
+	height: 100px;
+	background: rgba(0, 0, 0, 0.1);
 	text-align: center;
-	list-style: none;
-	text-decoration: none;
-	color: #000;
 }
 
-.body {
-	margin-top: 100px;
-	max-width: 960px;
-	min-width: 960px;
+::-webkit-input-placeholder {
+	font-size: 18px;
+	margin-left: 10px;
 }
 
-.body_left {
-	width: 17%;
-	float: left;
+input {
+	width: 200px;
+	height: 60px;
+	margin-top: 17.5px;
+	font-size: 16px;
+	outline: none;
+	border: 0px;
+	text-align: center;
 }
 
-.myinfo {
-	width: 100%;
-	height: 200px;
-	float: left;
-	line-height: 200px;
-	background: #525f78;
-	color: #fff;
+option {
+	font-size: 16px;
 }
 
-.menu {
-	width: 100%;
-	min-height: 200px;
-	float: left;
-	background: #a4a4a4;
+.combobox {
+	width: 200px;
+	height: 62px;
+	margin-top: 17.5px;
+	font-size: 18px;
+	outline: none;
+	border: 0px;
+	text-align: center;
 }
 
-.menu>a {
-	border-bottom:0.1px solid grey;
-	color: #fff;
-	width: 90%;
-	float: left;
+.text {
+	width: 1080px;
+	height: 300px;
+}
+
+.text_p {
+	padding-left: 8%;
+	padding-top: 70px;
+}
+
+.text_p>p {
+	font-size: 50px;
 	text-align: left;
-	height: 40px;
-	line-height: 40px;
-	padding-left: 10%;
 }
 
-.content {
-	width: 60%;
-	float: left;
-	padding-left: 10%;
+.p1 {
+	color: pink;
+	font-weight: bold;
 }
 
-.content h1 {
-	margin-bottom: 40px;
+.submit {
+	background: #FF5A5F;
+	width: 100px;
+	height: 58px;
+	color: #fff;
 }
 
-.text1 {
-	width: 25%;
-	float: left;
+.people {
+	width: 200px;
+	height: 60px;
+	font-size: 18px;
+	outline: none;
+	border: 0px;
 	text-align: center;
-	height: 40px;
-	line-height: 40px
 }
 
-.text2 {
-	width: 65%;
-	float: right;
+::-webkit-input-placeholder {
 	text-align: center;
-	height: 40px;
-	line-height: 40px
 }
 </style>
+<script type="text/javascript">
+	$(function() {
+		$(".calendar").datepicker({
+			buttonImageOnly : true,
+			numberOfMonths : 2
+		});
+	});
+</script>
 </head>
 <body>
-
-	<c:if test="${sessionScope.loginMember ==null}">
-		<jsp:forward page="/member/login.jsp" />
-	</c:if>
-
-<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-
-	<div class="body">
-		<div class="body_left">
-			<div class="myinfo">
-				${sessionScope.loginMember.email } 님<br> 환영합니다.
-			</div>
-			<div class="menu">
-				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/member/myboard.jsp">내가
-					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<div class="contents">
+		<div class="text">
+			<div class="text_p">
+				<p class="p1">GuestHouse</p>
+				<p>독특한 숙소를 예약하고, 현지인처럼</p>
+				<p>살아보세요</p>
 			</div>
 		</div>
-
-		<div class="content">
-			<h1>회원조회</h1>
-			<div class="text1">email :</div>
-			<div class="text2">${sessionScope.loginMember.email }</div>
-			<div class="text1">password :</div>
-			<div class="text2">**</div>
-			<div class="text1">nickname :</div>
-			<div class="text2">${sessionScope.loginMember.nickname }</div>
-			<div class="text1">phone number :</div>
-			<div class="text2">${sessionScope.loginMember.phoneNum }</div>
-		</div>
+		<form class="nav" action="">
+			<input type="text" name="checkin" placeholder="checkin" class="calendar"> <input type="text" name="checkout"
+				placeholder="checkout" class="calendar"> <input type="text" name="people" placeholder="인원수" class="people"> <select
+				class="combobox" name="gender">
+				<option value="">성별을 선택해주세요</option>
+				<option value="남성">남성</option>
+				<option value="여성">여성</option>
+			</select> <input type="submit" name="search" class="submit" value="검색">
+		</form>
 	</div>
+	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
+
+
 </body>
 </html>
