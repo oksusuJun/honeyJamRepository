@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
+
+<jsp:include page="/member/mypage.jsp"></jsp:include>
+<br><br>
+
 <h1>내방 예약조회</h1>
 예약번호 : ${sessionScope.reservation.reservationId }<br>
 예약자 id : ${sessionScope.reservation.email }<br>
@@ -16,16 +19,8 @@
 인원 : ${sessionScope.reservation.numberOfGuests }<br>
 방 번호 : ${sessionScope.reservation.roomId }<br>
 성별 : ${sessionScope.reservation.gender }<br> 
-=======
-
-<c:if test="${sessionScope.loginMember ==null}">
-<jsp:forward page="/member/login.jsp"/> 
-</c:if>
-
-<jsp:include page="/member/mypage.jsp"></jsp:include>
-<br><br>
 
 
->>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
+
 </body>
 </html>

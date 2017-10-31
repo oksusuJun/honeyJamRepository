@@ -10,16 +10,16 @@
 
 	<resultMap type="board" id="board-resultmap">
 		<id column="item_num" property="itemNum" />
-		<result column="write_date" property="writeDate" />
-		<result column="title" property="title" />
 		<result column="content" property="content" />
-		<result column="item_num" property="itemNum" />
+		<result column="title" property="title" />
+		<result column="write_date" property="writeDate" />
+		<result column="email" property="email" />
 	</resultMap>
 
 	
-	<select id="selectItemsById" parameterType="String">
+	<select id="selectItemsById" parameterType="String" resultMap="board-resultmap">
 		<include refid="select-board"/>
-		where email=#{value}
+		where email= #{value}
 	</select>
 
 </mapper>

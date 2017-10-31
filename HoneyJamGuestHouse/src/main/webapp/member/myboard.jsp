@@ -8,12 +8,17 @@
 </head>
 <body>
 
-
-
-
-
 <jsp:include page="/member/mypage.jsp"></jsp:include>
 <br><br>
+
+<%-- <c:forEach items="${requestScope.boardList}" var="item">
+
+			<li>${item.title}</li>
+
+
+		</c:forEach> --%>
+		
+		냠
 
 </body>
 </html>
