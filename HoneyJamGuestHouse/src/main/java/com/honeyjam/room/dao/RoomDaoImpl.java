@@ -47,6 +47,11 @@ public class RoomDaoImpl implements RoomDao{
 	}
 
 	@Override
+	public List<Room> selectAvailableRoomByGender(SqlSession session, String gender) {
+		return session.selectList(makeSqlId("selectAvailableRoomByGender"), gender);
+	}
+	
+	@Override
 	public List<Room> selectRoomBySearch(SqlSession session, String gender, Integer numberOfGuest, Date checkIn,
 			Date checkOut) {
 		HashMap<String, Object> param = new HashMap<>();
@@ -56,4 +61,6 @@ public class RoomDaoImpl implements RoomDao{
 		param.put("checkIn", checkIn);
 		return session.selectList(makeSqlId("selectRoomBySearch"),param);
 	}
+
+	
 }

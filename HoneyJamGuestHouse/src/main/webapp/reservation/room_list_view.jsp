@@ -10,5 +10,10 @@
 </head>
 <body>
 
+
+<c:forEach items="" var="rooms">
+
+</c:forEach>
+
 </body>
 </html>

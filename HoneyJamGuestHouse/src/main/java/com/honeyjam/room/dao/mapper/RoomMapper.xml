@@ -21,16 +21,6 @@
 	WHERE 	a.room_id = b.room_id
 	</sql>
 	
-	<sql id="search-room">
-	SELECT a.room_id, a.available_bed, b.number_of_beds
-	FROM room a, reserved_room b
-	WHERE a.room_id = b.room_id
-	AND b.gender like '%#{gender}%'
-	AND a.available_bed >= #{peopleNum}
-	AND b.check_in <= to_date(#{checkOut}, 'YYYYMMDD') 
-	AND b.check_out >= to_date(#{checkIn}, 'YYYYMMDD')
-	</sql>
-	
 	<resultMap type="room" id="room-resultmap">
 		<id column="room_id" property="roomId"/>
 		<result column="room_name" property="roomName"/>
@@ -68,6 +58,12 @@
 	<select id="selectRoomByRoomNum" parameterType="_int" resultMap="room-resultmap">
 		<include refid="selectRoom"/>
 		WHERE room_id = #{value}
+	</select>
+	
+	<!-- 예약가능 인원을 성별로 조회 -->
+	<select id="selectAvailableRoomByGender" parameterType="_int" resultMap="room-resultmap">
+		<include refid="selectRoom"/>
+		WHERE room_id LIKE '%'||${gender}||'%'
 	</select>
 
 	
