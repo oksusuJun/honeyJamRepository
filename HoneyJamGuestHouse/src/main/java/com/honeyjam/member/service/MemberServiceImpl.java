@@ -97,10 +97,15 @@ public class MemberServiceImpl implements MemberService {
 			SqlSession session = null;
 			try {
 				session = factory.openSession();
+				Member oldData = dao.selectMemberById(session, newData.getEmail());
 				if(dao.selectMemberByNickname(session, newData.getNickname()) != null) {
-					throw new DuplicatedNicknameException("이미 등록된 닉네임 입니다.", newData.getNickname());
+					if(!oldData.getNickname().equals(newData.getNickname())) {
+						throw new DuplicatedNicknameException("이미 등록된 닉네임 입니다.", newData.getNickname());
+					}
 				}else if(dao.selectMemberByPhone(session, newData.getPhoneNum())!= null) {
-					throw new DuplicatedPhoneException("중복된 전화번호 입니다.",newData.getPhoneNum());
+					if(!oldData.getPhoneNum().equals(newData.getPhoneNum())) {
+						throw new DuplicatedPhoneException("중복된 전화번호 입니다.",newData.getPhoneNum());
+					}
 				}
 				dao.updateMemberById(session, newData);
 				session.commit();

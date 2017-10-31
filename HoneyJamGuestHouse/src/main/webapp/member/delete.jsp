@@ -35,6 +35,11 @@ function checkform(){
 <jsp:forward page="/member/login.jsp"/> 
 </c:if>
 
+
+<jsp:include page="/member/mypage.jsp"></jsp:include>
+
+
+
 					탈퇴하려면 ID와 비밀번호를 다시한번 입력해주세요 
 					<form action="${initParam.rootPath}/deleteMember" method="post" name="delete_form">
 						ID(email) : <input type="text" name="email"><br>
@@ -48,7 +53,6 @@ function checkform(){
 		alert("에러: "+"${requestScope.errorMessage}");
 	</script>
 </c:if>
-
 
 
 

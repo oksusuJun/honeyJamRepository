@@ -12,5 +12,9 @@
 <jsp:forward page="/member/login.jsp"/> 
 </c:if>
 
+<jsp:include page="/member/mypage.jsp"></jsp:include>
+
+
+
 </body>
 </html>
