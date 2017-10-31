@@ -5,5 +5,5 @@ import java.util.List;
 import com.honeyjam.vo.Reservation;
 
 public interface ReservationService {
-	Reservation selectReservationById(String email);
+	List<Reservation> selectReservationById(String email);
 }
