@@ -78,7 +78,7 @@ function checkPassword(){
 </c:if>
 
 <jsp:include page="/member/mypage.jsp"></jsp:include>
-
+<br><br>
 
 <h1>회원정보수정</h1>
 <form action="${initParam.rootPath }/memberEdit" method="post" name="edit"

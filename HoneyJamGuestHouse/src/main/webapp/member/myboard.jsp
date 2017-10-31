@@ -13,7 +13,7 @@
 </c:if>
 
 <jsp:include page="/member/mypage.jsp"></jsp:include>
-
+<br><br>
 
 </body>
 </html>

@@ -14,6 +14,7 @@
 
 
 <jsp:include page="/member/mypage.jsp"></jsp:include>
+<br><br>
 
 <h1>회원조회</h1>
 email : ${sessionScope.loginMember.email }<br>
