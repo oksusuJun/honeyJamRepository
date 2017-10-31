@@ -72,6 +72,9 @@ input {
 	cursor: pointer;
 	margin-left: 10px;
 }
+.loginform_bot > button > a { 
+	color: black;
+}
 
 .logo {
 	margin-top: 30px;

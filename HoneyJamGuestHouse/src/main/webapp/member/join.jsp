@@ -42,6 +42,7 @@
 		line-height: 70px;
 		outline: 0;
 		border: 0;
+		cursor: pointer;
 	}
 </style>
 </head>
