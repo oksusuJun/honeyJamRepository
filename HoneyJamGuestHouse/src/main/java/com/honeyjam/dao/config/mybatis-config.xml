@@ -27,7 +27,7 @@
 	<!-- Mapper 등록 -->
 	<mappers>
 		<mapper resource="com/honeyjam/member/dao/mapper/MemberMapper.xml"/>
-	<!-- <mapper resource="com/honeyjam/reservation/dao/mapper/ReservationMapper.xml"/> -->
+	<mapper resource="com/honeyjam/reservation/dao/mapper/ReservationMapper.xml"/>
 	<!-- <mapper resource="com/honeyjam/room/dao/mapper/RoomMapper.xml"/> -->
 	<!-- <mapper resource="com/honeyjam/board/dao/mapper/BoardMapper.xml"/> -->
 	

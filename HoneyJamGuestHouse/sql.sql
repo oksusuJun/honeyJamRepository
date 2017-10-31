@@ -51,7 +51,15 @@ constraint fk_reservation_room foreign key (room_id) references room
  
 );
 
-insert into reservation values(33,'yyy','2017-10-20','2017-10-25',3,101,'male');
+SELECT m.email,
+m.nickname,
+m.phone_num,
+r.reservation_id, r.check_in, r.check_out, r.number_of_guests, r.room_id, r.gender					
+FROM member m, reservation r
+WHERE m.email = r.email(+)
+AND r.email = 'yyy'
+
+insert into reservation values(2,'yyy','2017-10-20','2017-10-25',3,101,'male');
 
 select * from reservation
 

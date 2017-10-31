@@ -30,18 +30,18 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	
 	@Override
-	public Reservation selectReservationById(String email) {
+	public List<Reservation> selectReservationById(String email) {
 		SqlSession session = null;
 		
 		try {
 			session = factory.openSession();
-			dao.selectReservationById(session, email);
+			List<Reservation> list = dao.selectReservationById(session, email);
 			session.commit();
+			return list;
 		}finally {
 			session.close();
 		}
 		
-		return null;
 	}
 
 }

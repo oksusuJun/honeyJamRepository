@@ -33,8 +33,8 @@ public class ReservationSelectServlet extends HttpServlet {
 		
 		ReservationService service = ReservationServiceImpl.getInstance();
 		
-		Reservation reservations = service.selectReservationById(email);
-		session.setAttribute("reservation", reservations);
+		List<Reservation> reservations = service.selectReservationById(email);
+		request.setAttribute("reservation", reservations);
 		
 		request.getRequestDispatcher("/member/reservation_view.jsp").forward(request, response);
 	}
