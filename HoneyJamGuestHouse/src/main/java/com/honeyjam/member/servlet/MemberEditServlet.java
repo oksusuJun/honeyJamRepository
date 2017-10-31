@@ -40,10 +40,16 @@ public class MemberEditServlet extends HttpServlet {
 			session.setAttribute("loginMember", newMember);
 			request.getRequestDispatcher("/member/myinfo.jsp").forward(request, response);
 		}catch(DuplicatedNicknameException e) {
+			if((member.getNickname()).equals(nickname)) {
+				return;
+			}
 			request.setAttribute("content", e.getDuplicateNickname());
 			request.setAttribute("errorMessage", e.getMessage());
 			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
 		}catch(DuplicatedPhoneException e) {
+			if((member.getPhoneNum()).equals(phoneNum)) {
+				return;
+			}
 			request.setAttribute("content", e.getDuplicatedPhone());
 			request.setAttribute("errorMessage", e.getMessage());
 			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
