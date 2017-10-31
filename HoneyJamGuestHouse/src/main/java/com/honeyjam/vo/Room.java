@@ -12,6 +12,16 @@ public class Room implements Serializable {
 	private int availableBed;
 	private int price;
 	
+	private ReservedRoom reservedRoom;
+	
+	public ReservedRoom getReservedRoom() {
+		return reservedRoom;
+	}
+	
+	public void setReservedRoom(ReservedRoom reservedRoom) {
+		this.reservedRoom = reservedRoom;
+	}
+	
 	public Room() {}
 	
 	public Room(int roomId, String roomName, String gender, String status, int maxBed, int availableBed, int price) {
