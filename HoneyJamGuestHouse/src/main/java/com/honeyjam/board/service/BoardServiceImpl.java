@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.taglibs.standard.lang.jstl.test.beans.Factory;
 
 import com.honeyjam.board.dao.BoardDao;
 import com.honeyjam.board.dao.BoardDaoImpl;
@@ -45,6 +44,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	}
+	
 
 	
 }

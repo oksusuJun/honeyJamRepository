@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +8,25 @@
 </head>
 <body>
 
+	<jsp:include page="/member/mypage.jsp"></jsp:include>
+	<br>
+	<br>
 
+	<table>
+	
+	<tr>
+    <th>게시물 번호</th>
+    <th>게시물 제목</th> 
+ 	</tr>
+	
+	<c:forEach items="${requestScope.boardList}" var="item">
 
+		<li>${item.title}</li>
 
+	</c:forEach>
+	
+	</table>
 
-<jsp:include page="/member/mypage.jsp"></jsp:include>
-<br><br>
 
 </body>
 </html>

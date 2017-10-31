@@ -14,7 +14,6 @@
 <jsp:include page="/member/mypage.jsp"></jsp:include>
 <br><br>
 
-
 <h1>내방 예약조회</h1>
 <c:forEach items="${requestScope.reservation }" var="reservation">
 	예약번호 : ${reservation.reservationId }<br>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.honeyjam.board.service.BoardService;
 import com.honeyjam.board.service.BoardServiceImpl;
 import com.honeyjam.vo.Board;
+import com.honeyjam.vo.Member;
 
 
 @WebServlet("/boardSelect")
@@ -23,12 +24,15 @@ public class BoardSelectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember")==null) {
+		Member member=(Member)session.getAttribute("loginMember");
+		if(member==null) {
 			request.getRequestDispatcher("/member/login.jsp").forward(request, response);
 		}
 		
 		BoardService service=BoardServiceImpl.getInstance();
-	
+		List<Board> list = service.getItemsById(member.getEmail());
+		request.setAttribute("boardList", list);
+		request.getRequestDispatcher("/member/myboard.jsp").forward(request, response);
 	}
 	
 
