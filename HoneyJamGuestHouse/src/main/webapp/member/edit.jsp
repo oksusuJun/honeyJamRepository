@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<c:if test="${sessionScope.loginMember ==null}">
+<jsp:forward page="/member/login.jsp"/> 
+</c:if>
+
 <h1>회원정보수정</h1>
 <form action="${initParam.rootPath }/memberEdit" method="post">
 email : ${sessionScope.loginMember.email }<br>

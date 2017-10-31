@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<c:if test="${sessionScope.loginMember ==null}">
+<jsp:forward page="/member/login.jsp"/> 
+</c:if>
 <a href="${initParam.rootPath }/main.jsp">메인으로 </a>
 <hr>
 
