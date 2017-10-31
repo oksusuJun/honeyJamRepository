@@ -47,7 +47,7 @@ public class RoomSearchServlet extends HttpServlet {
 		} else {
 			if((availableBed-numberOfBeds) >= guestNum) { // 예약 가능
 				/*추후 예약 진행화면으로 변경해야함 */
-				response.sendRedirect("/HoneyJamGuestHouse/member/reservation_view.jsp");
+				response.sendRedirect("/HoneyJamGuestHouse/reservation/room_list_view.jsp");
 			}
 			
 			request.getRequestDispatcher("/HoneyJamGuestHouse/main.jsp");
