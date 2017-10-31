@@ -2,6 +2,7 @@ package com.honeyjam.room.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -42,11 +43,12 @@ public interface RoomDao {
 	
 	/**
 	 * 전달받은 검색조건 으로 방 조회
+	 * Service 에서 나머지 제약조건 추가
 	 * @param session
 	 * @param reservation
 	 * @return
 	 */
-	List<Room> selectRoomBySearch(SqlSession session, String gender, int numberOfGuest, Date checkIn, Date checkOut);
+	List<Room> selectRoomBySearch(SqlSession session, String gender, Integer numberOfGuest, Date checkIn, Date checkOut);
 	
 	/*
 	1. == null -> 해당조건으로 예약된 방 없음 => 예약가능
