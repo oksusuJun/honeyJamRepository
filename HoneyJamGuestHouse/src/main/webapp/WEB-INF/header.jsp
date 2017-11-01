@@ -127,10 +127,10 @@ header {
 			<ul class="mainmenu">
 				<li><a href="#">소개</a>
 					<ul class="submenu">
-						<li><a href="#">2인실</a></li>
-						<li><a href="#">4인실</a></li>
-						<li><a href="#">6인실</a></li>
-						<li><a href="#">8인실</a></li>
+						<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=201&gender=0">2인실</a></li>
+						<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=401&gender=0">4인실</a></li>
+						<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=601&gender=0">6인실</a></li>
+						<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=801&gender=0">8인실</a></li>
 					</ul></li>
 			</ul>
 			<ul class="mainmenu">

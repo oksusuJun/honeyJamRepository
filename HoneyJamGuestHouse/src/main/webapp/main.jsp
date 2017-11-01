@@ -107,7 +107,7 @@ option {
 </script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header_ver2.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	<div class="contents">
 		<div class="text">
 			<div class="text_p">
