@@ -5,6 +5,7 @@
 <title>HoneyJam</title>
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
+
 <style type="text/css">
 * {
 	padding: 0;
