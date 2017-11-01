@@ -106,10 +106,10 @@ public class RoomSearchServlet extends HttpServlet {
 
 				
 			} else { // 로그인 되어있다면
-				
-//				RoomService service = RoomServiceImpl.getInstance();
+				int cnt=0;
+				RoomService service = RoomServiceImpl.getInstance();
 				ReservationService resService = ReservationServiceImpl.getInstance();
-				HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
+				HashMap<String, Room> roomMap = new HashMap<String,Room>();
 //				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
 				List<String> roomList = resService.emptyRoomsByDate(numberOfGuests,checkInForm, checkOutForm);
 				if (roomList.isEmpty()) {
@@ -126,7 +126,13 @@ public class RoomSearchServlet extends HttpServlet {
 					} else {
 						for(String room : roomList) {
 							System.out.println(room);
+							cnt++;
+							int roomNum = Integer.parseInt(room);
+							Room selectRoom = service.findRoomByRoomId(roomNum);
+							roomMap.put(room, selectRoom);
 						}
+						session.setAttribute("roomMap", roomMap);
+						
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
 					
 					}
