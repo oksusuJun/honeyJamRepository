@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.honeyjam.reservation.service.ReservationService;
+import com.honeyjam.reservation.service.ReservationServiceImpl;
 import com.honeyjam.room.service.RoomService;
 import com.honeyjam.room.service.RoomServiceImpl;
 import com.honeyjam.vo.Room;
@@ -68,6 +70,8 @@ public class RoomSearchServlet extends HttpServlet {
 			} else { // 로그인 되어있다면
 				
 				RoomService service = RoomServiceImpl.getInstance();
+				ReservationService resService = ReservationServiceImpl.getInstance();
+				
 				
 				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
 				
