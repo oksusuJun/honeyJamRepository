@@ -58,6 +58,7 @@ create table Reserved_Room (
 	constraint roomid_fk foreign key (room_id) references room(room_id)
 );
 
+select * from reservation
 
 select * from reserved_room
 

@@ -105,10 +105,6 @@ cursor: pointer;
 			alert("기존 비밀번호를 입력하세요");
 			f.oldPass.focus();
 			return false;
-		} else if (f.password.value.length == 0) {
-			alert("새 비밀번호를 입력하세요");
-			f.password.focus();
-			return false;
 		} else if (f.nickname.value.length == 0) {
 			alert("닉네임을 입력하세요");
 			f.nickname.focus();

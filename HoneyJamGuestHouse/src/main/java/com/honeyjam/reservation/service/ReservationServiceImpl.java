@@ -158,7 +158,7 @@ public class ReservationServiceImpl implements ReservationService{
 		    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
 		        Date FirstDate = format.parse(checkin);
-		        Date SecondDate = format.parse(checkout);
+		        Date SecondDate = format.parse(checkout); 
 		        
 		        
 		        // Date로 변환된 두 날짜를 계산한 뒤 그 리턴값으로 long type 변수를 초기화 하고 있다.
@@ -192,11 +192,10 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
 		
-		String daate = "2017-10-11";
+		String daate = "2017-11-1";
 	 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	 	
 	 	Date dddd = format.parse(daate);
-	 	
 		System.out.println(dddd.getDate());
 		System.out.println("----------------------------------");
 		java.sql.Date d = new java.sql.Date(2017-1900, 10-1, 14);
