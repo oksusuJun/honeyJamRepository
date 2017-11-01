@@ -23,12 +23,25 @@
 	</select>
 	
 	<!-- insert -->
-	<insert id="insertReview" parameterType="board">
+	<insert id="insertBoard" parameterType="board">
 		INSERT INTO board
-		VALUES ()
+		VALUES (#{itemNum},#{content},#{title},#{writeDate},#{email})
 	</insert>
 	
 	<!-- update -->
+	<update id="updateBoardById" parameterType="board">
+		UPDATE board
+		SET item_num = #{itemNum},
+		    content = #{content},
+		    title = #{title},
+		    write_date = #{writeDate}
+		WHERE email = #{email}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteBoardById" parameterType="string">
+		DELETE from board where email = #{value}
+	</delete>
 
 	
 </mapper>
