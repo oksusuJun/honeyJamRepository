@@ -158,8 +158,13 @@ insert into room values (403, '4인실', '남성여성', 4, 4, 15000);
 insert into room values (601, '6인실', '남성', 6, 6, 12000);
 insert into room values (602, '6인실', '여성', 6, 6, 12000);
 insert into room values (603, '6인실', '남성여성', 6, 6, 12000);
+<<<<<<< HEAD
 insert into room values (801, '6인실', '여성', 8, 6, 12000);
 insert into room values (802, '6인실', '남성여성', 8, 6, 12000);
+=======
+insert into room values (801, '8인실', '남성', 8, 8, 10000);
+insert into room values (802, '8인실', '여성', 8, 8, 10000);
+
 
 select available_bed from Room where room_id ='602';
 

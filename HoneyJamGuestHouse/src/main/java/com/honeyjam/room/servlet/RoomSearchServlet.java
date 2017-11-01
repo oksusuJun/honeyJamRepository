@@ -48,6 +48,8 @@ public class RoomSearchServlet extends HttpServlet {
 		String checkOutForm = request.getParameter("checkout");
 
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
+		String[] femaleRoom = new String[] {"402", "602", "802"};
+		String[] maleRoom = new String[] {"401", "602", "802"};
 
 		try {
 			
@@ -81,9 +83,23 @@ public class RoomSearchServlet extends HttpServlet {
 					if (roomList.isEmpty()) {
 						System.out.println("아무것도 없다");
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
-
+ 
 					} else {
 						for (String room : roomList) {
+							if (gender.equals("남성")) {
+								for(String r : femaleRoom) {
+									if (r.equals(room)) {
+										roomList.remove(room);
+									}
+								}
+							} else if(gender.equals("여성")) {
+								for(String r : maleRoom) {
+									if (r.equals(room)) {
+										roomList.remove(room);
+									}
+								}
+							}
+							
 							cnt++;
 							int roomNum = Integer.parseInt(room);
 							Room selectRoom = service.findRoomByRoomId(roomNum);
@@ -108,6 +124,9 @@ public class RoomSearchServlet extends HttpServlet {
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
 
 				} else {
+					if (gender.equals("남성")) {
+						
+					}
 					session.setAttribute("roomList", roomList);
 					// test
 					if (roomList.isEmpty()) {
@@ -117,6 +136,19 @@ public class RoomSearchServlet extends HttpServlet {
 					} else {
 						for (String room : roomList) {
 							System.out.println(room);
+							if (gender.equals("남성")) {
+								for(String r : femaleRoom) {
+									if (r.equals(room)) {
+										roomList.remove(room);
+									}
+								}
+							} else if(gender.equals("여성")) {
+								for(String r : maleRoom) {
+									if (r.equals(room)) {
+										roomList.remove(room);
+									}
+								}
+							}
 							cnt++;
 							int roomNum = Integer.parseInt(room);
 							Room selectRoom = service.findRoomByRoomId(roomNum);

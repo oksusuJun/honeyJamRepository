@@ -74,8 +74,8 @@ footer {
 			<div class="info_top">CS CENTER</div>
 			<div class="info_bot">
 				<p>010.4000.0474</p>
-				<p>kakao : fromhouse</p>
-				<p>051.782.4545</p>
+				<p>kakao : HoneyJam</p>
+				<p>071.783.3838</p>
 			</div>
 		</div>
 		<div class="info">
