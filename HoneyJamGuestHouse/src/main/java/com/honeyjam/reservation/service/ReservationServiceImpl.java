@@ -15,6 +15,7 @@ import com.honeyjam.reservation.dao.ReservationDao;
 import com.honeyjam.reservation.dao.ReservationDaoImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Reservation;
+import com.honeyjam.vo.Room;
 
 public class ReservationServiceImpl implements ReservationService{
 
@@ -210,6 +211,21 @@ public class ReservationServiceImpl implements ReservationService{
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-02"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	
 		
+	}
+
+	@Override
+	public int insertReservation(Reservation reservation) throws IOException {
+		SqlSession session = null;
+		ReservationService service = ReservationServiceImpl.getInstance();
+		
+		try {
+			session = factory.openSession();
+			dao.insertReservation(session, reservation);
+			
+		}finally {
+			
+		}
+		return 0;
 	}
 	
 }
