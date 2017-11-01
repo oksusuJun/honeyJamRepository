@@ -16,7 +16,6 @@ import com.honeyjam.reservation.dao.ReservationDao;
 import com.honeyjam.reservation.dao.ReservationDaoImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Reservation;
-import com.honeyjam.vo.Room;
 
 public class ReservationServiceImpl implements ReservationService{
 
@@ -238,24 +237,20 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	}
 	@Override
-	public int insertReservation(Reservation reservation) throws IOException {
+	public void insertReservation(Reservation reservation) throws IOException {
 		SqlSession session = null;
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
-		
-		return 0;
+
+		try {
+			session = factory.openSession();
+			
+			dao.insertReservation(session, reservation);
+			session.commit();
+			
+		}finally {
+			session.close();
+		}
 	
 	}
-
-	@Override
-	public List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-
-	
 }
 	
 

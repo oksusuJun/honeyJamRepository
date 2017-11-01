@@ -8,12 +8,17 @@
 <link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
 
 <style type="text/css">
+@font-face{
+	font-family: myFont;
+	src: url('/HoneyJamGuestHouse/font/HoonWhitecatR.ttf');
+}
 .contents {
 	width: 100%;
 	height: 650px;
-	background-image: url("img/main10.jpg");
+	background-image: url("img/main.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
+	font-family: myFont;
 }
 
 .nav {
@@ -27,6 +32,7 @@
 ::-webkit-input-placeholder {
 	font-size: 18px;
 	margin-left: 10px;
+	
 }
 
 input {
@@ -112,7 +118,7 @@ option {
 		<div class="text">
 			<div class="text_p">
 				<p class="p1" style="color: #FF5A5F !important;">GuestHouse</p>
-				<p style="color: #484848 !important;">독특한 숙소를 예약하고, 현지인처럼</p>
+				<p style="color: #484848 !important; font-family: myFont;">독특한 숙소를 예약하고, 현지인처럼</p>
 				<p style="color: #484848 !important;">살아보세요</p>
 			</div>
 		</div>

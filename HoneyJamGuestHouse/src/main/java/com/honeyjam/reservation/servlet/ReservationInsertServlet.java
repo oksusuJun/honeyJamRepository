@@ -1,8 +1,6 @@
 package com.honeyjam.reservation.servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,24 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.honeyjam.reservation.service.ReservationService;
-import com.honeyjam.reservation.service.ReservationServiceImpl;
+import com.honeyjam.room.service.RoomService;
+import com.honeyjam.room.service.RoomServiceImpl;
 import com.honeyjam.vo.Room;
 
 /**
  * Servlet implementation class ReservationInsertServlet
  */
+/**
+ * 최종예약정보 -> 결제완료로 넘어갈 때, Reservation 테이블에  insert하는 서블릿.
+ * @author Administrator
+ *
+ */
 @WebServlet("/reservationInsert")
 public class ReservationInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,22 +31,15 @@ public class ReservationInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		int guests = Integer.parseInt(request.getParameter("people"));
-		String checkin = request.getParameter("checkin");
-		String checkout = request.getParameter("checkout");
+		//요청파라미터 조회
+		int roomId = Integer.parseInt(request.getParameter("roomId"));
 		
-		ReservationService service = ReservationServiceImpl.getInstance();
+		RoomService service = RoomServiceImpl.getInstance();
 		
-		try {
-			List<String> roomId = service.emptyRoomsByDate(guests,checkin,checkout);
-			request.setAttribute("rooms", roomId);
-			
-			request.getRequestDispatcher("/reservation/available_room.jsp").forward(request, response);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		Room room = service.findRoomByRoomId(roomId);
+		session.setAttribute("room", room);
+		request.getRequestDispatcher("/payment/payment01.jsp").forward(request, response);
 		
-		doGet(request, response);
 	}
 
 }
