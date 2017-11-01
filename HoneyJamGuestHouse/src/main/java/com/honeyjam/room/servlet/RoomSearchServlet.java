@@ -70,7 +70,7 @@ public class RoomSearchServlet extends HttpServlet {
 				HashMap<String, Room> roomMap = new HashMap<String, Room>();
 				List<String> roomList = new ArrayList<>();
 
-				roomList = resService.emptyRoomsByDate(numberOfGuests,gender , checkInForm, checkOutForm);
+				roomList = resService.emptyRoomsByDate(numberOfGuests, checkInForm, checkOutForm);
 				int cnt = 0;
 
 				if (roomList == null) {
@@ -118,7 +118,7 @@ public class RoomSearchServlet extends HttpServlet {
 				ReservationService resService = ReservationServiceImpl.getInstance();
 				HashMap<String, Room> roomMap = new HashMap<String, Room>();
 
-				List<String> roomList = resService.emptyRoomsByDate(numberOfGuests,gender , checkInForm, checkOutForm);
+				List<String> roomList = resService.emptyRoomsByDate(numberOfGuests, checkInForm, checkOutForm);
 				if (roomList.isEmpty()) {
 					System.out.println("비어있는 방이 없습니다.");
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
