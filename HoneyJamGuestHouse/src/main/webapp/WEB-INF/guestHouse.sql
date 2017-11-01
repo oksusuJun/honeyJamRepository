@@ -15,7 +15,7 @@ select * from Member
 
 /* ############### Dummy Data ################### */
 
-insert into MEMBER values('mem1@hj.com', '1111', '회원1', '010-1111-1111', 1);
+insert into MEMBER values('yyy', '1111', '회원1', '010-1111-1111', 1);
 insert into MEMBER values('mem2@hj.com', '2222', '회원2', '010-2222-2222', 1);
 insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
 
@@ -28,21 +28,21 @@ drop table Reservation cascade constraint;
  */
 create table Reservation (
 	reservation_id	number(10) primary key,
-	member_id	varchar2(50),
+	email	varchar2(50),
 	check_in	date,
 	check_out	date,
-	number_of_guest	number(2)	not null,
-	room_no	number(3)	not null,
+	number_of_guests	number(2)	not null,
+	room_id	number(3)	not null,
 	gender		varchar2(10)	not null,
 	payment_status number(1) not null,
-	constraint email_fk foreign key (member_id) references member(email),
-	constraint room_id_fk foreign key (room_no) references room(room_id)
+	constraint email_fk foreign key (email) references member(email),
+	constraint room_id_fk foreign key (room_id) references room(room_id)
 );
 
-select * from Reservation
+select * from Reservation where email='yyy'
 
 /* ############### Dummy Data ################### */
-insert into reservation values ('170001', 'mem1@hj.com', '20171102', '20171103', 1, 401, '남성', 0);
+insert into reservation values (2, 'yyy', '20171102', '20171103', 1, 401, '남성', 0);
 
 
 drop table Reserved_Room;
@@ -126,7 +126,7 @@ create table Room (
 	room_id	number(3) primary key,
 	room_name varchar2(10) not null,
 	gender	varchar2(20) not null,
-	--status varchar2(20) not null,
+	status varchar2(20) not null,
 	max_bed number(2) not null,
 	available_bed number(2) not null,
 	price number(10) not null

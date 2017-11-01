@@ -65,19 +65,26 @@
 }
 
 .text1 {
-	width: 25%;
+	width: 30%;
 	float: left;
 	text-align: center;
 	height: 40px;
-	line-height: 40px
+	line-height: 40px;
+	border-right : 0.1px solid grey;
+	background: #f9f9f9;
 }
-
+.text1,.text2{
+	border-bottom: 0.1px solid grey;
+}
 .text2 {
-	width: 65%;
+	width: 69.8%;
 	float: right;
 	text-align: center;
 	height: 40px;
 	line-height: 40px
+}
+table{
+width: 100%;
 }
 </style>
 </head>
@@ -95,22 +102,35 @@
 				${sessionScope.loginMember.email } 님<br> 환영합니다.
 			</div>
 			<div class="menu">
-				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/reservationSelect">예약조회</a> <a href="${initParam.rootPath}/member/myboard.jsp">내가
-					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
+				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a>
+				<a href="${initParam.rootPath}/reservationSelect">예약조회</a> <a href="${initParam.rootPath}/member/boardSelect">내가 작성한 리뷰 </a> 
+				<a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
+
 			</div>
 		</div>
 
 		<div class="content">
 			<h1>회원조회</h1>
-			<div class="text1">email :</div>
-			<div class="text2">${sessionScope.loginMember.email }</div>
-			<div class="text1">password :</div>
-			<div class="text2">**</div>
-			<div class="text1">nickname :</div>
-			<div class="text2">${sessionScope.loginMember.nickname }</div>
-			<div class="text1">phone number :</div>
-			<div class="text2">${sessionScope.loginMember.phoneNum }</div>
+			<table>
+				<tr>
+					<td class="text1" style="border-top: 0.1px solid gray">email</td>
+					<td class="text2" style="border-top: 0.1px solid gray">${sessionScope.loginMember.email }</td>
+				</tr>
+				<tr>
+					<td class="text1">password :</td>
+					<td class="text2">****</td>
+				</tr>
+				<tr>
+					<td class="text1">nickname :</td>
+					<td class="text2">${sessionScope.loginMember.nickname }</td>
+				</tr>
+				<tr>
+					<td class="text1">phone number :</td>
+					<td class="text2">${sessionScope.loginMember.phoneNum }</td>
+				</tr>
+			</table>
+
+
 		</div>
 	</div>
 </body>

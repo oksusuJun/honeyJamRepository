@@ -43,7 +43,7 @@ public class RoomSearchServlet extends HttpServlet {
 		String checkInForm = request.getParameter("checkin");
 		String checkOutForm = request.getParameter("checkout");
 		
-		SimpleDateFormat dateForm = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
 		
 		
 		try {
@@ -79,11 +79,7 @@ public class RoomSearchServlet extends HttpServlet {
 //		int numberOfBeds = (Integer)request.getAttribute("numberOfBeds");
 //		int guestNum = (Integer)request.getAttribute("people");
 		
-		
-	
-		
-		
-		
+
 //		} else {
 //			if((availableBed-numberOfBeds) >= guestNum) { // 예약 가능
 //				/*추후 예약 진행화면으로 변경해야함 */
