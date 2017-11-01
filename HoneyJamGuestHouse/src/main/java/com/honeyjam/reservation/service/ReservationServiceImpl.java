@@ -240,11 +240,18 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	}
 	@Override
-	public int insertReservation(Reservation reservation) throws IOException {
+	public void insertReservation(Reservation reservation) throws IOException {
 		SqlSession session = null;
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
-		
-		return 0;
+
+		try {
+			session = factory.openSession();
+			
+			dao.insertReservation(session, reservation);
+			session.commit();
+			
+		}finally {
+			session.close();
+		}
 	
 	}
 	
@@ -278,15 +285,13 @@ public class ReservationServiceImpl implements ReservationService{
 		//401,601,801,802 나와야함 
 		service.emptyRoomsByDate(2, "20171011", "20171013");
 
+
 	}
-
-
-	
-
-
-	
 }
+
+
 	
+
 
 
 
