@@ -174,9 +174,6 @@ body {
 
 			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
 			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
-			<input type="text" name="people" placeholder="인원수" class="people"> 
-			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
-			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
 			<select class="combobox" name="people">
 					<option value="">인원을 선택해주세요</option>
 					<option value="1">1명</option>
