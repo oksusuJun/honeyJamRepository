@@ -46,7 +46,7 @@ public class ReservationInsertServlet extends HttpServlet {
 			List<String> roomId = service.emptyRoomsByDate(guests,checkin,checkout);
 			request.setAttribute("rooms", roomId);
 			
-			request.getRequestDispatcher("").forward(request, response);
+			request.getRequestDispatcher("/reservation/available_room.jsp").forward(request, response);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
