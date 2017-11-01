@@ -37,8 +37,8 @@
 
 input {
 	width: 200px;
-	height: 60px;
-	margin-top: 17.5px;
+	height: 62px;
+	margin-top: 0px;
 	font-size: 16px;
 	outline: none;
 	border: 0px;
