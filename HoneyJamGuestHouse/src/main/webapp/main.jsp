@@ -70,10 +70,9 @@ option {
 	padding-top: 70px;
 }
 
-.text_p > p {
+.text_p>p {
 	font-size: 48px;
 	text-align: left;
-	
 }
 
 .p1 {
@@ -113,20 +112,30 @@ option {
 </script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header_ver2.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	<div class="contents">
 		<div class="text">
 			<div class="text_p">
-				<p class="p1" style="color: #FF5A5F !important;">GuestHouse</p>
-				<p style="color: #484848 !important; font-family: myFont;">독특한 숙소를 예약하고, 현지인처럼</p>
-				<p style="color: #484848 !important;">살아보세요</p>
+				<p class="p1" style="color: #FF5A5F !important;">꿀JAM GuestHouse</p>
+				<p style="color: #484848 !important;">꿀JAM 에 오신걸 환영합니다</p>
+				<p style="color: #484848 !important;">(꿀잼도 되고 꿀잠도 됨 ㅎ)</p>
 			</div>
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
-			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
-			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
-			<input type="text" name="people" placeholder="인원수" class="people"> <select
-				class="combobox" name="gender">
+			<input type="text" name="checkin" placeholder="checkin" class="calendar"> <input type="text" name="checkout"
+				placeholder="checkout" class="calendar"> 
+				<select class="combobox" name="people">
+				<option value="">인원을 선택해주세요</option>
+				<option value="1">1명</option>
+				<option value="2">2명</option>
+				<option value="3">3명</option>
+				<option value="4">4명</option>
+				<option value="5">5명</option>
+				<option value="6">6명</option>
+				<option value="7">7명</option>
+				<option value="8">8명</option>
+			</select> 
+			<select class="combobox" name="gender">
 				<option value="">성별을 선택해주세요</option>
 				<option value="남성">남성</option>
 				<option value="여성">여성</option>
