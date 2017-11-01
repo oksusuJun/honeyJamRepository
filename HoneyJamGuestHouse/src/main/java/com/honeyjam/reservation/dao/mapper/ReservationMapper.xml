@@ -59,5 +59,14 @@
 	</select>
 	
 	
+	<select id="selectReservationByDate" parameterType="java.sql.Date" resultMap="reservation-resultmap">
+		<!-- <include refid="select-reservation-sql"/> -->
+		select * from reservation
+		 where check_in &lt;= #{value}
+		and check_out > #{value}
+		
+	</select>
+
+	
 </mapper>
 
