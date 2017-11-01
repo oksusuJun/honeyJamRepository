@@ -3,6 +3,7 @@ package com.honeyjam.room.servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,7 @@ public class RoomSearchServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String gender = request.getParameter("gender");
-		Integer numberOfGuests = Integer.parseInt(request.getParameter("people"));
+		int numberOfGuests = Integer.parseInt(request.getParameter("people"));
 		String checkInForm = request.getParameter("checkin");
 		String checkOutForm = request.getParameter("checkout");
 		
@@ -65,7 +66,33 @@ public class RoomSearchServlet extends HttpServlet {
 				session.setAttribute("checkIn", checkIn);
 				session.setAttribute("checkOut", checkOut);
 				
-				request.getRequestDispatcher("reservation/room_list_view.jsp").forward(request, response);
+				ReservationService resService = ReservationServiceImpl.getInstance();
+				HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
+				List<String> roomList = new ArrayList<>();
+				roomList = resService.emptyRoomsByDate(numberOfGuests, checkInForm, checkOutForm);
+//				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
+				if (roomList == null) {
+					System.out.println("비어있는 방이 없습니다.");
+					request.getRequestDispatcher("/main.jsp").forward(request, response);
+					
+				} else {
+					session.setAttribute("roomList", roomList);
+					//test
+					if(roomList.isEmpty()) {
+						System.out.println("아무것도 없다");
+						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
+
+					} else {
+						for(String room : roomList) {
+							System.out.println(room);
+						}
+						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
+					
+					}
+				
+				}
+				
+				
 				// 로그인 화면으로 이동 - test 위해 바로 이동
 //				request.getRequestDispatcher("/member/login.jsp").forward(request, response);
 
@@ -76,15 +103,26 @@ public class RoomSearchServlet extends HttpServlet {
 				ReservationService resService = ReservationServiceImpl.getInstance();
 				HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
 //				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
-				List<String> roomList = resService.emptyRoomsByDate(checkInForm, checkOutForm);
+				List<String> roomList = resService.emptyRoomsByDate(numberOfGuests,checkInForm, checkOutForm);
 				if (roomList.isEmpty()) {
 					System.out.println("비어있는 방이 없습니다.");
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
 					
 				} else {
 					session.setAttribute("roomList", roomList);
-					request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
-				}
+					//test
+					if(roomList.isEmpty()) {
+						System.out.println("아무것도 없다");
+						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
+
+					} else {
+						for(String room : roomList) {
+							System.out.println(room);
+						}
+						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
+					
+					}
+			}
 				
 //				if(list.isEmpty()) {
 //					System.out.println("list에 들어오는 값이 없다~~~~");

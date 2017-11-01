@@ -27,7 +27,8 @@ public class MemberEditServlet extends HttpServlet {
 		//1.요청파라미터 조회
 		Member member = (Member)session.getAttribute("loginMember");
 		String email = member.getEmail();
-		String password = request.getParameter("password");
+		String oldPassword = request.getParameter("oldPass");
+		String newPassword = request.getParameter("password");
 		String nickname = request.getParameter("nickname");
 		String phoneNum = request.getParameter("phoneNum");
 		
@@ -35,9 +36,15 @@ public class MemberEditServlet extends HttpServlet {
 		MemberService service = MemberServiceImpl.getInstance();
 		
 		try {
-			Member newMember = new Member(email,password,nickname,phoneNum,1);
-			service.updateMember(newMember);
-			session.setAttribute("loginMember", newMember);
+			if(newPassword.isEmpty()) {
+				Member oldMember = new Member(email,oldPassword,nickname,phoneNum,1);
+				service.updateMember(oldMember);
+				session.setAttribute("loginMember", oldMember);
+			}else {
+				Member newMember = new Member(email,newPassword,nickname,phoneNum,1);
+				service.updateMember(newMember);
+				session.setAttribute("loginMember", newMember);
+			}
 			request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
 		}catch(DuplicatedNicknameException | DuplicatedPhoneException e) {
 			request.setAttribute("errorMessage", e.getMessage());

@@ -16,6 +16,7 @@ import com.honeyjam.reservation.dao.ReservationDao;
 import com.honeyjam.reservation.dao.ReservationDaoImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Reservation;
+import com.honeyjam.vo.Room;
 
 public class ReservationServiceImpl implements ReservationService{
 
@@ -58,11 +59,7 @@ public class ReservationServiceImpl implements ReservationService{
 		try {
 			session=factory.openSession();
 			HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
-			
-			
-			
 			List<Reservation> list=dao.selectReservationByDate(session, date);
-			
 			
 			int r_201=0; 
 			int r_202=0;
@@ -122,7 +119,7 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		
 		SqlSession session = null;
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		ReservationService service = ReservationServiceImpl.getInstance();
 		
 		try {
 			session=factory.openSession();
@@ -133,13 +130,14 @@ public class ReservationServiceImpl implements ReservationService{
 			List<String> listOfRoomsAvail = new ArrayList<>();
 			
 			
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			Date checkin_date = format.parse(checkin);
 	        Date checkout_date = format.parse(checkout);
 			
 	        int start_date = checkin_date.getDate();
 	        for(int i = start_date ; i< start_date+ differ ; i++) {
-	        
+	        	java.sql.Date newDate = new java.sql.Date(checkin_date.getYear(),checkin_date.getMonth(),i);
+	        	listOfMap.add(service.selectReservationByDate(newDate));
 	        }
 	        
 	        
@@ -217,10 +215,10 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		     // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
 		       
-		    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
 		        Date FirstDate = format.parse(checkin);
-		        Date SecondDate = format.parse(checkout);
+		        Date SecondDate = format.parse(checkout); 
 		        
 		        
 		        // Date로 변환된 두 날짜를 계산한 뒤 그 리턴값으로 long type 변수를 초기화 하고 있다.
@@ -239,16 +237,23 @@ public class ReservationServiceImpl implements ReservationService{
 
 		
 	}
+	@Override
+	public int insertReservation(Reservation reservation) throws IOException {
+		SqlSession session = null;
+		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		
+		return 0;
 	
+	}
 	
 	
 
 	
 	public static void main(String[] args) throws IOException, ParseException {
 		
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		ReservationService service = ReservationServiceImpl.getInstance();
 		
-		String daate = "2017-10-11";
+/*		String daate = "2017-10-11";
 	 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	 	
 	 	Date dddd = format.parse(daate);
@@ -265,19 +270,18 @@ public class ReservationServiceImpl implements ReservationService{
 	System.out.println("--------날짜차이---------------");	
 	System.out.println(service.dayBetween("2017-08-01", "2017-08-04"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-02"));	
-	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	
+	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	*/
 
 		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
 		//401,601,801,802 나와야함 
-		service.emptyRoomsByDate(2, "2017-10-11", "2017-10-13");
+		service.emptyRoomsByDate(2, "2017-10-13", "2017-10-14");
 
 	}
 
-	@Override
-	public List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
+
+
 	
 }
 	
