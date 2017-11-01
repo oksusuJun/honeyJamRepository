@@ -120,7 +120,7 @@ header {
 <header>
 	<div class="header_left">
 		<div class="header_left_img">
-			<a href="${initParam.rootPath }/main.jsp"> <img src="/HoneyJamGuestHouse/img/logo.png" alt="img" title="img"></a>
+			<a href="${initParam.rootPath }/main.jsp"> <img src="/HoneyJamGuestHouse/img/logo2.png" alt="img" title="img"></a>
 		</div>
 		<div class="header_left_menu">
 			<ul class="mainmenu">
