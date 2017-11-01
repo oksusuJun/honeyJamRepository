@@ -21,5 +21,14 @@
 		<include refid="select-board"/>
 		where email= #{value}
 	</select>
+	
+	<!-- insert -->
+	<insert id="insertReview" parameterType="board">
+		INSERT INTO board
+		VALUES ()
+	</insert>
+	
+	<!-- update -->
 
+	
 </mapper>
