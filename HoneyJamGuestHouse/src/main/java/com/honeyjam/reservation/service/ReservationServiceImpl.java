@@ -14,9 +14,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.honeyjam.reservation.dao.ReservationDao;
 import com.honeyjam.reservation.dao.ReservationDaoImpl;
+import com.honeyjam.room.dao.RoomDao;
+import com.honeyjam.room.dao.RoomDaoImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Reservation;
-import com.honeyjam.vo.Room;
 
 public class ReservationServiceImpl implements ReservationService{
 
@@ -117,6 +118,7 @@ public class ReservationServiceImpl implements ReservationService{
 	// 즉 날짜의 수 만큼 map 개수가 나오고, 이 map들을 list에 담은 후 list 반복문 돌리면서 각 방들이 모든 날짜에 가능한지 체크
 	public List<String> emptyRoomsByDate(int guests, String checkin, String checkout) throws IOException, ParseException{
 		
+		RoomDao roomDao = RoomDaoImpl.getInstance();
 		
 		SqlSession session = null;
 		ReservationService service = ReservationServiceImpl.getInstance();
@@ -152,21 +154,21 @@ public class ReservationServiceImpl implements ReservationService{
 	        
 	        for(Map map : listOfMap) {
 	        	
-	        	if((int)map.get("201") + guests > 2) {
+	        	if((int)map.get("201") + guests > roomDao.selectMaxById(session, Integer.parseInt("201"))) {
 	        		mapOfTruth.put("201", false);
-	        	}if((int)map.get("202") + guests > 2) {
+	        	}if((int)map.get("202") + guests >  roomDao.selectMaxById(session, Integer.parseInt("202"))) {
 	        		mapOfTruth.put("202", false);
-	        	}if((int)map.get("401") + guests >4) {
+	        	}if((int)map.get("401") + guests > roomDao.selectMaxById(session, Integer.parseInt("401"))) {
 	        		mapOfTruth.put("401", false);
-	        	}if((int)map.get("402") + guests >4) {
+	        	}if((int)map.get("402") + guests > roomDao.selectMaxById(session, Integer.parseInt("402"))) {
 	        		mapOfTruth.put("402", false);
-	        	}if((int)map.get("601") + guests > 6) {
+	        	}if((int)map.get("601") + guests >  roomDao.selectMaxById(session, Integer.parseInt("601"))) {
 	        		mapOfTruth.put("601", false);
-	        	}if((int)map.get("602") + guests > 6) {
+	        	}if((int)map.get("602") + guests >  roomDao.selectMaxById(session, Integer.parseInt("602"))) {
 	        		mapOfTruth.put("602", false);
-	        	}if((int)map.get("801") + guests > 8) {
+	        	}if((int)map.get("801") + guests >  roomDao.selectMaxById(session, Integer.parseInt("801"))) {
 	        		mapOfTruth.put("801", false);
-	        	}if((int)map.get("802") + guests > 8) {
+	        	}if((int)map.get("802") + guests >  roomDao.selectMaxById(session, Integer.parseInt("802"))) {
 	        		mapOfTruth.put("802", false);
 	        	}
 	        }
@@ -230,7 +232,7 @@ public class ReservationServiceImpl implements ReservationService{
 		        long calDateDays = calDate / ( 24*60*60*1000); 
 		 
 		        calDateDays = Math.abs(calDateDays);
-		        System.out.println("두 날짜의 날짜 차이: "+calDateDays);
+		    
 		        
 		        return (int)calDateDays;
 		   
@@ -274,7 +276,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
 		//401,601,801,802 나와야함 
-		service.emptyRoomsByDate(2, "2017-10-13", "2017-10-14");
+		service.emptyRoomsByDate(2, "20171011", "20171013");
 
 	}
 

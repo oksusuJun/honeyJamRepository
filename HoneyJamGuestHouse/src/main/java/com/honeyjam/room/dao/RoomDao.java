@@ -72,6 +72,6 @@ public interface RoomDao {
 	
 	List<ReservedRoom> selectReservedRoomId(SqlSession session, String gender, Date checkIn, Date checkOut);
 	
-	
+	int selectMaxById(SqlSession session, int id);
 	
 }

@@ -105,4 +105,9 @@
 		AND 	gender LIKE '%'||#{gender}||'%'
 		]]>
 	</select>
+	
+	
+	<select id="selectMaxById"	parameterType="_int" resultType="_int">
+		select max_bed from room where room_id = #{value}
+	</select>
 </mapper>	

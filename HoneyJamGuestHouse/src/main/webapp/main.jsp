@@ -119,8 +119,8 @@ option {
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
 			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
-			<input type="text" name="people" placeholder="인원수" class="people"> <select
-				class="combobox" name="gender">
+			<input type="text" name="people" placeholder="인원수" class="people">
+			 <select class="combobox" name="gender">
 				<option value="">성별을 선택해주세요</option>
 				<option value="남성">남성</option>
 				<option value="여성">여성</option>

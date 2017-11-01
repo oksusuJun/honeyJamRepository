@@ -73,5 +73,13 @@ public class RoomDaoImpl implements RoomDao{
 		return session.selectList(makeSqlId("selectReservedRoomId"),param);
 	}
 
+	@Override
+	public int selectMaxById(SqlSession session, int id) {
+	
+			return session.selectOne(makeSqlId("selectMaxById"),id);
+	}
+	
+	
+
 	
 }
