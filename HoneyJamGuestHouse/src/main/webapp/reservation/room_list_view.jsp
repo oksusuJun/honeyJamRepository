@@ -93,7 +93,6 @@ thead>tr>td {
 						</td>
 					</tr>
 
->>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
 				</c:forEach>
 			</tbody>
 		</table>
