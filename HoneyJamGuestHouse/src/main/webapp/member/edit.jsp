@@ -177,7 +177,7 @@ cursor: pointer;
 			<form action="${initParam.rootPath }/memberEdit" method="post" name="edit" onsubmit="return checkVals();">
 				<div class="text1" style="border-top: 1px solid gray">아이디(Email) :</div>
 				<div class="text2" style="border-top: 1px solid gray">${sessionScope.loginMember.email }</div>
-				<div class="text1">기존 비밀번호 :  </div><div class="text2"><input type="password" name="oldPass"></div>
+				<div class="text1">기존 비밀번호 : </div><div class="text2"><input type="password" name="oldPass"></div>
 				<div class="text1">새 비밀번호 : </div><div class="text2"><input type="password" name="password"></div>
 				<div class="text1">새 비밀번호 재확인 : </div><div class="text2"><input type="password" name="password1"></div>
 				<div class="text1">닉네임 : </div><div class="text2"><input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"></div>
