@@ -58,11 +58,7 @@ public class ReservationServiceImpl implements ReservationService{
 		try {
 			session=factory.openSession();
 			HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
-			
-			
-			
 			List<Reservation> list=dao.selectReservationByDate(session, date);
-			
 			
 			int r_201=0; 
 			int r_202=0;
@@ -122,7 +118,7 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		
 		SqlSession session = null;
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		ReservationService service = ReservationServiceImpl.getInstance();
 		
 		try {
 			session=factory.openSession();
@@ -139,7 +135,8 @@ public class ReservationServiceImpl implements ReservationService{
 			
 	        int start_date = checkin_date.getDate();
 	        for(int i = start_date ; i< start_date+ differ ; i++) {
-	        
+	        	java.sql.Date newDate = new java.sql.Date(checkin_date.getYear(),checkin_date.getMonth(),i);
+	        	listOfMap.add(service.selectReservationByDate(newDate));
 	        }
 	        
 	        
@@ -246,9 +243,9 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	public static void main(String[] args) throws IOException, ParseException {
 		
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		ReservationService service = ReservationServiceImpl.getInstance();
 		
-		String daate = "2017-10-11";
+/*		String daate = "2017-10-11";
 	 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	 	
 	 	Date dddd = format.parse(daate);
@@ -265,7 +262,7 @@ public class ReservationServiceImpl implements ReservationService{
 	System.out.println("--------날짜차이---------------");	
 	System.out.println(service.dayBetween("2017-08-01", "2017-08-04"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-02"));	
-	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	
+	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	*/
 
 		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
 		//401,601,801,802 나와야함 
@@ -273,11 +270,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 	}
 
-	@Override
-	public List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 }
 	

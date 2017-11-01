@@ -12,7 +12,7 @@ public interface ReservationService {
 	
 	Map<String,Integer> selectReservationByDate(java.sql.Date date); 
 	
-	List<String> emptyRoomsByDate(int guests, String checkin, String checkout) throws IOException, ParseException;
-
 	int dayBetween(String checkin, String checkout) throws ParseException;
+	
+	List<String> emptyRoomsByDate(int guests, String checkin, String checkout) throws IOException, ParseException;
 }

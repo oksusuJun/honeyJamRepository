@@ -84,7 +84,7 @@ form>button {
 	height: 60px;
 	background: #fff;
 	outline: none;
-	border: 2px solid pink;
+	border: 2px solid #FF5A5F;
 	border-radius: 5px;
 	font-size: 20px;
 	cursor: pointer;
