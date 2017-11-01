@@ -11,7 +11,7 @@
 .contents {
 	width: 100%;
 	height: 650px;
-	background-image: url("img/main.jpg");
+	background-image: url("img/main10.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -21,6 +21,7 @@
 	height: 100px;
 	background: rgba(0, 0, 0, 0.3);
 	text-align: center;
+	min-width: 1000px
 }
 
 ::-webkit-input-placeholder {
@@ -63,14 +64,13 @@ option {
 	padding-top: 70px;
 }
 
-.text_p>p {
-	font-size: 50px;
+.text_p > p {
+	font-size: 48px;
 	text-align: left;
-	color: #fff;
+	
 }
 
 .p1 {
-
 	font-weight: bold;
 }
 
@@ -107,13 +107,13 @@ option {
 </script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header_ver2.jsp"></jsp:include>
 	<div class="contents">
 		<div class="text">
 			<div class="text_p">
-				<p class="p1" style="	color: pink;">GuestHouse</p>
-				<p>독특한 숙소를 예약하고, 현지인처럼</p>
-				<p>살아보세요</p>
+				<p class="p1" style="color: #FF5A5F !important;">GuestHouse</p>
+				<p style="color: #484848 !important;">독특한 숙소를 예약하고, 현지인처럼</p>
+				<p style="color: #484848 !important;">살아보세요</p>
 			</div>
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">

@@ -59,11 +59,7 @@ public class ReservationServiceImpl implements ReservationService{
 		try {
 			session=factory.openSession();
 			HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
-			
-			
-			
 			List<Reservation> list=dao.selectReservationByDate(session, date);
-			
 			
 			int r_201=0; 
 			int r_202=0;
@@ -123,7 +119,7 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		
 		SqlSession session = null;
-		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		ReservationService service = ReservationServiceImpl.getInstance();
 		
 		try {
 			session=factory.openSession();
@@ -134,13 +130,14 @@ public class ReservationServiceImpl implements ReservationService{
 			List<String> listOfRoomsAvail = new ArrayList<>();
 			
 			
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			Date checkin_date = format.parse(checkin);
 	        Date checkout_date = format.parse(checkout);
 			
 	        int start_date = checkin_date.getDate();
 	        for(int i = start_date ; i< start_date+ differ ; i++) {
-	        
+	        	java.sql.Date newDate = new java.sql.Date(checkin_date.getYear(),checkin_date.getMonth(),i);
+	        	listOfMap.add(service.selectReservationByDate(newDate));
 	        }
 	        
 	        
@@ -218,7 +215,7 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		     // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
 		       
-		    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
 		        Date FirstDate = format.parse(checkin);
 		        Date SecondDate = format.parse(checkout); 
@@ -244,14 +241,9 @@ public class ReservationServiceImpl implements ReservationService{
 	public int insertReservation(Reservation reservation) throws IOException {
 		SqlSession session = null;
 		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
-//		emptyRoomsByDate(int guests, String checkin, String checkout)
-
-		try {
-			
-		}finally {
-			
-		}
+		
 		return 0;
+	
 	}
 
 	@Override
@@ -259,6 +251,10 @@ public class ReservationServiceImpl implements ReservationService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+
+
 	
 }
 	

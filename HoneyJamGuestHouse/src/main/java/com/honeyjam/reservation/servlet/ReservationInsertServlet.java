@@ -43,7 +43,7 @@ public class ReservationInsertServlet extends HttpServlet {
 		ReservationService service = ReservationServiceImpl.getInstance();
 		
 		try {
-			List<String> roomId = service.emptyRoomsByDate(checkin, checkout)yDate(guests, checkin, checkout);
+			List<String> roomId = service.emptyRoomsByDate(guests,checkin,checkout);
 			request.setAttribute("rooms", roomId);
 			
 			request.getRequestDispatcher("").forward(request, response);
