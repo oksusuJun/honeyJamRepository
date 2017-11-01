@@ -82,8 +82,8 @@ thead>tr>td {
 
 				<c:forEach items="${sessionScope.roomList }" var="rooms">
 					<tr>
-					
-					
+
+
 					</tr>
 					<a href="'${initParam.rootPath }+'/roomInfo/room_info.jsp?roomId='+${rooms.roomId }">
 						<button>예약하기</button>
