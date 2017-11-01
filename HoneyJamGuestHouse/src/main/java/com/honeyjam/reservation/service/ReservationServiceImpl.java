@@ -45,15 +45,16 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	}
 
-	
-//	public List<Reservation> selectRbD(Date date){
-//		SqlSession session = null;
-//		try {
-//			return dao.selectReservationByDate(session, date);
-//		}finally {
-//			session.close();
-//		}
-//	}
+
+	public List<Reservation> selectRbD(Date date){
+		SqlSession session = null;
+		try {
+			session=factory.openSession();
+			return dao.selectReservationByDate(session, date);
+		}finally {
+			session.close();
+		}
+	}
 	
 	@Override
 	public int[] selectReservationByDate(Date date) {
@@ -68,10 +69,10 @@ public class ReservationServiceImpl implements ReservationService{
 			int r_601=0;
 			
 			for(Reservation r: list) {
-				if(r.getRoomId() == r_201){
-					r_201++;
-				}else if(r.getRoomId() == r_202) {
-					r_202++;
+				if(r.getRoomId() == 201){
+					r_201= r_201+r.getNumberOfGuests();
+				}else if(r.getRoomId() == 202) {
+					r_202 = r_202+r.getNumberOfGuests();
 				}else if(r.getRoomId() == r_401) {
 					r_401++;
 				}else if(r.getRoomId()== r_601) {
@@ -86,22 +87,23 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 	}
 	
-//	public static void main(String[] args) throws IOException {
-//		
-//		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
-//		
-//		
-//		Date d = new Date(2017-1900, 10-1, 17);
+	public static void main(String[] args) throws IOException {
+		
+		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		
+		
+		Date d = new Date(2017-1900, 10-1, 14);
+		System.out.println(d);
 //		System.out.println(d);
-//		System.out.println(service.selectRbD(d));
+		System.out.println(service.selectRbD(d));
 //		
-////		int[] arr =service.selectReservationByDate(d);
-////		System.out.println(arr[0]);
-////		System.out.println(arr[1]);
-////		System.out.println(arr[2]);
-////		System.out.println(arr[3]);
-//		
-//	}
+	int[] arr =service.selectReservationByDate(d);
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+		System.out.println(arr[3]);
+		
+	}
 //	
 //	
 
