@@ -49,7 +49,8 @@ public class RoomSearchServlet extends HttpServlet {
 
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
 		String[] femaleRoom = new String[] {"402", "602", "802"};
-		String[] maleRoom = new String[] {"401", "602", "802"};
+		String[] maleRoom = new String[] {"401", "601", "801"};
+		List<Room> availableRoomList = new ArrayList<>();
 
 		try {
 			
@@ -78,34 +79,43 @@ public class RoomSearchServlet extends HttpServlet {
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
 
 				} else {
-					session.setAttribute("roomList", roomList);
+				
 					// test
 					if (roomList.isEmpty()) {
 						System.out.println("아무것도 없다");
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
  
 					} else {
-						for (String room : roomList) {
+						for (int i = 0; i<roomList.size(); i++) {
+							String room = roomList.get(i);
 							if (gender.equals("남성")) {
-								for(String r : femaleRoom) {
-									if (r.equals(room)) {
-										roomList.remove(room);
-									}
-								}
-							} else if(gender.equals("여성")) {
 								for(String r : maleRoom) {
 									if (r.equals(room)) {
-										roomList.remove(room);
+										int roomNum = Integer.parseInt(room);
+										System.out.println("들어가니?" + room + "들어감");
+										Room selectRoom = service.findRoomByRoomId(roomNum);
+										availableRoomList.add(selectRoom);
+									} 	
+								}
+								System.out.println(availableRoomList);
+							} else if(gender.equals("여성")) {
+								for(String r : femaleRoom) {
+									if (r.equals(room)) {
+										int roomNum = Integer.parseInt(room);
+										System.out.println("들어가니?" + room + "들어감");
+										Room selectRoom = service.findRoomByRoomId(roomNum);
+										availableRoomList.add(selectRoom);
+										
 									}
 								}
 							}
-							
-							cnt++;
-							int roomNum = Integer.parseInt(room);
-							Room selectRoom = service.findRoomByRoomId(roomNum);
-							roomMap.put("room" + cnt, selectRoom);
+							System.out.println("2차for문 빠져나올때 " + availableRoomList);
+
+							session.setAttribute("availableRoomList", availableRoomList);
+							session.setAttribute("roomList", roomList);	
 						}
-						session.setAttribute("roomMap", roomMap);
+						System.out.println("1차for문 빠져나올때 " + availableRoomList);
+
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
 
 					}
@@ -124,38 +134,41 @@ public class RoomSearchServlet extends HttpServlet {
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
 
 				} else {
-					if (gender.equals("남성")) {
-						
-					}
-					session.setAttribute("roomList", roomList);
+					
 					// test
 					if (roomList.isEmpty()) {
 						System.out.println("아무것도 없다");
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
 
 					} else {
-						for (String room : roomList) {
-							System.out.println(room);
+						for (int i = 0; i<roomList.size(); i++) {
+							String room = roomList.get(i);
 							if (gender.equals("남성")) {
-								for(String r : femaleRoom) {
-									if (r.equals(room)) {
-										roomList.remove(room);
-									}
-								}
-							} else if(gender.equals("여성")) {
 								for(String r : maleRoom) {
 									if (r.equals(room)) {
-										roomList.remove(room);
-									}
+										int roomNum = Integer.parseInt(room);
+										System.out.println("들어가니?" + room + "들어감");
+										Room selectRoom = service.findRoomByRoomId(roomNum);
+										availableRoomList.add(selectRoom);
+									} 
 								}
+								
+								
+							} else if(gender.equals("여성")) {
+								for(String r : femaleRoom) {
+									if (r.equals(room)) {
+										int roomNum = Integer.parseInt(room);
+										System.out.println("들어가니?" + room + "들어감");
+										Room selectRoom = service.findRoomByRoomId(roomNum);
+										availableRoomList.add(selectRoom);
+									} 
+								}
+								
 							}
-							cnt++;
-							int roomNum = Integer.parseInt(room);
-							Room selectRoom = service.findRoomByRoomId(roomNum);
-							roomMap.put(room, selectRoom);
+							
 						}
-						session.setAttribute("roomMap", roomMap);
-
+						session.setAttribute("availableRoomList", availableRoomList);
+						session.setAttribute("roomList", roomList);	
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
 
 					}
