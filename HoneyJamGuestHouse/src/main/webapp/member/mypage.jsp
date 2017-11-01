@@ -103,8 +103,8 @@ width: 100%;
 			</div>
 			<div class="menu">
 				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a>
-				<a href="${initParam.rootPath}/reservationSelect">예약조회</a> <a href="${initParam.rootPath}/member/boardSelect">내가 작성한 리뷰 </a> 
-				<a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
+				<a href="${initParam.rootPath }/reservationSelect">예약조회</a> <a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰 </a> 
+				<a href="${initParam.rootPath }/member/delete.jsp">탈퇴 </a><br>
 
 			</div>
 		</div>
