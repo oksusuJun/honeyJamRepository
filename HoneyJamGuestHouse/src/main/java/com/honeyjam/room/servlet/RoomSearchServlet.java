@@ -66,11 +66,15 @@ public class RoomSearchServlet extends HttpServlet {
 				session.setAttribute("checkIn", checkIn);
 				session.setAttribute("checkOut", checkOut);
 				
+				RoomService service = RoomServiceImpl.getInstance();
 				ReservationService resService = ReservationServiceImpl.getInstance();
-				HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
+				HashMap<String, Room> roomMap = new HashMap<String,Room>();
 				List<String> roomList = new ArrayList<>();
+				
 				roomList = resService.emptyRoomsByDate(numberOfGuests, checkInForm, checkOutForm);
-//				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
+				int cnt=0;
+				
+				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
 				if (roomList == null) {
 					System.out.println("비어있는 방이 없습니다.");
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
@@ -84,8 +88,12 @@ public class RoomSearchServlet extends HttpServlet {
 
 					} else {
 						for(String room : roomList) {
-							System.out.println(room);
+							cnt++;
+							int roomNum = Integer.parseInt(room);
+							Room selectRoom = service.findRoomByRoomId(roomNum);
+							roomMap.put("room"+cnt, selectRoom);
 						}
+						session.setAttribute("roomMap", roomMap);
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
 					
 					}

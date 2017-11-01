@@ -110,9 +110,9 @@ option {
 	<div class="contents">
 		<div class="text">
 			<div class="text_p">
-				<p class="p1" style="color: #FF5A5F !important;">GuestHouse</p>
-				<p style="color: #484848 !important;">독특한 숙소를 예약하고, 현지인처럼</p>
-				<p style="color: #484848 !important;">살아보세요</p>
+				<p class="p1" style="color: #FF5A5F !important;">꿀JAM GuestHouse</p>
+				<p style="color: #484848 !important;">꿀JAM 에 오신걸 환영합니다</p>
+				<p style="color: #484848 !important;">(꿀잼도 되고 꿀잠도 됨 ㅎ)</p>
 			</div>
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
