@@ -7,6 +7,7 @@
 <script src="/HoneyJamGuestHouse/scripts/jquery-ui.js"></script>
 <link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
 
+
 <style type="text/css">
 @font-face{
 	font-family: myFont;
@@ -123,9 +124,10 @@ option {
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 
-			<input type="text" name="checkin" placeholder="checkin" class="calendar"> <input type="text" name="checkout"
-				placeholder="checkout" class="calendar"> 
-				<select class="combobox" name="people">
+			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
+			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
+			
+			<select class="combobox" name="people">
 				<option value="">인원을 선택해주세요</option>
 				<option value="1">1명</option>
 				<option value="2">2명</option>
@@ -140,7 +142,8 @@ option {
 				<option value="">성별을 선택해주세요</option>
 				<option value="남성">남성</option>
 				<option value="여성">여성</option>
-			</select> <input type="submit" name="search" class="submit" value="검색">
+			</select> 
+			<input type="submit" name="search" class="submit" value="검색">
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
