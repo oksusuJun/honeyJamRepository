@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,19 +82,26 @@ thead>tr>td {
 			<tbody>
 				<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
 					<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
-				<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
+				
+		 		<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
 					<tr>
-					 	<td style="width: 70px;">${rooms.roomId }</td>
-						<td style="width: 150px">${rooms.gender }</td>
-						<td style="width: 150px">${rooms.availableBed }개</td>
-						<td style="width: 50px">${rooms.price }원</td>
+						<c:set var="roomId" scope="session" value="${rooms.roomId}"/>
+						<c:set var="gender" scope="session" value="${rooms.gender}"/>
+						<c:set var="availableBed" scope="session" value="${rooms.availableBed}"/>
+						<c:set var="price" scope="session" value="${rooms.price}"/>
+						
+					 	<td style="width: 70px;">${roomId}</td>
+						<td style="width: 150px">${gender}</td>
+						<td style="width: 150px">${availableBed} 개</td>
+						<td style="width: 50px">${price}원</td>
 						<td>					
-						<a href="${initParam.rootPath }/reservationInfo">
+						<form id="button_${roomId}" action="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${roomId}" >
 						<button>상세보기</button>
-						</a>
+						</form>
 						</td>
-					</tr>
-				</c:forEach>
+					</tr> 
+				</c:forEach> 
+				
 			</tbody>
 		</table>
 	</div>

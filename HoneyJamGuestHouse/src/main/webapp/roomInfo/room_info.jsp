@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,163 +85,166 @@ button {
 </style>
 </head>
 <body>
-
+<!-- roomId 잘 들어오는지 확인 -->
+${sessionScope.roomId }
 	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
-	<%
-		if (request.getParameter("gender").equals("0")) {
-	%>
-	<style>
+
+	<c:choose>
+		<c:when test="${sessionScope.gender eq '남성'}">
+			<style>
 button {
 	display: none;
 }
 </style>
-	<%
-		} else {
-	%>
-	<style>
+		</c:when>
+		<c:otherwise>
+			<style>
 button {
 	display: block;
 }
 </style>
-	<%
-		}
-	%>
-	<%
-		if (request.getParameter("roomId").equals("201")) {
-	%>
-	<div class="body">
-		<div class="title">임의제목</div>
-		<div class="img">
-			<img alt="img" src="../img/2인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/2인실_1.jpg"
-				style="width: 40%">
-		</div>
-		<div class="content">
-			<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse Room)</div>
-			<table cellspacing="0">
-				<thead>
-					<tr>
-						<th width="12.5%">객실이름</th>
-						<th width="32.5%">포함상품&상품안내</th>
-						<th width="15%">예약가능인원</th>
-						<th width="20%">1박당 요금</th>
-						<th width="20%">예약하기</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="background: rgba(0, 0, 0, 0.2);">${requestScope.room.roomId }</td>
-						<td></td>
-						<td>${requestScope.room.price }</td>
-						<td>${requestScope.room.price }</td>
-						<td><button>예약</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<%
-		} else if (request.getParameter("roomId").equals("401")) {
-	%>
-	<div class="body">
-		<div class="title">임의제목</div>
-		<div class="img">
-			<img alt="img" src="../img/4인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/4인실_1.jpg"
-				style="width: 40%">
-		</div>
-		<div class="content">
-			<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse Room)</div>
-			<table cellspacing="0">
-				<thead>
-					<tr>
-						<th width="12.5%">객실이름</th>
-						<th width="32.5%">포함상품&상품안내</th>
-						<th width="15%">예약가능인원</th>
-						<th width="20%">1박당 요금</th>
-						<th width="20%">예약하기</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="background: rgba(0, 0, 0, 0.2);">${requestScope.room.roomId }</td>
-						<td></td>
-						<td>${requestScope.room.price }</td>
-						<td>${requestScope.room.price }</td>
-						<td><button>예약</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<%
-		} else if (request.getParameter("roomId").equals("601")) {
-	%>
-	<div class="body">
-		<div class="title">임의제목</div>
-		<div class="img">
-			<img alt="img" src="../img/6인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/6인실_1.jpg"
-				style="width: 40%">
-		</div>
-		<div class="content">
-			<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse Room)</div>
-			<table cellspacing="0">
-				<thead>
-					<tr>
-						<th width="12.5%">객실이름</th>
-						<th width="32.5%">포함상품&상품안내</th>
-						<th width="15%">예약가능인원</th>
-						<th width="20%">1박당 요금</th>
-						<th width="20%">예약하기</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="background: rgba(0, 0, 0, 0.2);">${requestScope.room.roomId }</td>
-						<td></td>
-						<td>${requestScope.room.price }</td>
-						<td>${requestScope.room.price }</td>
-						<td><button>예약</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<%
-		} else if (request.getParameter("roomId").equals("801")) {
-	%>
-	<div class="body">
-		<div class="title">임의제목</div>
-		<div class="img">
-			<img alt="img" src="../img/8인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/8인실_1.jpg"
-				style="width: 40%">
-		</div>
-		<div class="content">
-			<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse Room)</div>
-			<table cellspacing="0">
-				<thead>
-					<tr>
-						<th width="12.5%">객실이름</th>
-						<th width="32.5%">포함상품&상품안내</th>
-						<th width="15%">예약가능인원</th>
-						<th width="20%">1박당 요금</th>
-						<th width="20%">예약하기</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="background: rgba(0, 0, 0, 0.2);">${requestScope.room.roomId }</td>
-						<td></td>
-						<td>${requestScope.room.price }</td>
-						<td>${requestScope.room.price }</td>
-						<td><button>예약</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<%
-		}
-	%>
+		</c:otherwise>
+	</c:choose>
 
+	<c:choose>
+		<c:when test="${sessionScope.roomId eq '201' }">
+			<div class="body">
+				<div class="title">임의제목</div>
+				<div class="img">
+					<img alt="img" src="../img/2인실.jpg"
+						style="width: 59.5%; margin-right: 0.5%"> <img alt="img"
+						src="../img/2인실_1.jpg" style="width: 40%">
+				</div>
+				<div class="content">
+					<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse
+						Room)</div>
+					<table cellspacing="0">
+						<thead>
+							<tr>
+								<th width="12.5%">객실이름</th>
+								<th width="32.5%">포함상품&상품안내</th>
+								<th width="15%">예약가능인원</th>
+								<th width="20%">1박당 요금</th>
+								<th width="20%">예약하기</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="background: rgba(0, 0, 0, 0.2);">${sessionScope.roomId }</td>
+								<td></td>
+								<td>${sessionScope.price }</td>
+								<td>${sessionScope.price }</td>
+								<td><button>예약</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
+		<c:when test="${sessionScope.roomId eq '401' }">
+			<div class="body">
+				<div class="title">임의제목</div>
+				<div class="img">
+					<img alt="img" src="../img/4인실.jpg"
+						style="width: 59.5%; margin-right: 0.5%"> <img alt="img"
+						src="../img/4인실_1.jpg" style="width: 40%">
+				</div>
+				<div class="content">
+					<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse
+						Room)</div>
+					<table cellspacing="0">
+						<thead>
+							<tr>
+								<th width="12.5%">객실이름</th>
+								<th width="32.5%">포함상품&상품안내</th>
+								<th width="15%">예약가능인원</th>
+								<th width="20%">1박당 요금</th>
+								<th width="20%">예약하기</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="background: rgba(0, 0, 0, 0.2);">${sessionScope.roomId }</td>
+								<td></td>
+								<td>${sessionScope.price }</td>
+								<td>${sessionScope.price }</td>
+								<td><button>예약</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
+		<c:when test="${sessionScope.roomId eq '601' }">
+			<div class="body">
+				<div class="title">임의제목</div>
+				<div class="img">
+					<img alt="img" src="../img/6인실.jpg"
+						style="width: 59.5%; margin-right: 0.5%"> <img alt="img"
+						src="../img/6인실_1.jpg" style="width: 40%">
+				</div>
+				<div class="content">
+					<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse
+						Room)</div>
+					<table cellspacing="0">
+						<thead>
+							<tr>
+								<th width="12.5%">객실이름</th>
+								<th width="32.5%">포함상품&상품안내</th>
+								<th width="15%">예약가능인원</th>
+								<th width="20%">1박당 요금</th>
+								<th width="20%">예약하기</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="background: rgba(0, 0, 0, 0.2);">${sessionScope.roomId }</td>
+								<td></td>
+								<td>${sessionScope.price }</td>
+								<td>${sessionScope.price }</td>
+								<td><button>예약</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
+		<c:when test="${sessionScope.roomId eq '801' }">
+			<div class="body">
+				<div class="title">임의제목</div>
+				<div class="img">
+					<img alt="img" src="../img/8인실.jpg"
+						style="width: 59.5%; margin-right: 0.5%"> <img alt="img"
+						src="../img/8인실_1.jpg" style="width: 40%">
+				</div>
+				<div class="content">
+					<div class="content_top">꿀잠게스트하우스 방정보(HoneyJamGusetHouse
+						Room)</div>
+					<table cellspacing="0">
+						<thead>
+							<tr>
+								<th width="12.5%">객실이름</th>
+								<th width="32.5%">포함상품&상품안내</th>
+								<th width="15%">예약가능인원</th>
+								<th width="20%">1박당 요금</th>
+								<th width="20%">예약하기</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="background: rgba(0, 0, 0, 0.2);">${sessionScope.roomId }</td>
+								<td></td>
+								<td>${sessionScope.price }</td>
+								<td>${sessionScope.price }</td>
+								<td><button>예약</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
+
+	</c:choose>
 
 </body>
 </html>
