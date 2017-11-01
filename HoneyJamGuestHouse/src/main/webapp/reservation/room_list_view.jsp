@@ -16,7 +16,7 @@ checkOut : ${sessionScope.checkOut}<br>
 인원 : ${sessionScope.people}<br>
 성별 : ${sessionScope.gender}<br>
 ---------방 목록--------------<br>
-<c:forEach items="roomList" var="rooms">
+<c:forEach items="${sessionScope.roomList }" var="rooms">
 	${rooms }<br>
 </c:forEach>
 

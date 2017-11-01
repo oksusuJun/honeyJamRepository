@@ -46,6 +46,7 @@ public class RoomServiceImpl implements RoomService{
 		try {
 			session = factory.openSession();
 			list = dao.selectAllRoom(session);
+			session.commit();
 			return list;
 		} finally {
 			session.close();

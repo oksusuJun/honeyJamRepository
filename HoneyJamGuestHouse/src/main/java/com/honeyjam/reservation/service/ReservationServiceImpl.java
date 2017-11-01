@@ -16,6 +16,7 @@ import com.honeyjam.reservation.dao.ReservationDao;
 import com.honeyjam.reservation.dao.ReservationDaoImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Reservation;
+import com.honeyjam.vo.Room;
 
 public class ReservationServiceImpl implements ReservationService{
 
@@ -129,7 +130,7 @@ public class ReservationServiceImpl implements ReservationService{
 			List<String> listOfRoomsAvail = new ArrayList<>();
 			
 			
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			Date checkin_date = format.parse(checkin);
 	        Date checkout_date = format.parse(checkout);
 			
@@ -214,10 +215,10 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		     // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
 		       
-		    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
 		        Date FirstDate = format.parse(checkin);
-		        Date SecondDate = format.parse(checkout);
+		        Date SecondDate = format.parse(checkout); 
 		        
 		        
 		        // Date로 변환된 두 날짜를 계산한 뒤 그 리턴값으로 long type 변수를 초기화 하고 있다.
@@ -236,7 +237,14 @@ public class ReservationServiceImpl implements ReservationService{
 
 		
 	}
+	@Override
+	public int insertReservation(Reservation reservation) throws IOException {
+		SqlSession session = null;
+		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
+		
+		return 0;
 	
+	}
 	
 	
 
@@ -269,6 +277,9 @@ public class ReservationServiceImpl implements ReservationService{
 		service.emptyRoomsByDate(2, "2017-10-13", "2017-10-14");
 
 	}
+
+
+	
 
 
 	
