@@ -33,7 +33,13 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", member);
 		
-			request.getRequestDispatcher("/main.jsp").forward(request, response);
+			if (session.getAttribute("gender")==null) {
+				request.getRequestDispatcher("/main.jsp").forward(request, response);
+			} else {
+				System.out.println(session.getAttribute("gender"));
+				request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
+			}
+
 			
 		}catch(LoginFailException e) {
 			request.setAttribute("errorMessage", e.getMessage());

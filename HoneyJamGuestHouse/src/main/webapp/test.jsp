@@ -8,9 +8,9 @@
 </head>
 <body>
 
-checkIn : ${requestScope.checkin}
-checkOut : ${requestScope.checkout}
-인원 : ${requestScope.people}
-성별 : ${requestScope.gender }
+checkIn : ${sessionScope.checkIn}
+checkOut : ${sessionScope.checkOut}
+인원 : ${sessionScope.people}
+성별 : ${sessionScope.gender}
 </body>
 </html>
