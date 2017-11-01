@@ -64,10 +64,9 @@ option {
 	padding-top: 70px;
 }
 
-.text_p > p {
+.text_p>p {
 	font-size: 48px;
 	text-align: left;
-	
 }
 
 .p1 {
@@ -117,10 +116,20 @@ option {
 			</div>
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
-			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
-			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
-			<input type="text" name="people" placeholder="인원수" class="people"> <select
-				class="combobox" name="gender">
+			<input type="text" name="checkin" placeholder="checkin" class="calendar"> <input type="text" name="checkout"
+				placeholder="checkout" class="calendar"> 
+				<select class="combobox" name="people">
+				<option value="">인원을 선택해주세요</option>
+				<option value="1">1명</option>
+				<option value="2">2명</option>
+				<option value="3">3명</option>
+				<option value="4">4명</option>
+				<option value="5">5명</option>
+				<option value="6">6명</option>
+				<option value="7">7명</option>
+				<option value="8">8명</option>
+			</select> 
+			<select class="combobox" name="gender">
 				<option value="">성별을 선택해주세요</option>
 				<option value="남성">남성</option>
 				<option value="여성">여성</option>

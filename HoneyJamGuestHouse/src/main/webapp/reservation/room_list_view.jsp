@@ -82,13 +82,10 @@ thead>tr>td {
 
 				<c:forEach items="${sessionScope.roomList }" var="rooms">
 					<tr>
-					<!--  	<td style="width: 70px;">${rooms.roomId }</td>
-						<td style="width: 150px">${rooms.gender }</td>
-						<td style="width: 150px">${rooms.availableBed }개</td>
-						<td style="width: 50px">${rooms.price }원</td>
-					-->
+					
+					
 					</tr>
-					<a href="'/room_info.jsp?roomId='+${rooms.roomId }">
+					<a href="'${initParam.rootPath }+'/roomInfo/room_info.jsp?roomId='+${rooms.roomId }">
 						<button>예약하기</button>
 					</a>
 				</c:forEach>
