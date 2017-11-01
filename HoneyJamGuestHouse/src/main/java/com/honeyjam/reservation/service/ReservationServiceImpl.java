@@ -1,7 +1,6 @@
 package com.honeyjam.reservation.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -129,21 +128,14 @@ public class ReservationServiceImpl implements ReservationService{
 			session=factory.openSession();
 			int differ = service.dayBetween(checkin, checkout);
 			
-			
-			List<Map<String,Integer>> listOfMap = new ArrayList<>();
-			
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date checkin_date = format.parse(checkin);
 	        Date checkout_date = format.parse(checkout);
 			
 	        int start_date = checkin_date.getDate();
 	        for(int i = start_date ; i< start_date+ differ ; i++) {
-	        	java.sql.Date newDate = new java.sql.Date(checkin_date.getYear(),checkin_date.getMonth(),i);
-	        	listOfMap.add(service.selectReservationByDate(newDate));
+	        
 	        }
-	        
-	        
-	        System.out.println(listOfMap);
 	        
 	        
 			
@@ -200,7 +192,7 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
 		
-/*		String daate = "2017-10-11";
+		String daate = "2017-10-11";
 	 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	 	
 	 	Date dddd = format.parse(daate);
@@ -218,11 +210,6 @@ public class ReservationServiceImpl implements ReservationService{
 	System.out.println(service.dayBetween("2017-08-01", "2017-08-04"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-02"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	
-	*/
-	
-
-		
-		service.emptyRoomsByDate("2017-10-01", "2017-10-29");
 		
 	}
 	
