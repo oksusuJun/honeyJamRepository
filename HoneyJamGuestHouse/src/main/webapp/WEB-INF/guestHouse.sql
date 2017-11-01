@@ -18,6 +18,8 @@ select * from Member
 insert into MEMBER values('yyy', '1111', '회원1', '010-1111-1111', 1);
 insert into MEMBER values('mem2@hj.com', '2222', '회원2', '010-2222-2222', 1);
 insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
+insert into MEMBER values('bbb', '3434', '회원4', '010-3434-3434', 1);
+insert into MEMBER values('777', '4545', '회원5', '010-4545-4545', 1);
 
 
 
@@ -40,18 +42,20 @@ create table Reservation (
 );
 
 select * from Reservation where email='yyy'
+
 select * from reservation
 /* ############### Dummy Data ################### */
+<<<<<<< HEAD
+insert into reservation values (2, 'yyy', '20171102', '20171103', 1, 401, '남성', 0);
 insert into reservation values(0,'bbb','2017-10-09','2017-10-14',2,202,'남성',0);
 insert into reservation values(1,'bbb','2017-10-12','2017-10-16', 2, 201,'남성',0);
-insert into reservation values(2,'777','2017-10-13','2017-10-17', 2, 202,'남성',0);
+insert into reservation values(9,'777','2017-10-13','2017-10-17', 2, 202,'남성',0);
 insert into reservation values(3,'yyy','2017-10-14','2017-10-18', 2, 202,'남성',0);
 insert into reservation values(4,'bbb','2017-10-15','2017-10-19', 2, 201,'남성',0);
 insert into reservation values(5,'777','2017-10-16','2017-10-20', 2, 401,'남성',0);
 insert into reservation values(6,'yyy','2017-10-17','2017-10-21', 2, 401,'남성',0);
 insert into reservation values(7,'bbb','2017-10-18','2017-10-22', 2, 601,'남성',0);
 insert into reservation values(8,'777','2017-10-19','2017-10-23', 2, 601,'남성',0);
-
 
 
 drop table Reserved_Room;
