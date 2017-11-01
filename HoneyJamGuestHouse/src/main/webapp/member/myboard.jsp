@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 .body {

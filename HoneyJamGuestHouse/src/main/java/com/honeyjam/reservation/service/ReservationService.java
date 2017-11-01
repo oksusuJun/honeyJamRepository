@@ -14,5 +14,5 @@ public interface ReservationService {
 	
 	List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException;
 
-	int dayBetween(String checkin, String checkout);
+	int dayBetween(String checkin, String checkout) throws ParseException;
 }
