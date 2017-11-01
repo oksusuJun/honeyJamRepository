@@ -10,4 +10,9 @@ public interface BoardDao {
 
 	List<Board> selectItemsById(SqlSession session, String email);
 	
+	int insertBoard(SqlSession session, Board board);
+	
+	int updateBoardById(SqlSession session, Board newBoard);
+	
+	int deleteBoardById(SqlSession session, String email);
 }

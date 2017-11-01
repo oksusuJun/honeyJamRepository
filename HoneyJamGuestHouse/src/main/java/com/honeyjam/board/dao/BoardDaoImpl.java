@@ -30,5 +30,20 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectList(makeSqlId("selectItemsById"),email);
 	}
 
+	@Override
+	public int insertBoard(SqlSession session, Board board) {
+		return session.insert(makeSqlId("insertBoard"), board);
+	}
+
+	@Override
+	public int updateBoardById(SqlSession session, Board newBoard) {
+		return session.update(makeSqlId("updateBoardById"), newBoard);
+	}
+
+	@Override
+	public int deleteBoardById(SqlSession session, String email) {
+		return session.delete(makeSqlId("deleteBoardById"), email);
+	}
+
 	
 }
