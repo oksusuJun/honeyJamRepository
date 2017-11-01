@@ -87,7 +87,7 @@ thead>tr>td {
 						<td style="width: 150px">${rooms.value.gender }</td>
 						<td style="width: 150px">${rooms.value.availableBed }개</td>
 						<td style="width: 50px">${rooms.value.price }원</td>
-</tr>
+					</tr>
 
 					<a href="'${initParam.rootPath }+'/roomInfo/room_info.jsp?roomId='+${rooms.value.roomId }">
 						<button>예약하기</button>
