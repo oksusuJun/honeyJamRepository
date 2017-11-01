@@ -61,7 +61,7 @@ public class RoomSearchServlet extends HttpServlet {
 				session.setAttribute("people", numberOfGuests);
 				session.setAttribute("checkIn", checkIn);
 				session.setAttribute("checkOut", checkOut);
-				// 로그인 화면으로 이동
+				// 로그인 화면으로 이동 - test 위해 바로 이동
 				request.getRequestDispatcher("/member/login.jsp").forward(request, response);
 
 				
