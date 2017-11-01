@@ -83,7 +83,7 @@ public class RoomSearchServlet extends HttpServlet {
 					if (roomList.isEmpty()) {
 						System.out.println("아무것도 없다");
 						request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
-
+ 
 					} else {
 						for (String room : roomList) {
 							if (gender.equals("남성")) {
@@ -99,6 +99,7 @@ public class RoomSearchServlet extends HttpServlet {
 									}
 								}
 							}
+							
 							cnt++;
 							int roomNum = Integer.parseInt(room);
 							Room selectRoom = service.findRoomByRoomId(roomNum);
