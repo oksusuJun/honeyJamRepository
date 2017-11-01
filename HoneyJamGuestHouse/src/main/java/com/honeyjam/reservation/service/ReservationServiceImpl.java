@@ -240,58 +240,24 @@ public class ReservationServiceImpl implements ReservationService{
 
 		
 	}
-	
-	
-	
-
-	
-	public static void main(String[] args) throws IOException, ParseException {
-		
+	@Override
+	public int insertReservation(Reservation reservation) throws IOException {
+		SqlSession session = null;
 		ReservationServiceImpl service = ReservationServiceImpl.getInstance();
-		
-		String daate = "2017-11-1";
-	 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	 	
-	 	Date dddd = format.parse(daate);
-		System.out.println(dddd.getDate());
-		System.out.println("----------------------------------");
-		java.sql.Date d = new java.sql.Date(2017-1900, 10-1, 14);
-		System.out.println(d);
-		
-		Map map = service.selectReservationByDate(d);
-		System.out.println(map);
-		
-		
-	System.out.println("--------날짜차이---------------");	
-	System.out.println(service.dayBetween("2017-08-01", "2017-08-04"));	
-	System.out.println(service.dayBetween("2017-10-29", "2017-11-02"));	
-	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	
+//		emptyRoomsByDate(int guests, String checkin, String checkout)
 
-		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
-		//401,601,801,802 나와야함 
-		service.emptyRoomsByDate(2, "2017-10-11", "2017-10-13");
-
+		try {
+			
+		}finally {
+			
+		}
+		return 0;
 	}
 
 	@Override
 	public List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public int insertReservation(Reservation reservation) throws IOException {
-		SqlSession session = null;
-		ReservationService service = ReservationServiceImpl.getInstance();
-		
-		try {
-			session = factory.openSession();
-			dao.insertReservation(session, reservation);
-			
-		}finally {
-			
-		}
-		return 0;
 	}
 	
 }
