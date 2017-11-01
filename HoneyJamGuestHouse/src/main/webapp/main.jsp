@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<title>HoneyJam</title>
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <script src="/HoneyJamGuestHouse/scripts/jquery-ui.js"></script>
 <link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
@@ -95,7 +95,7 @@ option {
 		$(".calendar").datepicker({
 			buttonImageOnly : true,
 			numberOfMonths : 2,
-			dateFormat : "yy-mm-dd"
+			dateFormat : "yymmdd"
 		});
 	});
 </script>
