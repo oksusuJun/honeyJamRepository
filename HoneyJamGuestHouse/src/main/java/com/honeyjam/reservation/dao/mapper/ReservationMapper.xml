@@ -9,7 +9,8 @@
 		check_out, 
 		number_of_guests, 
 		room_id, 
-		gender
+		gender,
+		payment_status
 	</sql>
 	
 	<sql id="select-reservation-sql">
@@ -26,6 +27,7 @@
 				r.number_of_guests,
 				r.room_id,
 				r.gender,
+				r.payment_status,
 				m.email, m.nickname, m.phone_num
 		FROM	reservation r, member m
 	</sql>
@@ -42,11 +44,12 @@
 		<result column="number_of_guests" property="numberOfGuests"/>
 		<result column="room_id" property="roomId"/>
 		<result column="gender" property="gender"/>
+		<result column="payment_status" property="paymentStatus"/>
 	</resultMap>
 	
 
 	<insert id="insertReservation" parameterType="reservation">
-		INSERT INTO reservation VALUES (#{reservationId},#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender})
+		INSERT INTO reservation VALUES (#{reservationId},#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender},#{paymentStatus})
 	</insert>	
 	
 	<select id="selectReservationById" parameterType="string" resultMap="reservation-join-member-resultmap">

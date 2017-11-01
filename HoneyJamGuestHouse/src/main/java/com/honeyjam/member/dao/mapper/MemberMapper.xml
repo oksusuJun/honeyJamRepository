@@ -16,7 +16,7 @@
 		SELECT m.email,
 			   m.nickname,
 			   m.phone_num,
-			   r.reservation_id, r.check_in, r.check_out, r.number_of_guests, r.room_id, r.gender					
+			   r.reservation_id, r.check_in, r.check_out, r.number_of_guests, r.room_id, r.gender, r.payment_status					
 		FROM member m, reservation r
 	</sql>
 	

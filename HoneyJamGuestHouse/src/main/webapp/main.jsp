@@ -91,9 +91,11 @@ option {
 </style>
 <script type="text/javascript">
 	$(function() {
+
 		$(".calendar").datepicker({
 			buttonImageOnly : true,
-			numberOfMonths : 2
+			numberOfMonths : 2,
+			dateFormat : "yy-mm-dd"
 		});
 	});
 </script>

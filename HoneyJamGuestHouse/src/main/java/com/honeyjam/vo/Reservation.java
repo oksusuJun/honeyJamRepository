@@ -11,13 +11,14 @@ public class Reservation implements Serializable{
 	private int numberOfGuests;
 	private int roomId;
 	private String gender;
+	private int paymentStatus;
 	
 	private Member member;
 	
 	public Reservation() {}
 
 	public Reservation(int reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
-			String gender) {
+			String gender, int paymentStatus) {
 		this.reservationId = reservationId;
 		this.email = email;
 		this.checkIn = checkIn;
@@ -28,7 +29,7 @@ public class Reservation implements Serializable{
 	}
 
 	public Reservation(int reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
-			String gender, Member member) {
+			String gender, int paymentStatus, Member member) {
 		this.reservationId = reservationId;
 		this.email = email;
 		this.checkIn = checkIn;
@@ -37,6 +38,14 @@ public class Reservation implements Serializable{
 		this.roomId = roomId;
 		this.gender = gender;
 		this.member = member;
+	}
+
+	public int getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(int paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 
 	public int getReservationId() {
@@ -107,7 +116,7 @@ public class Reservation implements Serializable{
 	public String toString() {
 		return "Reservation [reservationId=" + reservationId + ", email=" + email + ", checkIn=" + checkIn
 				+ ", checkOut=" + checkOut + ", numberOfGuests=" + numberOfGuests + ", roomId=" + roomId + ", gender="
-				+ gender + ", member=" + member + "]";
+				+ gender + ", paymentStatus=" + paymentStatus + ", member=" + member + "]";
 	}
 
 	@Override
@@ -120,6 +129,7 @@ public class Reservation implements Serializable{
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((member == null) ? 0 : member.hashCode());
 		result = prime * result + numberOfGuests;
+		result = prime * result + paymentStatus;
 		result = prime * result + reservationId;
 		result = prime * result + roomId;
 		return result;
@@ -161,12 +171,16 @@ public class Reservation implements Serializable{
 			return false;
 		if (numberOfGuests != other.numberOfGuests)
 			return false;
+		if (paymentStatus != other.paymentStatus)
+			return false;
 		if (reservationId != other.reservationId)
 			return false;
 		if (roomId != other.roomId)
 			return false;
 		return true;
 	}
+
+	
 
 	
 }
