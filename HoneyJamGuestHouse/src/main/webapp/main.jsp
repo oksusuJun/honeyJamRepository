@@ -95,7 +95,7 @@ option {
 		$(".calendar").datepicker({
 			buttonImageOnly : true,
 			numberOfMonths : 2,
-			dateFormat : "yy-mm-dd"
+			dateFormat : "yymmdd"
 		});
 	});
 </script>

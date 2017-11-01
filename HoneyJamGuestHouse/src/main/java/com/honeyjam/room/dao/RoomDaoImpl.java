@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.honeyjam.vo.ReservedRoom;
 import com.honeyjam.vo.Room;
 
 public class RoomDaoImpl implements RoomDao{
@@ -23,7 +24,7 @@ public class RoomDaoImpl implements RoomDao{
 	}
 
 	private String makeSqlId(String id){
-		return "com.honeyjam.room.dao.mepper.RoomMapper."+id;
+		return "com.honeyjam.room.dao.mapper.RoomMapper."+id;
 	}
 	
 	@Override
@@ -56,10 +57,20 @@ public class RoomDaoImpl implements RoomDao{
 			Date checkOut) {
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("gender", gender);
-		param.put("numberOfGuest", numberOfGuest);
+		param.put("numberOfGuests", numberOfGuest);
 		param.put("checkOut", checkOut);
 		param.put("checkIn", checkIn);
 		return session.selectList(makeSqlId("selectRoomBySearch"),param);
+	}
+
+	@Override
+	public List<ReservedRoom> selectReservedRoomId(SqlSession session, String gender, Date checkIn, Date checkOut) {
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("gender", gender);
+		param.put("checkOut", checkOut);
+		param.put("checkIn", checkIn);
+		
+		return session.selectList(makeSqlId("selectReservedRoomId"),param);
 	}
 
 	
