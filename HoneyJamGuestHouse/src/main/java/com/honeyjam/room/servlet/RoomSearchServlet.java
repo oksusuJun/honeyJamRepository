@@ -52,6 +52,7 @@ public class RoomSearchServlet extends HttpServlet {
 		String[] maleRoom = new String[] {"401", "601", "801"};
 		List<Room> availableRoomList = new ArrayList<>();
 
+		
 		try {
 			
 			System.out.println(checkInForm);
