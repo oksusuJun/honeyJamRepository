@@ -7,6 +7,7 @@
 <script src="/HoneyJamGuestHouse/scripts/jquery-ui.js"></script>
 <link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
 
+
 <style type="text/css">
 @font-face{
 	font-family: myFont;
