@@ -266,7 +266,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
 		//401,601,801,802 나와야함 
-		service.emptyRoomsByDate(2, "2017-10-11", "2017-10-13");
+		service.emptyRoomsByDate(2, "2017-10-13", "2017-10-14");
 
 	}
 
