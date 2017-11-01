@@ -8,11 +8,10 @@
 <link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
 
 <style type="text/css">
-@font-face {
+@font-face{
 	font-family: myFont;
 	src: url('/HoneyJamGuestHouse/font/HoonWhitecatR.ttf');
 }
-
 .contents {
 	width: 100%;
 	height: 650px;
@@ -33,6 +32,7 @@
 ::-webkit-input-placeholder {
 	font-size: 18px;
 	margin-left: 10px;
+	
 }
 
 input {
@@ -142,6 +142,7 @@ option {
 				<option value="여성">여성</option>
 			</select> 
 			<input type="submit" name="search" class="submit" value="검색">
+
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
