@@ -79,14 +79,15 @@ thead>tr>td {
 			</thead>
 			<tbody>
 				<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
-				<c:forEach items="${sessionScope.rooms }" var="room">
+			
+				<c:forEach items="${sessionScope.roomList }" var="rooms">
 					<tr>
-						<td style="width: 70px;">${room.roomId }</td>
-						<td style="width: 150px">${room.gender }</td>
-						<td style="width: 150px">${room.availableBed }개</td>
-						<td style="width: 50px">${room.price }원</td>
+						<td style="width: 70px;">${rooms.roomId }</td>
+						<td style="width: 150px">${rooms.gender }</td>
+						<td style="width: 150px">${rooms.availableBed }개</td>
+						<td style="width: 50px">${rooms.price }원</td>
 					</tr>
-					<a href="'/room_info.jsp?roomId='+${room.roomId }+'&roomPrice='${room.price }">
+					<a href="'/room_info.jsp?roomId='+${rooms.roomId }">
 						<button>예약하기</button>
 					</a>
 				</c:forEach>
