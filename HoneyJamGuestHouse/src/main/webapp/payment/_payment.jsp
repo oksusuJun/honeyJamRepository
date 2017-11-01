@@ -4,12 +4,28 @@
 <head>
 <meta charset="UTF-8">
 <title>결제</title>
-<style>  
-table { margin : 10px; border-collapse:collapse; }  
-td { padding:5px; border:1px solid black; }
+<style>
+	table {
+		margin: 10px;
+		border-collapse: collapse;
+		margin: 10px auto;
+		width : 90%;
+	}
+	
+	table td {
+		padding: 12px 10px;
+		border: 1px solid black;
+	}
+	
+	.wrapper {
+		width: 960px;
+		margin: 0 auto;
+	}
 </style>
 </head>
 <body>
+<div class="wrapper">
+
 	<table>
 		<tr>
 			<td colspan="2">예약 정보</td>
@@ -40,7 +56,6 @@ td { padding:5px; border:1px solid black; }
 		</tr>
 	</table>
 
-	<hr>
 
 	<table>
 		<tr>
@@ -76,8 +91,7 @@ td { padding:5px; border:1px solid black; }
 			</td>
 		</tr>
 	</table>
-	<button style="margin : 10px; padding:10px">다음</button>
-	<hr>
+	<button style="padding:10px 50px; display:block; margin:0 auto;">다음</button>
 	<table>
 		<tr>
 			<td>지불방법</td><td>무통장 입금</td>
@@ -94,10 +108,12 @@ td { padding:5px; border:1px solid black; }
 		<tr>
 			<td>결제금액</td><td>30,000원</td>
 		</tr>
-	</table>	※ 예약 후 1시간 이내 입금되지 않을 경우 자동 취소 됩니다.<br>
-	<button style="margin : 10px; padding:10px;">예약하기</button>
+		<tr>
+			<td colspan="2">※ 예약 후 1시간 이내 입금되지 않을 경우 자동 취소 됩니다.</td>
+		</tr>
+	</table>	
+	<button style="padding:10px 50px; display:block; margin:0 auto;">예약하기</button>
 		
-	<hr>
 
 	<table>
 		<tr>
@@ -108,10 +124,12 @@ td { padding:5px; border:1px solid black; }
 		</tr>
 		<tr>
 			<td>객실이름</td><td>202호</td>
+		</tr>
 		<tr>
 			<td>결제금액</td><td>30,000원</td>
 		</tr>
 	</table>
-	<button style="margin : 10px; padding:10px;">결제하기</button>
+	<button style="padding:10px 50px; display:block; margin:0 auto;">결제하기</button>
+	</div>
 </body>
 </html>
