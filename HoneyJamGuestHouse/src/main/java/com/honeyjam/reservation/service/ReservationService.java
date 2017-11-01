@@ -1,6 +1,7 @@
 package com.honeyjam.reservation.service;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -14,4 +15,7 @@ public interface ReservationService {
 //	List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException;
 	
 	int insertReservation(Reservation reservation) throws IOException;
+	List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException;
+
+	int dayBetween(String checkin, String checkout) throws ParseException;
 }

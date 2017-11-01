@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 .body {
@@ -78,7 +79,7 @@
 			</div>
 			<div class="menu">
 				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/member/boardSelect">내가
+					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/boardSelect">내가
 					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
 			</div>
 		</div>

@@ -1,9 +1,10 @@
 package com.honeyjam.reservation.service;
 
 import java.io.IOException;
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,8 +50,6 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 		
 	}
-
-
 		
 	// 하나의 날짜를 기준으로 방들의 현황을 조회하는 것. 날짜 하루를 조회하면 그날 방의 현황을 map으로 리턴. 
 	@Override
@@ -114,12 +113,13 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	
 	
+	//최종적으로 쓰는 메소드 
 	// 체크인, 체크아웃 날짜를 입력하면 그 기간 내내 예약 가능한 방의 id (룸 넘버) 를 List로 리턴. 
 	//selectReservationByDate 메소드는 하루기준으로 map을 리턴하는 메소드 (위에 참고) 
 	// 이 메소드를, 예약하고자 하는 사람이 조회하는 기간 내내 별개의 날짜에 적용하면 
 	// 각 날짜의 방 현황이 각각 map으로 리턴. 
 	// 즉 날짜의 수 만큼 map 개수가 나오고, 이 map들을 list에 담은 후 list 반복문 돌리면서 각 방들이 모든 날짜에 가능한지 체크
-	public List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException{
+	public List<String> emptyRoomsByDate(int guests, String checkin, String checkout) throws IOException, ParseException{
 		
 		
 		SqlSession session = null;
@@ -127,7 +127,12 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		try {
 			session=factory.openSession();
+
 			int differ = service.dayBetween(checkin, checkout);
+			Map<String,Boolean> mapOfTruth = new HashMap<String,Boolean>();
+			List<Map<String,Integer>> listOfMap = new ArrayList<>();
+			List<String> listOfRoomsAvail = new ArrayList<>();
+			
 			
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date checkin_date = format.parse(checkin);
@@ -139,11 +144,68 @@ public class ReservationServiceImpl implements ReservationService{
 	        }
 	        
 	        
+	        mapOfTruth.put("201", true);
+	        mapOfTruth.put("202", true);
+	        mapOfTruth.put("401", true);
+	        mapOfTruth.put("402", true);
+	        mapOfTruth.put("601", true);
+	        mapOfTruth.put("602", true);
+	        mapOfTruth.put("801", true);
+	        mapOfTruth.put("802", true);
+	        
+	        for(Map map : listOfMap) {
+	        	
+	        	if((int)map.get("201") + guests > 2) {
+	        		mapOfTruth.put("201", false);
+	        	}if((int)map.get("202") + guests > 2) {
+	        		mapOfTruth.put("202", false);
+	        	}if((int)map.get("401") + guests >4) {
+	        		mapOfTruth.put("401", false);
+	        	}if((int)map.get("402") + guests >4) {
+	        		mapOfTruth.put("402", false);
+	        	}if((int)map.get("601") + guests > 6) {
+	        		mapOfTruth.put("601", false);
+	        	}if((int)map.get("602") + guests > 6) {
+	        		mapOfTruth.put("602", false);
+	        	}if((int)map.get("801") + guests > 8) {
+	        		mapOfTruth.put("801", false);
+	        	}if((int)map.get("802") + guests > 8) {
+	        		mapOfTruth.put("802", false);
+	        	}
+	        }
+	        
+	        
+	        if(mapOfTruth.get("201")){
+	        	listOfRoomsAvail.add("201");
+	        }if(mapOfTruth.get("202")) {
+	        	listOfRoomsAvail.add("202");
+	        }if(mapOfTruth.get("401")) {
+	        	listOfRoomsAvail.add("401");
+	        }if(mapOfTruth.get("402")) {
+	        	listOfRoomsAvail.add("402");
+	        }if(mapOfTruth.get("601")) {
+	        	listOfRoomsAvail.add("601");
+	        }if(mapOfTruth.get("602")) {
+	        	listOfRoomsAvail.add("602");
+	        }if(mapOfTruth.get("801")) {
+	        	listOfRoomsAvail.add("801");
+	        }if(mapOfTruth.get("802")) {
+	        	listOfRoomsAvail.add("802");
+	        }
+	        
+	        
+	        
+	        System.out.println(listOfRoomsAvail);
+	        return listOfRoomsAvail;
+	        
+	        
+	        
+	        
+	        
 			
 		}finally {
 			session.close();
 		}
-			return null;
 		
 		
 	}
@@ -151,10 +213,10 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	
 	//두 날짜 사이의 날짜 수를 계산하는거. 가령 11/1~11/4 조회하면 3 나옴 
-	public int dayBetween(String checkin, String checkout) {
+	public int dayBetween(String checkin, String checkout) throws ParseException {
 		
 		
-		    try{ // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
+		     // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
 		       
 		    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
@@ -174,14 +236,8 @@ public class ReservationServiceImpl implements ReservationService{
 		        System.out.println("두 날짜의 날짜 차이: "+calDateDays);
 		        
 		        return (int)calDateDays;
-		        
-		        }
-		        catch(ParseException e)
-		        {
-		            System.out.println(e.getMessage());
-		        }
+		   
 
-		    return 0;
 		
 	}
 	
@@ -210,7 +266,17 @@ public class ReservationServiceImpl implements ReservationService{
 	System.out.println(service.dayBetween("2017-08-01", "2017-08-04"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-02"));	
 	System.out.println(service.dayBetween("2017-10-29", "2017-11-12"));	
-		
+
+		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
+		//401,601,801,802 나와야함 
+		service.emptyRoomsByDate(2, "2017-10-11", "2017-10-13");
+
+	}
+
+	@Override
+	public List<String> emptyRoomsByDate(String checkin, String checkout) throws IOException, ParseException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -230,6 +296,7 @@ public class ReservationServiceImpl implements ReservationService{
 	
 }
 	
+
 
 
 

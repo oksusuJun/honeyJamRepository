@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.honeyjam.reservation.service.ReservationService;
+import com.honeyjam.reservation.service.ReservationServiceImpl;
 import com.honeyjam.room.service.RoomService;
 import com.honeyjam.room.service.RoomServiceImpl;
 import com.honeyjam.vo.Room;
@@ -61,32 +64,44 @@ public class RoomSearchServlet extends HttpServlet {
 				session.setAttribute("people", numberOfGuests);
 				session.setAttribute("checkIn", checkIn);
 				session.setAttribute("checkOut", checkOut);
+				
+				request.getRequestDispatcher("reservation/room_list_view.jsp").forward(request, response);
 				// 로그인 화면으로 이동 - test 위해 바로 이동
-				request.getRequestDispatcher("/member/login.jsp").forward(request, response);
+//				request.getRequestDispatcher("/member/login.jsp").forward(request, response);
 
 				
 			} else { // 로그인 되어있다면
 				
-				RoomService service = RoomServiceImpl.getInstance();
-				
-				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
-				
-				if(list.isEmpty()) {
-					System.out.println("list에 들어오는 값이 없다~~~~");
+//				RoomService service = RoomServiceImpl.getInstance();
+				ReservationService resService = ReservationServiceImpl.getInstance();
+				HashMap<String, Integer> roomMap = new HashMap<String,Integer>();
+//				List<Room> list = service.searchRoomReservation(gender, numberOfGuests, checkIn, checkOut);
+				List<String> roomList = resService.emptyRoomsByDate(checkInForm, checkOutForm);
+				if (roomList.isEmpty()) {
+					System.out.println("비어있는 방이 없습니다.");
+					request.getRequestDispatcher("/main.jsp").forward(request, response);
+					
 				} else {
-					for(Room a : list) {
-						System.out.println(a);
-					}
+					session.setAttribute("roomList", roomList);
+					request.getRequestDispatcher("/reservation/room_list_view.jsp").forward(request, response);
 				}
 				
-				if (list.isEmpty()) {
-					// 예약 가능
-					/*추후 예약 진행화면으로 변경해야함 */
-					request.getRequestDispatcher("/test.jsp").forward(request, response);
-
-				} else {
-					request.getRequestDispatcher("/member/reservation_view.jsp").forward(request, response);
-				}
+//				if(list.isEmpty()) {
+//					System.out.println("list에 들어오는 값이 없다~~~~");
+//				} else {
+//					for(Room a : list) {
+//						System.out.println(a);
+//					}
+//				}
+				
+//				if (list.isEmpty()) {
+//					// 예약 가능
+//					/*추후 예약 진행화면으로 변경해야함 */
+//					request.getRequestDispatcher("/test.jsp").forward(request, response);
+//
+//				} else {
+//					request.getRequestDispatcher("/member/reservation_view.jsp").forward(request, response);
+//				}
 			}
 
 		} catch (ParseException e) {
