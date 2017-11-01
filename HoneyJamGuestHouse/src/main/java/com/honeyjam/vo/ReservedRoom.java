@@ -12,6 +12,8 @@ public class ReservedRoom implements Serializable{
 	private String reservationId;
 	private String gender;
 	
+	private Reservation reservation;
+	
 	public ReservedRoom() {}
 	
 	public ReservedRoom(int roomId, int numberOfBeds, Date checkIn, Date checkOut, String reservedId, String gender) {

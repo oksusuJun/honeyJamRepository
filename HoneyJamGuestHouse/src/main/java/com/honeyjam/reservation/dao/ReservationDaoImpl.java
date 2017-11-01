@@ -48,6 +48,8 @@ public class ReservationDaoImpl implements ReservationDao{
 
 	@Override
 	public List<Reservation> selectReservationByDate(SqlSession session, Date date) {
+//		 java.util.Date utilDate = new java.util.Date();
+//		 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 		return session.selectList(makeSqlId("selectReservationByDate"),date);
 	}
 	

@@ -38,7 +38,7 @@ public class MemberEditServlet extends HttpServlet {
 			Member newMember = new Member(email,password,nickname,phoneNum,1);
 			service.updateMember(newMember);
 			session.setAttribute("loginMember", newMember);
-			request.getRequestDispatcher("/member/myinfo.jsp").forward(request, response);
+			request.getRequestDispatcher("/member/mypage.jsp").forward(request, response);
 		}catch(DuplicatedNicknameException | DuplicatedPhoneException e) {
 			request.setAttribute("errorMessage", e.getMessage());
 			request.getRequestDispatcher("/member/edit.jsp").forward(request, response);
