@@ -82,7 +82,6 @@ thead>tr>td {
 
 				<c:forEach items="${sessionScope.roomMap }" var="rooms">
 					<tr>
-
 					 	<td style="width: 70px;">${rooms.value.roomId }</td>
 						<td style="width: 150px">${rooms.value.gender }</td>
 						<td style="width: 150px">${rooms.value.availableBed }개</td>
