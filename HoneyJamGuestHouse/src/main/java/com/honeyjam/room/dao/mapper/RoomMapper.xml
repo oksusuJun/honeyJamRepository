@@ -13,13 +13,24 @@
 	</sql>
 	
 	<sql id="select-join-room">
-	SELECT 	a.room_id, 
-			a.available_bed, 
-			b.number_of_beds
-	FROM 	room a, 
-			reserved_room b
-	WHERE 	a.room_id = b.room_id
+		SELECT 	a.room_id, 
+				a.available_bed, 
+				b.number_of_beds
+		FROM 	room a, 
+				reserved_room b
+		WHERE 	a.room_id = b.room_id
 	</sql>
+	
+	<sql id="select-reserved-room">
+		SELECT	room_id, number_of_beds, reservation_id
+		FROM	reserved_room
+	</sql>
+	
+	<resultMap type="reservedRoom" id="reserved-resultmap">
+		<id column="reservation_id" property="reservationId"/>
+		<result column="room_id" property="roomId"/>
+		<result column="number_of_beds" property="numberOfBeds"/>
+	</resultMap>
 	
 	<resultMap type="room" id="room-resultmap">
 		<id column="room_id" property="roomId"/>
@@ -77,11 +88,21 @@
 			reserved_room b
 	WHERE 	a.room_id = b.room_id
 	AND 	b.gender LIKE '%'||#{gender}||'%'
-	AND 	a.available_bed >= #{numberOfGuest}
-	AND 	b.check_in <= to_date(#{checkOut}, 'YYYYMMDD') 
-	AND 	b.check_out >= to_date(#{checkIn}, 'YYYYMMDD')
+	AND 	a.available_bed >= #{numberOfGuests}
+	AND 	b.check_in <= #{checkOut}
+	AND 	b.check_out >= #{checkIn}
 	
 	]]>
 	
+	</select>
+	
+	<!-- 전체 방 목록에서 제외할(예약된) room_id 조회-->
+	<select id="selectReservedRoomId" parameterType="map" resultMap="reserved-resultmap">
+		<include refid="select-reserved-room"/>
+		<![CDATA[
+		WHERE	check_in <= #{checkOut}
+		AND		check_out >= #{checkIn}
+		AND 	gender LIKE '%'||#{gender}||'%'
+		]]>
 	</select>
 </mapper>	

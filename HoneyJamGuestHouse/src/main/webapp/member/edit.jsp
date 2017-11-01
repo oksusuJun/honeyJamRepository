@@ -63,36 +63,40 @@
 .content h1 {
 	margin-bottom: 40px;
 }
-.text1{
-width: 165px;
-height: 59px;
-float: left;
-background: #f9f9f9;
-line-height: 60px;
-border-bottom: 1px solid gray; 
-border-right: 1px solid gray;
+
+.text1 {
+	width: 165px;
+	height: 59px;
+	float: left;
+	background: #f9f9f9;
+	line-height: 60px;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
 }
-.text2{
+
+.text2 {
 	width: 410px;
 	height: 59px;
 	float: right;
 	line-height: 60px;
-	border-bottom: 1px solid gray; 
+	border-bottom: 1px solid gray;
 }
-.text2 > input {
-width: 200px;
-height: 27px;
+
+.text2>input {
+	width: 200px;
+	height: 27px;
 }
-form > button{
-margin-top : 30px;
-width: 95%;
-height: 60px;
-background: #fff;
-outline: none;
-border: 2px solid pink;
-border-radius: 5px;
-font-size: 20px;
-cursor: pointer;
+
+form>button {
+	margin-top: 30px;
+	width: 95%;
+	height: 60px;
+	background: #fff;
+	outline: none;
+	border: 2px solid #FF5A5F;
+	border-radius: 5px;
+	font-size: 20px;
+	cursor: pointer;
 }
 </style>
 </head>
@@ -167,8 +171,8 @@ cursor: pointer;
 			</div>
 			<div class="menu">
 				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/member/boardSelect">내가
-					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
+					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰 </a>
+				<a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a><br>
 			</div>
 		</div>
 
@@ -177,11 +181,26 @@ cursor: pointer;
 			<form action="${initParam.rootPath }/memberEdit" method="post" name="edit" onsubmit="return checkVals();">
 				<div class="text1" style="border-top: 1px solid gray">아이디(Email) :</div>
 				<div class="text2" style="border-top: 1px solid gray">${sessionScope.loginMember.email }</div>
-				<div class="text1">기존 비밀번호 :  </div><div class="text2"><input type="password" name="oldPass"></div>
-				<div class="text1">새 비밀번호 : </div><div class="text2"><input type="password" name="password"></div>
-				<div class="text1">새 비밀번호 재확인 : </div><div class="text2"><input type="password" name="password1"></div>
-				<div class="text1">닉네임 : </div><div class="text2"><input type="text" name="nickname" value="${sessionScope.loginMember.nickname }"></div>
-				<div class="text1">전화번호 : </div><div class="text2"><input type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }"></div>
+				<div class="text1">기존 비밀번호 :</div>
+				<div class="text2">
+					<input type="password" name="oldPass">
+				</div>
+				<div class="text1">새 비밀번호 :</div>
+				<div class="text2">
+					<input type="password" name="password">
+				</div>
+				<div class="text1">새 비밀번호 재확인 :</div>
+				<div class="text2">
+					<input type="password" name="password1">
+				</div>
+				<div class="text1">닉네임 :</div>
+				<div class="text2">
+					<input type="text" name="nickname" value="${sessionScope.loginMember.nickname }">
+				</div>
+				<div class="text1">전화번호 :</div>
+				<div class="text2">
+					<input type="text" name="phoneNum" value="${sessionScope.loginMember.phoneNum }">
+				</div>
 				<button>정보수정</button>
 			</form>
 			<c:if test="${requestScope.errorMessage != null }">

@@ -2,8 +2,8 @@ package com.honeyjam.room.service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
+import com.honeyjam.vo.ReservedRoom;
 import com.honeyjam.vo.Room;
 
 public interface RoomService {
@@ -51,6 +51,8 @@ public interface RoomService {
 	//검색된 내용을 빼고 나머지 예약가능한 방 출력
 	List<Room> searchRoomReservation(String gender, Integer numberOfGuest, Date checkIn, Date checkOut);
 	
+	
+	List<ReservedRoom> findReservedRoom(String gender, Date checkIn, Date checkOut);
 	
 	
 

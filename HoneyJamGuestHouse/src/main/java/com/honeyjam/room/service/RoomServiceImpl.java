@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.honeyjam.room.dao.RoomDao;
 import com.honeyjam.room.dao.RoomDaoImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
+import com.honeyjam.vo.ReservedRoom;
 import com.honeyjam.vo.Room;
 
 public class RoomServiceImpl implements RoomService{
@@ -93,6 +94,18 @@ public class RoomServiceImpl implements RoomService{
 		try {
 			session = factory.openSession();
 			list = dao.selectAvailableRoomByGender(session, gender);
+			return list;
+			
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public List<ReservedRoom> findReservedRoom(String gender, Date checkIn, Date checkOut) {
+		try {
+			session = factory.openSession();
+			list = dao.selectReservedRoomId(session, gender, checkIn, checkOut);
 			return list;
 		} finally {
 			session.close();

@@ -18,6 +18,8 @@ select * from Member
 insert into MEMBER values('yyy', '1111', '회원1', '010-1111-1111', 1);
 insert into MEMBER values('mem2@hj.com', '2222', '회원2', '010-2222-2222', 1);
 insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
+insert into MEMBER values('bbb', '3434', '회원4', '010-3434-3434', 1);
+insert into MEMBER values('777', '4545', '회원5', '010-4545-4545', 1);
 
 
 
@@ -41,8 +43,19 @@ create table Reservation (
 
 select * from Reservation where email='yyy'
 
+select * from reservation
 /* ############### Dummy Data ################### */
+<<<<<<< HEAD
 insert into reservation values (2, 'yyy', '20171102', '20171103', 1, 401, '남성', 0);
+insert into reservation values(0,'bbb','2017-10-09','2017-10-14',2,202,'남성',0);
+insert into reservation values(1,'bbb','2017-10-12','2017-10-16', 2, 201,'남성',0);
+insert into reservation values(9,'777','2017-10-13','2017-10-17', 2, 202,'남성',0);
+insert into reservation values(3,'yyy','2017-10-14','2017-10-18', 2, 202,'남성',0);
+insert into reservation values(4,'bbb','2017-10-15','2017-10-19', 2, 201,'남성',0);
+insert into reservation values(5,'777','2017-10-16','2017-10-20', 2, 401,'남성',0);
+insert into reservation values(6,'yyy','2017-10-17','2017-10-21', 2, 401,'남성',0);
+insert into reservation values(7,'bbb','2017-10-18','2017-10-22', 2, 601,'남성',0);
+insert into reservation values(8,'777','2017-10-19','2017-10-23', 2, 601,'남성',0);
 
 
 drop table Reserved_Room;
@@ -78,8 +91,17 @@ insert into reserved_room values (202, 2, '20171228', '20171230', '가능','1700
 /* test */
 /* 날짜 중복 조회 쿼리 */
 
-select * from reserved_room
-where check_in >= to_date('20171225', 'YYYYMMDD') and check_out <= to_date('20171229', 'YYYYMMDD')+1;
+
+	SELECT 	a.room_id, 
+			a.available_bed, 
+			b.number_of_beds
+	FROM 	room a, 
+			reserved_room b
+	WHERE 	a.room_id = b.room_id
+	AND 	b.gender LIKE '%'||#{gender}||'%'
+	AND 	a.available_bed >= #{numberOfGuests}
+	AND 	b.check_in <= to_date('20171229', yyyymmdd)
+	AND 	b.check_out >= to_date('20171216', yyyymmdd)
 
 
 /* 이게 맞습니다~ 이거 쓸거에요~~ 혼동하지마세요!!!!!! */
@@ -92,74 +114,20 @@ select * from reserved_room where gender = '남성';
 select * from reserved_room where gender = '여성';
 
 -- ############# 최종최종 제발제발 ###############
-select a.room_id, a.available_bed, b.number_of_beds
+select a.room_id, a.available_bed
 from room a, reserved_room b
 where a.room_id = b.room_id
-and b.gender like '%남성%'
+and b.gender like '%성%'
 and a.available_bed >= 1
-and b.check_in <= to_date('20171220', 'YYYYMMDD') and b.check_out >= to_date('20171219', 'YYYYMMDD')
+and not b.check_in <= to_date('20171216', 'YYYYMMDD') and not b.check_out >= to_date('20171214', 'YYYYMMDD')
 -- ##########################################
 
-/* 10.31 01:56 
- * 검색 조건 
- * <ROOM>
- * 	- gender : %남성%
- * 	- available_bed >= 1
- * --------------------------
- * <RESERVED_ROOM>
- * 	- check_in ~ check_out : 2017.12.16 ~ 2017.12.29
- * --------------------------
- * room 에서 남성이 들어갈 수 있는 1자리 이상의 침대가 남아있는 방,
- * reserved_room 에서 해당 날짜에 예약되어있는 방을 select
- *  -> room.room_id = d.room_id : room select 에서 나온 결과 중 예약건의 room_id 와 같은 것으로 제약
- *  --> 검색조건에 맞는 방 중 예약이 되어있는 방이 나오게 된다.
- */
-/* 
- * ####################################
-select * 
-from (select room_id, available_bed
-		from room
-		where gender like '%남성%'
-		and available_bed >= 1) r, 
-	(select room_id, number_of_beds, reservation_id, check_in, check_out
-		from RESERVED_ROOM
-		where check_in <= to_date('20171220', 'YYYYMMDD') and check_out >= to_date('20171219', 'YYYYMMDD')) d
-where r.room_id = d.room_id
--- and r.available_bed - d.number_of_beds >= 2;
-#######################################
-* --> 위의 쿼리와 같은 결과를 도출
-* 		But, subQuery 중첩보다 join으로 하는게 성능상 좋기때문에
-* 		위의 쿼리 사용예정
-*/
 
-
-select *
-from 
-
-
-select room_id from room
-where gender like '%남성%'
-and available_bed >= 2
-
-select * 
-FROM reserved_room
-WHERE exists (select * 
-				from ROOM r
-				where RESERVED_ROOM.room_id = r.room_id);
-and check_in <= to_date('20171229', 'YYYYMMDD') and check_out >= to_date('20171216', 'YYYYMMDD')
-
-
-
-
-/* 
- * --> room_id  -> number 
- * 		--> Dao -> int roomId  --> #{value}
- * 
-
-select reservation_id from reserved_room
-where check_in <= to_date('20171229', 'YYYYMMDD') and check_out >= to_date('20171216', 'YYYYMMDD')
-and room_id = #{value}
-*/
+select room_id, check_in, check_out
+from reserved_room
+where check_in <= '20171221'
+and check_out >= '20171214'
+and gender like '%남성%'
 
 
 
@@ -175,7 +143,6 @@ create table Room (
 	max_bed number(2) not null,
 	available_bed number(2) not null,
 	price number(10) not null
-	
 );
 
 select * from room

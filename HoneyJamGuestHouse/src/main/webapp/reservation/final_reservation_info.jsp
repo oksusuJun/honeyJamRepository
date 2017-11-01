@@ -19,7 +19,7 @@ td, th {
 </style>
 
 <body>
-<h1>예약할 방 조회</h1>
+<h1>최종 예약정보(결제직전)</h1>
 
 <table>
 	<thead>
@@ -35,14 +35,14 @@ td, th {
 	</thead>
 	<tbody>
 			<tr>
-				<td>${reservation.reservationId }</td>
-				<td>${reservation.email }</td>
-				<td>${reservation.checkIn }</td>
-				<td>${reservation.checkOut }</td>
-				<td>${reservation.numberOfGuests }</td>
-				<td>${reservation.roomId }</td>
-				<td>${reservation.gender }</td>
-				<td>${reservation.paymentStatus }</td>
+				<td>${requestScope.reservation.reservationId }</td>
+				<td>${requestScope.reservation.email }</td>
+				<td>${requestScope.reservation.checkIn }</td>
+				<td>${requestScope.reservation.checkOut }</td>
+				<td>${requestScope.reservation.numberOfGuests }</td>
+				<td>${requestScope.reservation.roomId }</td>
+				<td>${requestScope.reservation.gender }</td>
+				<td>${requestScope.reservation.paymentStatus }</td>
 			</tr>
 	</tbody>
 </table>

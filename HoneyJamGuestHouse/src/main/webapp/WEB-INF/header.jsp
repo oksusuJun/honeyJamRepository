@@ -160,7 +160,7 @@ header {
 
 			<c:otherwise>
 				<ul>
-					<li><a href="${initParam.rootPath }/member/login.jsp">로그인</a></li>
+					<li><a href="${initParam.rootPath }/member/login.jsp" id="maintologin">로그인</a></li>
 					<li><a href="${initParam.rootPath }/member/join.jsp">회원가입</a></li>
 				</ul>
 			</c:otherwise>
