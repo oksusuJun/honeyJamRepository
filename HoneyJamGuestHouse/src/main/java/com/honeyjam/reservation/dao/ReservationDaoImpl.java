@@ -1,5 +1,6 @@
 package com.honeyjam.reservation.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -44,5 +45,14 @@ public class ReservationDaoImpl implements ReservationDao{
 	public List<Reservation> selectReservationById(SqlSession session, String email) {
 		return session.selectList(makeSqlId("selectReservationById"), email);
 	}
+
+	@Override
+	public List<Reservation> selectReservationByDate(SqlSession session, Date date) {
+//		 java.util.Date utilDate = new java.util.Date();
+//		 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+		return session.selectList(makeSqlId("selectReservationByDate"),date);
+	}
+	
+	
 
 }
