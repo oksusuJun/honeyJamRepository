@@ -102,7 +102,7 @@ public class ReservationServiceImpl implements ReservationService{
 			
 			
 			return roomMap;
-			
+
 		}finally {
 			session.close();
 		}
@@ -194,7 +194,6 @@ public class ReservationServiceImpl implements ReservationService{
 	        
 	        
 	        
-	        System.out.println(listOfRoomsAvail);
 	        return listOfRoomsAvail;
 	        
 	        
@@ -283,7 +282,7 @@ public class ReservationServiceImpl implements ReservationService{
 
 		//web-inf/newReservation_data.sql 의 쿼리문 실행하고 아래꺼 확인해보면 
 		//401,601,801,802 나와야함 
-		service.emptyRoomsByDate(2, "20171011", "20171013");
+		System.out.println(service.emptyRoomsByDate(2, "20171011", "20171013"));
 
 
 	}

@@ -125,6 +125,7 @@ option {
 
 			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
 			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
+			
 			<select class="combobox" name="people">
 				<option value="">인원을 선택해주세요</option>
 				<option value="1">1명</option>
@@ -142,7 +143,6 @@ option {
 				<option value="여성">여성</option>
 			</select> 
 			<input type="submit" name="search" class="submit" value="검색">
-
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
