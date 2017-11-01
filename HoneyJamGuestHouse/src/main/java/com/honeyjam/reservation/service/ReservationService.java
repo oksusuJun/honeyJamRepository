@@ -12,12 +12,8 @@ public interface ReservationService {
 	
 	Map<String,Integer> selectReservationByDate(java.sql.Date date); 
 	
-<<<<<<< HEAD
 	void insertReservation(Reservation reservation) throws IOException;
-=======
-	
-	int insertReservation(Reservation reservation) throws IOException;
->>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
+
 
 	int dayBetween(String checkin, String checkout) throws ParseException;
 	
