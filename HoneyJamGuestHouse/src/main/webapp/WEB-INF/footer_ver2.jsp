@@ -13,6 +13,7 @@
 	height: 70px;
 	line-height: 70px;
 	font-size: 12px;
+	float: left;
 }
 </style>
 
