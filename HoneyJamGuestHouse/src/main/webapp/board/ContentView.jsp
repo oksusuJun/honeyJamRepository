@@ -83,6 +83,8 @@ button {
 		</table>
 
 	</div>
+	
+	
 	<a href="/HoneyJamGuestHouse/board/write.jsp"><button>게시물 작성</button></a>
 
 

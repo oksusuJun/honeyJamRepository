@@ -7,6 +7,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
+<script>
+function checkVals(){
+	var f = document.write;
+	if(f.title.value){
+		alert("제목을 입력하세요");
+		return false;
+	}else if(f.content.value.length==0){
+		alert("내용을 입력하세요");
+		return false;
+	}
+	
+	return true;
+}
+
+</script>
 <body>
 
 
@@ -14,7 +30,7 @@
 		<jsp:forward page="/member/login.jsp" />
 </c:if>
 
-<form action="/HoneyJamGuestHouse/boardInsert" method="post">
+<form action="/HoneyJamGuestHouse/boardInsert" method="post" onsubmit="return checkVals();" name="write">
 
 제목: <input type="text" name="title"><br>
 내용:

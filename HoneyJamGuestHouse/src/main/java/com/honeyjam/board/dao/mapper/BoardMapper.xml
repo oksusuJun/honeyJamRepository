@@ -30,7 +30,7 @@
 	<!-- insert -->
 	<insert id="insertBoard" parameterType="board">
 		INSERT INTO board
-		VALUES (#{itemNum},#{content},#{title},#{writeDate},#{email})
+		VALUES (board_seq.nextval,#{content},#{title},#{writeDate},#{email})
 	</insert>
 	
 	<!-- update -->
