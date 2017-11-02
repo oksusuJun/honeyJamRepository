@@ -297,7 +297,14 @@ width: 100%;
 		<div class="content">
 			<div class="content_top">
 				<h1>시설안내</h1>
-				<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
+				<c:choose>
+					<c:when test="${sessionScope.loginMember == null }">
+						<a href="${initParam.rootPath }/member/login.jsp"><button>로그인 후 예약하기</button></a>
+					</c:when>
+					<c:otherwise>
+						<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
+					</c:otherwise>
+				</c:choose>
 
 			</div>
 
