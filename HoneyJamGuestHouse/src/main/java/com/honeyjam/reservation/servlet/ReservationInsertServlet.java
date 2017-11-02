@@ -1,6 +1,9 @@
 package com.honeyjam.reservation.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.honeyjam.room.service.RoomService;
-import com.honeyjam.room.service.RoomServiceImpl;
-import com.honeyjam.vo.Room;
+import com.honeyjam.reservation.service.ReservationService;
+import com.honeyjam.reservation.service.ReservationServiceImpl;
+import com.honeyjam.vo.Reservation;
 
 /**
  * Servlet implementation class ReservationInsertServlet
@@ -31,14 +34,66 @@ public class ReservationInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		//요청파라미터 조회
+		// 요청 파라미터 조회
+		int reservationId = Integer.parseInt(request.getParameter("reservationId"));
+		String email = request.getParameter("email");
+		String checkIn = request.getParameter("checkin");
+		String checkOut = request.getParameter("checkout");
+		int numberOfGuests = Integer.parseInt(request.getParameter("people"));
 		int roomId = Integer.parseInt(request.getParameter("roomId"));
+		String gender = request.getParameter("gender");
+		int paymentStatus = Integer.parseInt(request.getParameter("paymentStatus"));
 		
-		RoomService service = RoomServiceImpl.getInstance();
+		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
+
 		
-		Room room = service.findRoomByRoomId(roomId);
-		session.setAttribute("room", room);
-		request.getRequestDispatcher("/payment/payment01.jsp").forward(request, response);
+		
+		
+		
+		// 예약완료 페이지로 넘길 값 session에 저장
+		session.setAttribute("reservationId", reservationId);
+		session.setAttribute("email", email);
+		session.setAttribute("checkIn", checkIn);
+		session.setAttribute("checkOut", checkOut);
+		session.setAttribute("numberOfGuests", numberOfGuests);
+		session.setAttribute("roomId", roomId);
+		session.setAttribute("gender", gender);
+		session.setAttribute("paymentStatus", paymentStatus);
+		
+		
+		try {
+			Date checkOutForm = dateForm.parse(checkOut);
+			Date checkInForm = dateForm.parse(checkIn);
+			
+			
+			Reservation reservation = new Reservation(reservationId, email, checkInForm, checkOutForm, numberOfGuests, roomId, gender, paymentStatus);
+			session.setAttribute("reservation", reservation);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		ReservationService service = ReservationServiceImpl.getInstance();
+		
+		if (session.getAttribute("loginMember") == null) {
+			request.getRequestDispatcher("/member/login.jsp");
+			
+		} else {
+			int result = service.addReservation(reservationId, email, checkIn, checkOut, numberOfGuests, roomId, gender, paymentStatus);
+			if (result == 0) {
+				System.out.println("INSERT 실패!");
+				request.getRequestDispatcher("/main.jsp").forward(request, response);
+			} else {
+				System.out.println("INSERT 성공 : "+result+" 건");
+				if (paymentStatus == 0) {	// 결제 완료
+					request.getRequestDispatcher("/payment/payment3-2.jsp");
+				} else { // 무통장입금
+					request.getRequestDispatcher("/payment/payment2-2.jsp");
+				}
+			}
+		}
+		
 		
 	}
 
