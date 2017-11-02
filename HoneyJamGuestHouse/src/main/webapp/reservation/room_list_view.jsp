@@ -83,12 +83,17 @@ button {
 	<br>
 	<br>
 	<%-- 검색 후 예약할 수 있는 방목록 --%>
+	
+	${sessionScope.checkIn}~${sessionScope.checkOut}
+	
 	<h1>예약가능한 방목록</h1>
 	<c:if test="${not empty requestScope.errorMessage }">
 		<script>
 			alert("에러: " + "${requestScope.errorMessage }");
 		</script>
 	</c:if>
+	
+	
 	<div class="content">
 		<table>
 			<thead>
