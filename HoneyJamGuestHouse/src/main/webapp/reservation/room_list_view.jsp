@@ -84,19 +84,15 @@ thead>tr>td {
 					<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
 				
 		 		<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
-					<tr>
-					    <c:set var="roomId" scope="session" value="${rooms.roomId}"/>
-						<c:set var="gender" scope="session" value="${rooms.gender}"/>
-						<c:set var="availableBed" scope="session" value="${rooms.availableBed}"/>
-						<c:set var="price" scope="session" value="${rooms.price}"/> 
-						
+
+					<tr>		
 					 	<td style="width: 70px;">${rooms.roomId}</td>
 						<td style="width: 150px">${rooms.gender}</td>
-						<td style="width: 150px">${rooms.maxBed}개</td>
+						<td style="width: 150px">${rooms.availableBed} 개</td>
 						<td style="width: 50px">${rooms.price}원</td>
 						<td>					
+							<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}" >
 
-							<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${roomId}&gender=${gender}" >
 								<button>상세보기</button>
 							</a>
 						</td>

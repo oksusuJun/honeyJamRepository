@@ -136,6 +136,7 @@ width: 100%;
 	%>
 	<%
 		if (request.getParameter("roomId").equals("201") || request.getParameter("roomId").equals("202")) {
+			session.setAttribute("roomId", request.getParameter("roomId"));
 	%>
 	<div class="body">
 		<div class="title">2인실</div>
@@ -146,7 +147,7 @@ width: 100%;
 		<div class="content">
 			<div class="content_top">
 				<h1>시설안내</h1>
-				<a href="${initParam.rootPath }/reservation/onReservation"><button>예약하기</button></a>
+				<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
 
 			</div>
 
@@ -208,6 +209,7 @@ width: 100%;
 	</div>
 	<%
 		} else if (request.getParameter("roomId").equals("401") || request.getParameter("roomId").equals("402")) {
+			session.setAttribute("roomId", request.getParameter("roomId"));
 	%>
 	<div class="body">
 		<div class="title">4인실</div>
@@ -218,7 +220,7 @@ width: 100%;
 		<div class="content">
 			<div class="content_top">
 				<h1>시설안내</h1>
-				<a href="${initParam.rootPath }/reservation/onReservation"><button>예약하기</button></a>
+				<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
 
 			</div>
 
@@ -280,6 +282,7 @@ width: 100%;
 	</div>
 	<%
 		} else if (request.getParameter("roomId").equals("601") || request.getParameter("roomId").equals("602")) {
+			session.setAttribute("roomId", request.getParameter("roomId"));
 	%>
 	<div class="body">
 		<div class="title">6인실</div>
@@ -290,7 +293,7 @@ width: 100%;
 		<div class="content">
 			<div class="content_top">
 				<h1>시설안내</h1>
-				<a href="${initParam.rootPath }/reservation/onReservation"><button>예약하기</button></a>
+				<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
 
 			</div>
 
@@ -352,9 +355,10 @@ width: 100%;
 	</div>
 	<%
 		} else if (request.getParameter("roomId").equals("801") || request.getParameter("roomId").equals("802")) {
+			session.setAttribute("roomId", request.getParameter("roomId"));
 	%>
 	<div class="body">
-		<div class="title">8인실</div>
+		<div class="title">8인실 ${sessionScope.roomId }</div>
 		<div class="img">
 			<img alt="img" src="../img/8인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/8인실_1.jpg"
 				style="width: 40%">
@@ -362,7 +366,7 @@ width: 100%;
 		<div class="content">
 			<div class="content_top">
 				<h1>시설안내</h1>
-				<a href="${initParam.rootPath }/reservation/onReservation"><button>예약하기</button></a>
+				<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
 
 			</div>
 
