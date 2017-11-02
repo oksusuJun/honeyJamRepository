@@ -144,13 +144,13 @@ header {
 						<c:when test="${sessionScope.loginMember != null}">
 							<ul class="submenu">
 								<li><a href="#">예약하기</a></li>
-								<li><a href="#">예약조회</a></li>
+								<li><a href="${initParam.rootPath}/reservationSelect">예약조회</a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
 							<ul class="submenu">
 								<li><a href="#">예약하기</a></li>
-								<li><a href="#">예약조회</a></li>
+								<li><a href="${initParam.rootPath }/member/login.jsp">예약조회</a></li>
 							</ul>
 						</c:otherwise>
 					</c:choose>
