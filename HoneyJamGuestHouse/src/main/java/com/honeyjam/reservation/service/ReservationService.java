@@ -23,6 +23,8 @@ public interface ReservationService {
 	int addReservation(int reservationId, String email, String checkIn, 
 								String checkOut, int numberOfGuests, int roomId, 
 								String gender, int paymentStatus) throws IOException;
+	
+	int findReservationIdByEmail(String email);
 }
 
 

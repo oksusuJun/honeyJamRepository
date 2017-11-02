@@ -53,4 +53,9 @@ public class ReservationDaoImpl implements ReservationDao{
 		return session.selectList(makeSqlId("selectReservationByDate"),date);
 	}
 
+	@Override
+	public int selectReservationIdByEmail(SqlSession session, String email) {
+		return session.selectOne(makeSqlId("selectReservationIdByEmail"), email);
+	}
+
 }

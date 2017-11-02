@@ -94,14 +94,10 @@ button {
 		</div>
 	<form name="form1" method="post"  action="/HoneyJamGuestHouse/reservationInsert" onsubmit="radioCheck();">
 		<p>
-			결제 방법 : <label>신용카드 : <input type="radio" name="payment" value="creditCard"></label>
-			<label>무통장입금 : <input type="radio" name="payment" value="account"></label>
+			결제 방법 : <label>신용카드 : <input type="radio" name="payment" value="신용 카드"></label>
+			<label>무통장입금 : <input type="radio" name="payment" value="무통장입금"></label>
 		<p>
-		<!-- 
-		<%
-		session.setAttribute("paymentStatus", "결제완료");
-		%>
-		 -->
+	
 		<input type="submit" value="Reservation">
 		</form>
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>

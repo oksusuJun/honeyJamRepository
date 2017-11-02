@@ -146,7 +146,16 @@ td, th {
 							<td style="width: 50px">${reservation.numberOfGuests }</td>
 							<td style="width: 70px;">${reservation.roomId }</td>
 							<td style="width: 70px">${reservation.gender }</td>
-							<td style="width: 70px">${reservation.paymentStatus }</td>
+							<td style="width: 70px">
+								<c:choose>
+									<c:when test="${reservation.paymentStatus == 0 }">
+										결제 완료
+									</c:when>
+									<c:when test="${reservation.paymentStatus == 1 }">
+										무통장 입금 - 입금 대기
+									</c:when>
+								</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

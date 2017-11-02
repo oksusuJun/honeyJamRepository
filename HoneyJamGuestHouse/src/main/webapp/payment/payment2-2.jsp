@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>3/3 무통장 예약 완료</h1>
+<h1>무통장입금 예약 완료</h1>
 
 <div style="text-align: center;">
 <p>예약이 완료 되었습니다.</p>
@@ -37,32 +37,28 @@
 				<td colspan="2">예약 정보</td>
 			</tr>
 			<tr>
-				<td>ID</td>
-				<td>test@test.com</td>
+				<td>방 번호</td>
+				<td>${sessionScope.roomId }</td>
 			</tr>
 			<tr>
-				<td>예약자</td>
-				<td>홍길동</td>
+				<td>예약자 ID</td>
+				<td>${sessionScope.email }</td>
 			</tr>
-			<tr>
-				<td>연락처</td>
-				<td>010-5555-5555</td>
-			</tr>
+			<!--  ####### 예약번호 나오게 수정해야함 ########
 			<tr>
 				<td>예약번호</td>
-				<td>A1234</td>
+				<td>${sessionScope.reservationId }</td>   
 			</tr>
-			<tr>
-				<td>객실이름</td>
-				<td>202호</td>
-			</tr>
+			-->
 			<tr>
 				<td>날짜</td>
-				<td>2018년 1월 1일 ~ 2018년 1월 2일</td>
+				<td>${sessionScope.checkIn } 
+					~
+					${sessionScope.checkOut }</td>
 			</tr>
 			<tr>
 				<td>결제수단</td>
-				<td>무통장입금</td>
+				<td>${sessionScope.paymentStatus }</td>
 			</tr>
 			<tr>
 				<td>계좌번호</td>
@@ -70,7 +66,7 @@
 			</tr>
 			<tr>
 				<td>결제금액</td>
-				<td>90,000</td>
+				<td>${sessionScope.price }</td>
 			</tr>
 		</table>
 

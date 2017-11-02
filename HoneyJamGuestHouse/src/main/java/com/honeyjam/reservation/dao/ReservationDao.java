@@ -18,4 +18,6 @@ public interface ReservationDao {
 	List<Reservation> selectReservationById(SqlSession session, String email);
 	
 	List<Reservation> selectReservationByDate(SqlSession session, Date date);
+	
+	int selectReservationIdByEmail(SqlSession session, String email);
 }

@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>3/3 카드 결제, 예약 완료</h1>
+<h1>카드 결제, 예약 완료</h1>
 
 <div style="text-align: center;">
 <p>예약이 완료 되었습니다.</p>
@@ -43,10 +43,12 @@
 				<td>예약자 ID</td>
 				<td>${sessionScope.email }</td>
 			</tr>
+			<!--  ####### 예약번호 나오게 수정해야함 ########
 			<tr>
 				<td>예약번호</td>
-				<td>${sessionScope.email }</td>
+				<td>${sessionScope.reservationId }</td>   
 			</tr>
+			-->
 			<tr>
 				<td>날짜</td>
 				<td>${sessionScope.checkIn } 
@@ -55,7 +57,7 @@
 			</tr>
 			<tr>
 				<td>결제수단</td>
-				<td>${requestScope.payment }</td>
+				<td>${sessionScope.paymentStatus }</td>
 			</tr>
 		</table>
 

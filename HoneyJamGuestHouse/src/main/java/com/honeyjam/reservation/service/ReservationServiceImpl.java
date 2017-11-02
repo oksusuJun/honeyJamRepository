@@ -333,6 +333,20 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	
 	}
+
+	@Override
+	public int findReservationIdByEmail(String email) {
+		SqlSession session = null;
+		
+		try {
+			session = factory.openSession();
+			int reservationId = dao.selectReservationIdByEmail(session, email);
+			return reservationId;
+			
+		} finally {
+			session.close();
+		}
+	}
 }
 
 

@@ -48,10 +48,13 @@ public class ReservationInsertServlet extends HttpServlet {
 		int roomId = Integer.parseInt(room_id);
 		String gender = (String)session.getAttribute("gender");
 		String payment = request.getParameter("payment");
-		int paymentStatus = 1;
-		if (payment.equals("creditCard")) {
+		int paymentStatus = -1;
+		// 결제수단 Check
+		if (payment.equals("신용카드")) {
 			paymentStatus = 0;
-		} 
+		} else if(payment.equals("무통장입금")) {
+			paymentStatus = 1;
+		}
 		
 		
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
@@ -64,7 +67,7 @@ public class ReservationInsertServlet extends HttpServlet {
 		session.setAttribute("numberOfGuests", numberOfGuests);
 		session.setAttribute("roomId", roomId);
 		session.setAttribute("gender", gender);
-		session.setAttribute("paymentStatus", paymentStatus);
+		session.setAttribute("paymentStatus", payment);
 
 		
 		try {
@@ -72,7 +75,6 @@ public class ReservationInsertServlet extends HttpServlet {
 			Date checkInForm = dateForm.parse(checkIn);
 			
 			Reservation reservation = new Reservation(reservationId, email, checkInForm, checkOutForm, numberOfGuests, roomId, gender, paymentStatus);
-			session.setAttribute("reservation", reservation);
 			System.out.println(reservation);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -93,13 +95,16 @@ public class ReservationInsertServlet extends HttpServlet {
 			} else {
 				System.out.println("INSERT 성공 : "+result+" 건");
 				if (paymentStatus == 0) {	// 결제 완료
-					request.getRequestDispatcher("/payment/payment3-2.jsp");
+//					System.out.println("여기 안들어옴??");
+					System.out.println("카드결제 : " + paymentStatus);
+
+					request.getRequestDispatcher("/payment/payment3-2.jsp").forward(request, response);
 				} else { // 무통장입금
-					request.getRequestDispatcher("/payment/payment2-2.jsp");
+					System.out.println("무통장입금 : " + paymentStatus);
+					request.getRequestDispatcher("/payment/payment2-2.jsp").forward(request, response);
 				}
 			}
 		}
-		
 		
 	}
 
