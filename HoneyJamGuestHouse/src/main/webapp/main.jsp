@@ -141,6 +141,7 @@ option {
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 
+
 			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1"> <input type="text"
 				name="checkout" placeholder="checkout" class="calendar" id="input2"> <select class="combobox" name="people"
 				id="input3">
