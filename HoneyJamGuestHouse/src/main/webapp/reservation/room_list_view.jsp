@@ -95,9 +95,10 @@ thead>tr>td {
 						<td style="width: 150px">${availableBed} 개</td>
 						<td style="width: 50px">${price}원</td>
 						<td>					
-						<form id="button_${roomId}" action="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${roomId}" >
+						<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${roomId}">
 						<button>상세보기</button>
-						</form>
+						</a>
+						
 						</td>
 					</tr> 
 				</c:forEach> 
