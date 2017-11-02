@@ -41,11 +41,12 @@ create table Reservation (
 	constraint room_id_fk foreign key (room_id) references room(room_id)
 );
 
+create sequence reservation_id_seq;
+
 select * from Reservation where email='yyy'
 
 select * from reservation
 /* ############### Dummy Data ################### */
-<<<<<<< HEAD
 insert into reservation values (2, 'yyy', '20171102', '20171103', 1, 401, '남성', 0);
 insert into reservation values(0,'bbb','2017-10-09','2017-10-14',2,202,'남성',0);
 insert into reservation values(1,'bbb','2017-10-12','2017-10-16', 2, 201,'남성',0);
