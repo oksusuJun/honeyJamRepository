@@ -143,7 +143,7 @@ width: 100%;
 	<div class="body">
 		<div class="title">2인실</div>
 		<div class="img">
-			<img alt="img" src="../img/4인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/4인실_1.jpg"
+			<img alt="img" src="../img/2인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/2인실_1.jpg"
 				style="width: 40%">
 		</div>
 		<div class="content">
@@ -363,7 +363,7 @@ width: 100%;
 			session.setAttribute("price", request.getParameter("price"));
 	%>
 	<div class="body">
-		<div class="title">8인실 ${sessionScope.roomId }</div>
+		<div class="title">8인실</div>
 		<div class="img">
 			<img alt="img" src="../img/8인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/8인실_1.jpg"
 				style="width: 40%">

@@ -87,7 +87,6 @@ button {
 	
 	<a href="/HoneyJamGuestHouse/board/write.jsp"><button>게시물 작성</button></a>
 
-
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 
 
