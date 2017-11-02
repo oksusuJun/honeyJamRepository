@@ -74,6 +74,11 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectOne(makeSqlId("selectItemByNum"), itemNum);
 
 	}
+
+	@Override
+	public int deleteBoardByNum(SqlSession session, int itemNum) {
+		return session.delete(makeSqlId("deleteBoardByNum"), itemNum);
+	}
 	
 	
 

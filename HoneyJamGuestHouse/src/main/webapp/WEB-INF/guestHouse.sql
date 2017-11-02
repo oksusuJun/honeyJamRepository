@@ -188,6 +188,9 @@ insert into board values (3,'내용입니다.3','제목3','20171002','aaa')
 insert into board values (4,'내용입니다.4','제목4','20171014','aaa')
 insert into board values (5,'내용입니다.5','제목5','20171012','yyy')
 
+select * from board
+DELETE from board where item_num = 1
+
 /* SEQUENCE 삭제*/
 		drop sequence  seq_item_num;
 /* SEQUENCE 생성*/
