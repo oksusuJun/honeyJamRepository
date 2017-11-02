@@ -15,4 +15,6 @@ public interface BoardDao {
 	int updateBoardById(SqlSession session, Board newBoard);
 	
 	int deleteBoardById(SqlSession session, String email);
+	
+	List<Board>	selectAllItems(SqlSession session);
 }

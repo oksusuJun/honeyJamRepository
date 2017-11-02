@@ -13,5 +13,7 @@ public interface BoardService {
 	void updateBoard(Board newBoard);
 	
 	void deleteBoard(String email);
+	
+	List<Board> selectAllItems();
 
 }

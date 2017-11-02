@@ -160,7 +160,7 @@ header {
 				<li><a href="${initParam.rootPath }/board/QnA.jsp">커뮤니티</a>
 					<ul class="submenu">
 						<li><a href="${initParam.rootPath }/board/QnA.jsp">QnA</a></li>
-						<li><a href="${initParam.rootPath }/boardSelect">리뷰게시판</a></li>
+						<li><a href="${initParam.rootPath }/BoardViewServlet">리뷰게시판</a></li>
 					</ul></li>
 			</ul>
 		</div>
