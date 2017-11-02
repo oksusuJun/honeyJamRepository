@@ -206,9 +206,11 @@ DELETE from board where item_num = 1
 /*board end*/
 	
 create sequence seq_item_num
-
 create sequence board_seq
 	
+
+
+
 		
 		
 /* ############### Join 조회 Test################### */
