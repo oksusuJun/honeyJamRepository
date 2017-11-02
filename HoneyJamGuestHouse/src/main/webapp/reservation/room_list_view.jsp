@@ -102,16 +102,13 @@ button {
 			<tbody>
 				<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
 				<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
-
 				<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
-
 					<tr>
-						<td style="width: 20%;">${rooms.roomId}</td>
-						<td style="width: 20%">${rooms.gender}</td>
-						<td style="width: 20%">${rooms.availableBed}개</td>
-						<td style="width: 20%">${rooms.price}원</td>
-						<td><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}">
-
+						<td style="width: 70px;">${rooms.roomId}</td>
+						<td style="width: 150px">${rooms.gender}</td>
+						<td style="width: 150px">${rooms.availableBed}개</td>
+						<td style="width: 50px">${rooms.price}원</td>
+						<td><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}&price=${rooms.price}">
 								<button>상세보기</button>
 						</a></td>
 					</tr>

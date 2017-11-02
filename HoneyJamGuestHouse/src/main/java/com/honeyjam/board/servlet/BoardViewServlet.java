@@ -24,11 +24,12 @@ public class BoardViewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		BoardService service = BoardServiceImpl.getInstance();
+		doPost(request,response);
+/*		BoardService service = BoardServiceImpl.getInstance();
 		List<Board> list = service.selectAllItems();
 
 		request.setAttribute("itemList", list);
-		request.getRequestDispatcher("/board/ContentView.jsp").forward(request, response);
+		request.getRequestDispatcher("/board/ContentView.jsp").forward(request, response);*/
 
 	}
 
@@ -52,7 +53,7 @@ public class BoardViewServlet extends HttpServlet {
 
 		request.setAttribute("list", map.get("list"));
 		request.setAttribute("pageBean", map.get("pageBean"));
-		request.getRequestDispatcher("/item_list.jsp").forward(request, response);
+		request.getRequestDispatcher("/board/ContentView.jsp").forward(request, response);
 
 
 	}

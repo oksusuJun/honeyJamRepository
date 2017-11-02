@@ -136,7 +136,9 @@ width: 100%;
 	%>
 	<%
 		if (request.getParameter("roomId").equals("201") || request.getParameter("roomId").equals("202")) {
+			// room_list_view 에서 request 로 넘어온 값을 받아서 다시 session으로 던진다.
 			session.setAttribute("roomId", request.getParameter("roomId"));
+			session.setAttribute("price", request.getParameter("price"));
 	%>
 	<div class="body">
 		<div class="title">2인실</div>
@@ -210,6 +212,7 @@ width: 100%;
 	<%
 		} else if (request.getParameter("roomId").equals("401") || request.getParameter("roomId").equals("402")) {
 			session.setAttribute("roomId", request.getParameter("roomId"));
+			session.setAttribute("price", request.getParameter("price"));
 	%>
 	<div class="body">
 		<div class="title">4인실</div>
@@ -283,6 +286,7 @@ width: 100%;
 	<%
 		} else if (request.getParameter("roomId").equals("601") || request.getParameter("roomId").equals("602")) {
 			session.setAttribute("roomId", request.getParameter("roomId"));
+			session.setAttribute("price", request.getParameter("price"));
 	%>
 	<div class="body">
 		<div class="title">6인실</div>
@@ -293,7 +297,14 @@ width: 100%;
 		<div class="content">
 			<div class="content_top">
 				<h1>시설안내</h1>
-				<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
+				<c:choose>
+					<c:when test="${sessionScope.loginMember == null }">
+						<a href="${initParam.rootPath }/member/login.jsp"><button>로그인 후 예약하기</button></a>
+					</c:when>
+					<c:otherwise>
+						<a href="${initParam.rootPath }/reservation/final_reservation_info.jsp"><button>예약하기</button></a>
+					</c:otherwise>
+				</c:choose>
 
 			</div>
 
@@ -356,6 +367,7 @@ width: 100%;
 	<%
 		} else if (request.getParameter("roomId").equals("801") || request.getParameter("roomId").equals("802")) {
 			session.setAttribute("roomId", request.getParameter("roomId"));
+			session.setAttribute("price", request.getParameter("price"));
 	%>
 	<div class="body">
 		<div class="title">8인실</div>
