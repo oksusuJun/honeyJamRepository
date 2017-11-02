@@ -111,7 +111,7 @@ button {
 		}
 	%>
 	<%
-		if (request.getParameter("roomId").equals("201")) {
+		if (request.getParameter("roomId").equals("201")||request.getParameter("roomId").equals("202")) {
 	%>
 	<div class="body">
 		<div class="title">임의제목</div>
@@ -148,7 +148,7 @@ button {
 		</div>
 	</div>
 	<%
-		} else if (request.getParameter("roomId").equals("401")) {
+		} else if (request.getParameter("roomId").equals("401")||request.getParameter("roomId").equals("402")) {
 	%>
 	<div class="body">
 		<div class="title">임의제목</div>
@@ -185,7 +185,7 @@ button {
 		</div>
 	</div>
 	<%
-		} else if (request.getParameter("roomId").equals("601")) {
+		} else if (request.getParameter("roomId").equals("601")||request.getParameter("roomId").equals("602")) {
 	%>
 	<div class="body">
 		<div class="title">임의제목</div>
@@ -218,7 +218,7 @@ button {
 		</div>
 	</div>
 	<%
-		} else if (request.getParameter("roomId").equals("801")) {
+		} else if (request.getParameter("roomId").equals("801")||request.getParameter("roomId").equals("802")) {
 	%>
 	<div class="body">
 		<div class="title">임의제목</div>
