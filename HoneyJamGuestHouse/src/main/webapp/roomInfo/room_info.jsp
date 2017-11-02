@@ -176,7 +176,7 @@ button {
 							<td style="width: 150px">${rooms.value.availableBed }개</td>
 							<td style="width: 50px">${rooms.value.price }원</td>
 							<td><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.value.roomId }">
-									<button>상세보기</button>S
+									<button>상세보기</button>
 							</a></td>
 						</tr>
 					</c:forEach>

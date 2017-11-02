@@ -170,20 +170,35 @@ select available_bed from Room where room_id ='602';
 
 
 
-drop table board cascade constraint;
-/* Board */
-create table Board (
-	item_num number(10) primary key,
-	content varchar2(300) not null,
-	title varchar2(100) not null,
-	write_date date not null,
-	author varchar2(50),
-	constraint author_fk foreign key (author) references member(email)
-);
 
-select * from board;
+/*board start*/
 
+	drop table board cascade constraint;
+	/* Board */
+	create table Board (
+		item_num number(10) primary key,
+		content varchar2(300) not null,
+		title varchar2(100) not null,
+		write_date date not null,
+		email varchar2(50),
+		constraint author_fk foreign key (email) references member(email)
+	);
+	/* SEQUENCE 삭제*/
+		drop sequence  seq_item_num;
+	/* SEQUENCE 생성*/
+		create sequence seq_item_num;
 
+	/* board 조회*/
+		select * from board;
+	
+	/*Board Dummy*/
+		insert into board values (seq_item_num.nextVal,'글내용글내용글내용','제목제목제목','20171013','aba@com');
+
+/*board end*/
+	
+	
+		
+		
 /* ############### Join 조회 Test################### */
 
 select 	r.reservation_id,

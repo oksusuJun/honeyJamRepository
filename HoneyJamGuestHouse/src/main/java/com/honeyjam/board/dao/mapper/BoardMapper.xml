@@ -4,7 +4,7 @@
 
 
 	<sql id="select-board">
-		SELECT item_num, content, title, write_date, email
+		SELECT *
 		FROM board
 	</sql>
 
