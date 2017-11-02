@@ -146,13 +146,13 @@ create table Room (
 );
 
 select * from room
-delete from room where room_id=801
+delete from room where room_id=202
 
 
 
 /* ############### Dummy Data ################### */
-insert into room values (201, '2인실', '남성', 2, 2, 60000);
-insert into room values (202, '2인실', '여성', 2, 2, 60000);
+insert into room values (201, '2인실', '남성', 2, 2, 30000);
+insert into room values (202, '2인실', '여성', 2, 2, 30000);
 insert into room values (401, '4인실', '남성', 4, 4,25000);
 insert into room values (402, '4인실', '여성', 4, 4, 25000);
 insert into room values (403, '4인실', '혼숙', 4, 4, 25000);

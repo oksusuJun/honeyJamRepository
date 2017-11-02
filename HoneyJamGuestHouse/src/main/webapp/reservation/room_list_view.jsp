@@ -44,9 +44,14 @@ td, tr {
 	border: 1px solid black;
 }
 
-.div1 {
-	width: 800px;
-	height: 300px;
+.content {
+	width: 900px;
+	min-height: 600px;
+	height: 600px;
+}
+
+h1 {
+	margin-bottom: 50px;
 }
 
 thead>tr>td {
@@ -54,13 +59,28 @@ thead>tr>td {
 	font-weight: bold;
 	font-family: myFont;
 	font-size: 30px;
+	height: 50px;
+}
+
+tbody>tr>td {
+	height: 40px;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+	background: #fff;
+	outline: 0;
+	border: 1px solid #FF5A5F !important;
+	cursor: pointer;
 }
 </style>
 <body>
 	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/nav.jsp"></jsp:include>
 
-	<br><br>
+	<br>
+	<br>
 	<%-- 검색 후 예약할 수 있는 방목록 --%>
 	<h1>예약가능한 방목록</h1>
 	<c:if test="${not empty requestScope.errorMessage }">
@@ -68,40 +88,32 @@ thead>tr>td {
 			alert("에러: " + "${requestScope.errorMessage }");
 		</script>
 	</c:if>
-	<div class="div1">
+	<div class="content">
 		<table>
 			<thead>
 				<tr>
 					<td>방번호</td>
 					<td>성별</td>
-					<td>남은 Bed</td>
+					<td>방 최대 수용 인원</td>
 					<td>가격</td>
 					<td>선택</td>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
-					<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
-				
-		 		<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
+				<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
+				<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
 					<tr>
-						<c:set var="roomId" scope="session" value="${rooms.roomId}"/>
-						<c:set var="gender" scope="session" value="${rooms.gender}"/>
-						<c:set var="availableBed" scope="session" value="${rooms.availableBed}"/>
-						<c:set var="price" scope="session" value="${rooms.price}"/>
-						
-					 	<td style="width: 70px;">${roomId}</td>
-						<td style="width: 150px">${gender}</td>
-						<td style="width: 150px">${availableBed} 개</td>
-						<td style="width: 50px">${price}원</td>
-						<td>					
-							<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${roomId}&gender=${gender}" >
+						<td style="width: 70px;">${rooms.roomId}</td>
+						<td style="width: 150px">${rooms.gender}</td>
+						<td style="width: 150px">${rooms.availableBed}개</td>
+						<td style="width: 50px">${rooms.price}원</td>
+						<td><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}&price=${rooms.price}">
 								<button>상세보기</button>
-							</a>
-						</td>
-					</tr> 
-				</c:forEach> 
-				
+						</a></td>
+					</tr>
+				</c:forEach>
+
 			</tbody>
 		</table>
 	</div>

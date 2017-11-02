@@ -72,7 +72,7 @@ button {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${requestScope.itemList}" var="item">
+				<c:forEach items="${requestScope.list}" var="item">
 					<tr>
 						<td>${item.itemNum}</td>
 						<td><a href="${initParam.rootPath }/findBoard?item=${item.itemNum}">${item.title}</a></td>
@@ -81,12 +81,89 @@ button {
 					</tr>
 				</c:forEach>
 			</tbody>
-
 		</table>
-
 	</div>
-	<a href="/HoneyJamGuestHouse/board/write.jsp"><button>게시물 작성</button></a>
+	
+	<%-- 페이징 처리 --%>
+<p>
+	<%--첫페이지로 이동--%>
+	<a href="${initParam.rootPath}/BoardViewServlet?page=1">첫페이지&nbsp;&nbsp;</a>
 
+
+	<%--
+		이전 페이지 그룹 처리.
+		만약에 이전페이지 그룹이 있으면 링크처리하고 없으면 화살표만 나오도록 처리.
+	 --%>
+	
+	
+	<c:choose>
+	
+		<c:when test="${requestScope.pageBean.previousPageGroup}">
+			<a href="${initParam.rootPath }/BoardViewServlet?page=${requestScope.pageBean.beginPage-1}">◁</a>
+		</c:when>
+		<c:otherwise>
+				◁
+		</c:otherwise>
+	
+	
+	</c:choose>
+	
+	
+	
+	<%-- 
+		현재 page가 속한 page 그룹내의 페이지들 링크.
+		현재 pageGroup의 시작page ~ 끝 page
+		- 만약에 p가 현재페이지면 링크처리를 하지 않고 p가 현재페이지가 아니라면 링크처리.
+	 --%>
+	 
+	<c:forEach begin="${requestScope.pageBean.beginPage}" 
+				end="${requestScope.pageBean.endPage}" var="num">
+		
+		<c:choose>		
+		
+		<c:when test="${requestScope.pageBean.page == num}">
+			${num}
+		</c:when>
+		<c:otherwise>
+		<a href="${initParam.rootPath }/BoardViewServlet?page=${num}">	${num} </a>
+		</c:otherwise>
+		</c:choose>
+		
+	</c:forEach>
+
+
+
+
+
+	<%-- 
+		다음페이지 그룹으로 이동
+		만약에 다음페이지 그룹이 있으면 링크 처리 없으면 화살표만 나오도록 처리
+	 --%>
+	<c:choose>
+	
+		<c:when test="${requestScope.pageBean.nextPageGroup}">
+			<a href="${initParam.rootPath }/BoardViewServlet?page=${requestScope.pageBean.endPage+1}">▷</a>
+		</c:when>
+		<c:otherwise>
+				▷
+		</c:otherwise>
+	
+	
+	</c:choose>
+	
+	
+	
+	<%-- 마지막 페이지로 이동 --%>
+	
+	
+	<a href="${initParam.rootPath}/BoardViewServlet?page=${requestScope.pageBean.totalPage}">마지막페이지</a>
+	
+</p>
+	
+	<a href="/HoneyJamGuestHouse/board/write.jsp"><button>게시물 작성</button></a>
+	
+	
+	
 
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 

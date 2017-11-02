@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.honeyjam.vo.Board;
 
+
 public interface BoardDao {
 
 	List<Board> selectItemsById(SqlSession session, String email);
@@ -18,7 +19,13 @@ public interface BoardDao {
 	
 	List<Board>	selectAllItems(SqlSession session);
 	
+
+	List<Board> selectItemList(SqlSession session, int beginItemNum, int endItemNum);
+	
+	int selectItemCount(SqlSession session);
+
 	Board selectItemsByTitle(SqlSession session, String title);
 	
 	Board selectItemByNum(SqlSession session, int itemNum);
+
 }
