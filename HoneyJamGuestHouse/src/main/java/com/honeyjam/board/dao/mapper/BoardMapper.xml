@@ -18,7 +18,7 @@
 
 	
 	<select id="selectAllItems" resultMap="board-resultmap">
-		<include refid="select-board"/>	
+		<include refid="select-board"/>	order by item_num desc
 	</select>
 	
 	
@@ -27,10 +27,20 @@
 		where email= #{value}
 	</select>
 	
+	<select id="selectItemsByTitle" parameterType="string" resultMap="board-resultmap">
+		<include refid="select-board"/>
+		where title = #{value}
+	</select>
+	
+	<select id ="selectItemByNum" parameterType="int" resultMap="board-resultmap">
+		<include refid="select-board"/>
+		where item_num = #{value}
+	</select>
+	
 	<!-- insert -->
 	<insert id="insertBoard" parameterType="board">
 		INSERT INTO board
-		VALUES (#{itemNum},#{content},#{title},#{writeDate},#{email})
+		VALUES (board_seq.nextval,#{content},#{title},#{writeDate},#{email})
 	</insert>
 	
 	<!-- update -->
@@ -47,6 +57,31 @@
 	<delete id="deleteBoardById" parameterType="string">
 		DELETE from board where email = #{value}
 	</delete>
+	
+	
+	<!-- 페이징용!!!! -->
+	<select id="selectItemCount" resultType="_int">
+		select count(*) from board		
+
+	</select>
+	
+	<!-- 특정 페이지의 항목들을 조회하는 메소드 -->
+	<select id="selectItemList" parameterType="map" resultType="board">
+	<![CDATA[
+		select item_num, title 
+		from(
+		
+			select rownum rn, item_num, title 
+				from(
+						select item_num, title from board order by num desc 
+					)
+				
+			where rownum <= #{end}
+			)
+		where rn>= #{begin}  
+	]]>
+
+	</select>
 
 	
 </mapper>

@@ -74,7 +74,7 @@ thead>tr>td {
 				<tr>
 					<td>방번호</td>
 					<td>성별</td>
-					<td>남은 Bed</td>
+					<td>방 최대 수용 인원</td>
 					<td>가격</td>
 					<td>선택</td>
 				</tr>
@@ -84,6 +84,7 @@ thead>tr>td {
 					<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
 				
 		 		<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
+
 					<tr>		
 					 	<td style="width: 70px;">${rooms.roomId}</td>
 						<td style="width: 150px">${rooms.gender}</td>
@@ -91,6 +92,7 @@ thead>tr>td {
 						<td style="width: 50px">${rooms.price}원</td>
 						<td>					
 							<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}" >
+
 								<button>상세보기</button>
 							</a>
 						</td>

@@ -1,5 +1,6 @@
 package com.honeyjam.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -48,6 +49,30 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public List<Board> selectAllItems(SqlSession session) {
 		return session.selectList(makeSqlId("selectAllItems"));
+	}
+
+	@Override
+
+	public List<Board> selectItemList(SqlSession session, int beginItemNum, int endItemNum) {
+		
+		HashMap<String,Integer> map = new HashMap<>();
+		map.put("end", endItemNum);
+		map.put("begin", beginItemNum);
+		return session.selectList(makeSqlId("selectItemList"),map);
+	}
+
+	@Override
+	public int selectItemCount(SqlSession session) {
+		return session.selectOne(makeSqlId("selectItemCount"));
+	}
+	public Board selectItemsByTitle(SqlSession session, String title) {
+		return session.selectOne(makeSqlId("selectItemsByTitle"), title);
+	}
+
+	@Override
+	public Board selectItemByNum(SqlSession session, int itemNum) {
+		return session.selectOne(makeSqlId("selectItemByNum"), itemNum);
+
 	}
 	
 	

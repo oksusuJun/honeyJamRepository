@@ -169,23 +169,28 @@ delete from room where room_id=202
 select available_bed from Room where room_id ='602';
 
 
-
+drop table board cascade constraint;
+/* Board */
+create table Board (
+	item_num number(10) primary key,
+	content varchar2(300) not null,
+	title varchar2(100) not null,
+	write_date date not null,
+	email varchar2(50),
+	constraint emailfk foreign key (email) references member(email)
+);
 
 /*board start*/
 
-	drop table board cascade constraint;
-	/* Board */
-	create table Board (
-		item_num number(10) primary key,
-		content varchar2(300) not null,
-		title varchar2(100) not null,
-		write_date date not null,
-		email varchar2(50),
-		constraint author_fk foreign key (email) references member(email)
-	);
-	/* SEQUENCE 삭제*/
+insert into board values (1,'내용입니다.','제목','20171102','yyy')
+insert into board values (2,'내용입니다.2','제목2','20171101','yyy')
+insert into board values (3,'내용입니다.3','제목3','20171002','aaa')
+insert into board values (4,'내용입니다.4','제목4','20171014','aaa')
+insert into board values (5,'내용입니다.5','제목5','20171012','yyy')
+
+/* SEQUENCE 삭제*/
 		drop sequence  seq_item_num;
-	/* SEQUENCE 생성*/
+/* SEQUENCE 생성*/
 		create sequence seq_item_num;
 
 	/* board 조회*/

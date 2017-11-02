@@ -93,7 +93,7 @@
 				<c:forEach items="${requestScope.boardList}" var="item">
 					<tr>
 						<td>${item.itemNum}</td>
-						<td><a href='${initParam.rootPath}/member/boardContent.jsp?num=${item.itemNum}'>${item.title}</a></td>
+						<td><a href="${initParam.rootPath }/findBoard?item=${item.itemNum}">${item.title}</a></td>
 					</tr>
 				</c:forEach>
 
