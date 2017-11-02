@@ -151,8 +151,8 @@ delete from room where room_id=801
 
 
 /* ############### Dummy Data ################### */
-insert into room values (201, '2인실', '혼숙', 2, 2, 60000);
-insert into room values (202, '2인실', '혼숙', 2, 2, 60000);
+insert into room values (201, '2인실', '남성', 2, 2, 60000);
+insert into room values (202, '2인실', '여성', 2, 2, 60000);
 insert into room values (401, '4인실', '남성', 4, 4,25000);
 insert into room values (402, '4인실', '여성', 4, 4, 25000);
 insert into room values (403, '4인실', '혼숙', 4, 4, 25000);
@@ -163,6 +163,7 @@ insert into room values (801, '8인실', '남성', 8, 8, 20000);
 insert into room values (802, '8인실', '여성', 8, 8, 20000);
 insert into room values (803, '8인실', '혼숙', 8, 8, 20000);
 
+delete from room where room_id=202
 
 
 select available_bed from Room where room_id ='602';

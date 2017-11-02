@@ -48,8 +48,8 @@ public class RoomSearchServlet extends HttpServlet {
 		String checkOutForm = request.getParameter("checkout");
 
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
-		String[] femaleRoom = new String[] {"201","202","402", "602","603", "802","803"};
-		String[] maleRoom = new String[] {"201","202","401", "601", "603", "801", "803"};
+		String[] femaleRoom = new String[] {"202","402", "602", "802"};
+		String[] maleRoom = new String[] {"201","401", "601", "801"};
 		List<Room> availableRoomList = new ArrayList<>();
 
 		
