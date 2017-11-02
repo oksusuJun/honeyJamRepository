@@ -17,6 +17,11 @@
 	</resultMap>
 
 	
+	<select id="selectAllItems" resultMap="board-resultmap">
+		<include refid="select-board"/>	
+	</select>
+	
+	
 	<select id="selectItemsById" parameterType="String" resultMap="board-resultmap">
 		<include refid="select-board"/>
 		where email= #{value}

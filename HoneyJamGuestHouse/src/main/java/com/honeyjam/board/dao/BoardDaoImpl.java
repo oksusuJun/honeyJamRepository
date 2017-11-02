@@ -45,5 +45,12 @@ public class BoardDaoImpl implements BoardDao {
 		return session.delete(makeSqlId("deleteBoardById"), email);
 	}
 
+	@Override
+	public List<Board> selectAllItems(SqlSession session) {
+		return session.selectList(makeSqlId("selectAllItems"));
+	}
+	
+	
+
 	
 }

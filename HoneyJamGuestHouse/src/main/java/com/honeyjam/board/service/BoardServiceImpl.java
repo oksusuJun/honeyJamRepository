@@ -80,6 +80,19 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
+
+	@Override
+	public List<Board> selectAllItems() {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return boardDao.selectAllItems(session);
+		}finally {
+			session.close();
+		}
+	}
+	
+	
 	
 
 	
