@@ -36,7 +36,7 @@ public class BoardInsertServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("loginMember");
 		service.insertBoard(new Board(1,request.getParameter("content"),request.getParameter("title"),new Date(),member.getEmail()));
-		response.sendRedirect("/HoneyJamGuestHouse/board/ContentView.jsp");
+		response.sendRedirect("/HoneyJamGuestHouse/BoardViewServlet");
 		
 	}
 

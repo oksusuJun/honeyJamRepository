@@ -1,15 +1,19 @@
 package com.honeyjam.board.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.honeyjam.board.dao.BoardDao;
 import com.honeyjam.board.dao.BoardDaoImpl;
+import com.honeyjam.board.util.PagingBean;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Board;
+
 
 public class BoardServiceImpl implements BoardService {
 	
@@ -91,6 +95,31 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
+
+	@Override
+	public Map<String, Object> getItemList(int page) {
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<>();
+		//list<Board>, PagingBean객체를 넘겨줄거다. 
+		
+		try {
+			
+			//PagingBean 생성 
+			PagingBean pb = new PagingBean(boardDao.selectItemCount(session), page);
+			
+			map.put("pageBean",pb);
+			
+			List<Board> list = boardDao.selectItemList(session, pb.getBeginItemInPage(), pb.getEndItemInPage());
+			map.put("list",list);
+			
+			return map;
+		}finally {
+			session.close();
+			
+		}
+	}
+	
+	
 	
 	
 	

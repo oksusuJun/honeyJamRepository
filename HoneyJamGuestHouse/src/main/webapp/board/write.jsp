@@ -11,7 +11,7 @@
 <script>
 function checkVals(){
 	var f = document.write;
-	if(f.title.value){
+	if(!f.title.value.length){
 		alert("제목을 입력하세요");
 		return false;
 	}else if(f.content.value.length==0){
@@ -36,7 +36,7 @@ function checkVals(){
 내용:
 <textarea cols="70" rows="15" name="content"></textarea><br>
 <button>등록</button>
-
+</form>
 
 
 </body>
