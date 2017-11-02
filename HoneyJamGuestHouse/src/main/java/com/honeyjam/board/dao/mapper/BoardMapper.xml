@@ -68,12 +68,12 @@
 	<!-- 특정 페이지의 항목들을 조회하는 메소드 -->
 	<select id="selectItemList" parameterType="map" resultType="board">
 	<![CDATA[
-		select item_num, title 
+		select item_num, title, write_date
 		from(
 		
-			select rownum rn, item_num, title 
+			select rownum rn, item_num, title , write_date
 				from(
-						select item_num, title from board order by num desc 
+						select item_num, title, write_date from board order by item_num desc 
 					)
 				
 			where rownum <= #{end}

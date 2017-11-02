@@ -70,7 +70,7 @@ button {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${requestScope.itemList}" var="item">
+				<c:forEach items="${requestScope.list}" var="item">
 					<tr>
 						<td>${item.itemNum}</td>
 						<td><a href="${initParam.rootPath }/findBoard?item=${item.itemNum}">${item.title}</a></td>
