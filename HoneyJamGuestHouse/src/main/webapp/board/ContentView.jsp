@@ -18,31 +18,36 @@
 .content {
 	min-width: 1080px;
 	width: 1080px;
-	min-height: 400px;
+	min-height: 500px;
 	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 table {
 	width: 100%;
 }
 
-th {
+tr {
 	height: 60px;
 	border-bottom: 1px solid #ccc;
 	line-height: 20px;
 	background: #fafafa;
 }
 
-td {
-	height: 30px;
+td{
+	font-weight:normal;
+	background: #fff
 }
 
 button {
 	width: 100px;
 	height: 40px;
-	border: solid 1px tomato;
-	background: #fff;
+	border: solid 2px tomato;
 	outline: 0;
+	border-radius: 30px;
+	font-weight: bold;
+	font-size: 15px;
+	background: #fff
 }
 
 .content_top {
