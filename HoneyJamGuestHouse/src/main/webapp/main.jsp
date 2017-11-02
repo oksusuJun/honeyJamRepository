@@ -110,9 +110,7 @@ option {
 			dateFormat : "yymmdd"
 		});
 	});
-<<<<<<< HEAD
 	
-=======
 
 	$(document).ready(function() {
 		$(".submit").click(function() {
@@ -130,7 +128,6 @@ option {
 
 		});
 	});
->>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
 </script>
 </head>
 <body>
