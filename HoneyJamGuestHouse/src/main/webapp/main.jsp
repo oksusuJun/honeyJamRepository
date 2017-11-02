@@ -139,12 +139,13 @@ option {
 				<p style="color: #484848 !important;">(꿀잼도 되고 꿀잠도 됨 ㅎ)</p>
 			</div>
 		</div>
+
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 
 			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1" autocomplete="off"> 
 			<input type="text" name="checkout" placeholder="checkout" class="calendar" id="input2" autocomplete="off"> 
-				<select class="combobox" name="people"
-				id="input3">
+
+				<select class="combobox" name="people" id="input3">
 				<option value="">인원을 선택해주세요</option>
 				<option value="1">1명</option>
 				<option value="2">2명</option>
