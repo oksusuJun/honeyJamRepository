@@ -14,11 +14,13 @@ function radioCheck() {
 	for (var i = 0; i < paymentList.length; i++) {
 		if (paymentList[i].checked) {
 			flag = true;
-			break;
-		}
+			return flag;
+		} 
 	}
 	if (!flag) {
 		alert("결제수단을 선택해주세요");
+		return false;
+		
 	}
 }
 </script>
@@ -92,9 +94,9 @@ button {
 			<div class="text2">${sessionScope.price * sessionScope.people }원</div>
 
 		</div>
-	<form name="form1" method="post"  action="/HoneyJamGuestHouse/reservationInsert" onsubmit="radioCheck();">
+	<form name="form1" method="post"  action="/HoneyJamGuestHouse/reservationInsert" onsubmit="return radioCheck()">
 		<p>
-			결제 방법 : <label>신용카드 : <input type="radio" name="payment" value="신용 카드"></label>
+			결제 방법 : <label>신용카드 : <input type="radio" name="payment" value="신용카드"></label>
 			<label>무통장입금 : <input type="radio" name="payment" value="무통장입금"></label>
 		<p>
 	

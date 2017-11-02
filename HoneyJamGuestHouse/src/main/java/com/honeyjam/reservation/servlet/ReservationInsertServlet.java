@@ -54,7 +54,7 @@ public class ReservationInsertServlet extends HttpServlet {
 			paymentStatus = 0;
 		} else if(payment.equals("무통장입금")) {
 			paymentStatus = 1;
-		}
+		} 
 		
 		
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
@@ -94,13 +94,13 @@ public class ReservationInsertServlet extends HttpServlet {
 				request.getRequestDispatcher("/main.jsp").forward(request, response);
 			} else {
 				System.out.println("INSERT 성공 : "+result+" 건");
-				if (paymentStatus == 0) {	// 결제 완료
+				if (paymentStatus == 0) {	// 카드 -> 결제 완료
 //					System.out.println("여기 안들어옴??");
-					System.out.println("카드결제 : " + paymentStatus);
+					System.out.println(payment +" : " + paymentStatus);
 
 					request.getRequestDispatcher("/payment/payment3-2.jsp").forward(request, response);
 				} else { // 무통장입금
-					System.out.println("무통장입금 : " + paymentStatus);
+					System.out.println(payment + " : " + paymentStatus);
 					request.getRequestDispatcher("/payment/payment2-2.jsp").forward(request, response);
 				}
 			}
