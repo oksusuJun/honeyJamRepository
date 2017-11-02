@@ -182,7 +182,7 @@ create table Board (
 );
 
 /*board start*/
-
+delete from board
 insert into board values (1,'내용입니다.','제목','20171102','yyy')
 insert into board values (2,'내용입니다.2','제목2','20171101','yyy')
 insert into board values (3,'내용입니다.3','제목3','20171002','aaa')
@@ -202,6 +202,9 @@ insert into board values (5,'내용입니다.5','제목5','20171012','yyy')
 
 /*board end*/
 	
+create sequence seq_item_num
+
+create sequence board_seq
 	
 		
 		

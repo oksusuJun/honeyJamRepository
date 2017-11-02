@@ -9,14 +9,15 @@
 
 
 <style type="text/css">
-@font-face{
+@font-face {
 	font-family: myFont;
 	src: url('/HoneyJamGuestHouse/font/HoonWhitecatR.ttf');
 }
+
 .contents {
 	width: 100%;
 	height: 650px;
-	background-image: url("img/main.jpg");
+	background-image: url("img/mainB.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	font-family: myFont;
@@ -33,7 +34,6 @@
 ::-webkit-input-placeholder {
 	font-size: 18px;
 	margin-left: 10px;
-	
 }
 
 input {
@@ -110,6 +110,23 @@ option {
 			dateFormat : "yymmdd"
 		});
 	});
+
+	$(document).ready(function() {
+		$(".submit").click(function() {
+			if ($("#input1").val() == "") {
+				alert("체크인 날짜를 선택해주세요.");
+			} else if ($("#input2").val() == "") {
+				alert("체크아웃 날짜를 선택해주세요.");
+			} else if ($("#input3").val() == "") {
+				alert("인원수를 선택해주세요.");
+			} else if ($("#input4").val() == "") {
+				alert("성별을 선택해주세요.");
+			} else {
+				$(".submit").attr("type","submit");
+			}
+
+		});
+	});
 </script>
 </head>
 <body>
@@ -124,11 +141,19 @@ option {
 		</div>
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 
+<<<<<<< HEAD
 			<input type="text" name="checkin" placeholder="checkin" class="calendar"> 
 			<input type="text" name="checkout" placeholder="checkout" class="calendar"> 
 			
 			<select class="combobox" name="people">
 				<option value="0">인원을 선택해주세요</option>
+=======
+
+			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1"> <input type="text"
+				name="checkout" placeholder="checkout" class="calendar" id="input2"> <select class="combobox" name="people"
+				id="input3">
+				<option value="">인원을 선택해주세요</option>
+>>>>>>> branch 'master' of https://github.com/oksusuJun/honeyJamRepository.git
 				<option value="1">1명</option>
 				<option value="2">2명</option>
 				<option value="3">3명</option>
@@ -137,13 +162,11 @@ option {
 				<option value="6">6명</option>
 				<option value="7">7명</option>
 				<option value="8">8명</option>
-			</select> 
-			<select class="combobox" name="gender">
+			</select> <select class="combobox" name="gender" id="input4">
 				<option value="">성별을 선택해주세요</option>
 				<option value="남성">남성</option>
 				<option value="여성">여성</option>
-			</select> 
-			<input type="submit" name="search" class="submit" value="검색">
+			</select> <input type="button" name="search" class="submit" value="검색" onclick="check">
 		</form>
 	</div>
 	<jsp:include page="/WEB-INF/footer.jsp"></jsp:include>
