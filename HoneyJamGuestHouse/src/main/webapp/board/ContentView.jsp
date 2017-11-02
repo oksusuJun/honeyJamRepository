@@ -16,8 +16,9 @@
 .content {
 	min-width: 1080px;
 	width: 1080px;
-	min-height: 700px;
+	min-height: 500px;
 	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 table {
@@ -39,10 +40,12 @@ td{
 button {
 	width: 100px;
 	height: 40px;
-	border: solid 1px pink;
-	background: #fff;
+	border: solid 2px pink;
 	outline: 0;
 	border-radius: 30px;
+	font-weight: bold;
+	font-size: 15px;
+	background: #fff
 }
 
 .content_top {
