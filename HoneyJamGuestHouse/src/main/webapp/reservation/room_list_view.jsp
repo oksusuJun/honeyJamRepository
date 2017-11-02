@@ -91,7 +91,7 @@ thead>tr>td {
 						<td style="width: 150px">${rooms.availableBed} 개</td>
 						<td style="width: 50px">${rooms.price}원</td>
 						<td>					
-							<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}" >
+							<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}&price=${rooms.price}" >
 
 								<button>상세보기</button>
 							</a>

@@ -163,7 +163,6 @@ button {
 	
 	
 
-
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 
 
