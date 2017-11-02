@@ -37,25 +37,25 @@
 			</tr>
 			<tr>
 				<td>방 번호</td>
-				<td>${sessionScope.reservation.roomId }</td>
+				<td>${sessionScope.roomId }</td>
 			</tr>
 			<tr>
 				<td>예약자 ID</td>
-				<td>${sessionScope.reservation.email }</td>
+				<td>${sessionScope.email }</td>
 			</tr>
 			<tr>
 				<td>예약번호</td>
-				<td>${sessionScope.reservation.reservationId }</td>
+				<td>${sessionScope.email }</td>
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td>${sessionScope.reservation.checkIn } 
+				<td>${sessionScope.checkIn } 
 					~
-					${sessionScope.reservation.checkOut }</td>
+					${sessionScope.checkOut }</td>
 			</tr>
 			<tr>
 				<td>결제수단</td>
-				<td>카드</td>
+				<td>${requestScope.payment }</td>
 			</tr>
 		</table>
 

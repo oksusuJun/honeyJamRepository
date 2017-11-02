@@ -5,8 +5,23 @@
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <title>Insert title here</title>
+<script>
+function radioCheck() {
+	// 결제방식이 선택되었는지 체크 -> 선택 x -> 선택하라는 메세지
+	var paymentList = document.form1.payment;
+	var flag = false;
+	// 하나만 선택이된다하더라도 일단 값은 다 넘어온다. --> 배열로~~~~
+	for (var i = 0; i < paymentList.length; i++) {
+		if (paymentList[i].checked) {
+			flag = true;
+			break;
+		}
+	}
+	if (!flag) {
+		alert("결제수단을 선택해주세요");
+	}
+}
 </head>
-<style>
 *{
 	font-family: sans-serif; 
 }
@@ -55,9 +70,9 @@ button {
 </style>
 
 <body>
-	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/header.jsp" />
 	<h1>최종 예약정보</h1>
-
+	
 	<div class="content">
 		<div class="content_top">
 
@@ -75,12 +90,20 @@ button {
 			<div class="text2">${sessionScope.price * sessionScope.people }원</div>
 
 		</div>
-		<div class="content_bot"></div>
-		<div class="next">
-			<a href="#"><button>예약완료</button></a>
-		</div>
-	</div>
+	<form name="form1" method="post"  action="/HoneyJamGuestHouse/reservationInsert" onsubmit="radioCheck();">
+		<p>
+			결제 방법 : <label>신용카드 : <input type="radio" name="payment" value="creditCard"></label>
+			<label>무통장입금 : <input type="radio" name="payment" value="account"></label>
+		<p>
+		<!-- 
+		<%
+		session.setAttribute("paymentStatus", "결제완료");
+		%>
+		 -->
+		<input type="submit" value="Reservation">
+		</form>
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
+
 
 </body>
 </html>
