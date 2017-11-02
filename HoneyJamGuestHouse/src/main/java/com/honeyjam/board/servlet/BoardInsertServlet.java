@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.honeyjam.board.service.BoardService;
+import com.honeyjam.board.service.BoardServiceImpl;
+import com.honeyjam.vo.Board;
+
 /**
  * Servlet implementation class BoardInsertServlet
  */
@@ -21,14 +25,12 @@ import javax.servlet.http.HttpSession;
 public class BoardInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		
-		//요청파라미터 조회
+
+		BoardService service= BoardServiceImpl.getInstance();
 		
 	
 	}

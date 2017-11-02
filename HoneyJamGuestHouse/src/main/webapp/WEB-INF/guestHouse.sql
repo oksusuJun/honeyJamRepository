@@ -140,7 +140,6 @@ create table Room (
 	room_id	number(3) primary key,
 	room_name varchar2(10) not null,
 	gender	varchar2(20) not null,
---	status varchar2(20) not null,
 	max_bed number(2) not null,
 	available_bed number(2) not null,
 	price number(10) not null
