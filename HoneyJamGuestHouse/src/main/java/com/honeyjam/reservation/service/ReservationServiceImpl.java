@@ -296,7 +296,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public int addReservation(String reservationId, String email, String checkIn, 
+	public int addReservation(int reservationId, String email, String checkIn, 
 										String checkOut, int numberOfGuests,
 			int roomId, String gender, int paymentStatus) throws IOException {
 		SqlSession session = null;
@@ -311,8 +311,11 @@ public class ReservationServiceImpl implements ReservationService{
 			session = factory.openSession();
 			Reservation reservation = new Reservation(reservationId, email, checkInForm, checkOutForm, numberOfGuests, roomId, gender, paymentStatus);
 			int result = dao.insertReservation(session, reservation);
+			session.commit();
 			return result;
+			
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}  finally {
 			session.close();

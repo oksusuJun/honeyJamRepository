@@ -37,8 +37,9 @@ public class ReservationInsertServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		// 요청 파라미터 조회
+		System.out.println(session.getAttribute("roomId"));
 		String room_id = (String)session.getAttribute("roomId");
-		String reservationId = UUID.randomUUID().toString();
+		int reservationId = 0;
 		Member member = (Member)session.getAttribute("loginMember");
 		String email = member.getEmail();
 		String checkIn = (String)session.getAttribute("checkIn");

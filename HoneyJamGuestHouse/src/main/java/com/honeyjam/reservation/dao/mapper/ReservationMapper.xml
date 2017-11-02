@@ -52,7 +52,7 @@
 	<selectKey keyProperty="reservationId" resultType="_int" order="BEFORE">
 	select  reservation_id_seq.NEXTVAL from dual
 	</selectKey>
-		INSERT INTO reservation VALUES (reservation_id_seq.NEXTVAL ,#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender},#{paymentStatus})
+		INSERT INTO reservation VALUES (#{reservationId} ,#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender},#{paymentStatus})
 	</insert>	
 	
 	<select id="selectReservationById" parameterType="string" resultMap="reservation-join-member-resultmap">

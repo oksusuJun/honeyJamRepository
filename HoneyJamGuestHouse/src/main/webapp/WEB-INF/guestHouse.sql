@@ -20,6 +20,9 @@ insert into MEMBER values('mem2@hj.com', '2222', '회원2', '010-2222-2222', 1);
 insert into MEMBER values('mem3@hj.com', '3333', '회원3', '010-3333-3333', 1);
 insert into MEMBER values('bbb', '3434', '회원4', '010-3434-3434', 1);
 insert into MEMBER values('777', '4545', '회원5', '010-4545-4545', 1);
+insert into MEMBER values('aaa', '2323', '회원7', '010-2323-2323', 1);
+insert into MEMBER values('aba@com', '4543', 'aba', '010-3344-3928', 1);
+
 
 
 
@@ -185,9 +188,9 @@ create table Board (
 delete from board
 insert into board values (1,'내용입니다.','제목','20171102','yyy')
 insert into board values (2,'내용입니다.2','제목2','20171101','yyy')
-insert into board values (3,'내용입니다.3','제목3','20171002','aaa')
-insert into board values (4,'내용입니다.4','제목4','20171014','aaa')
-insert into board values (5,'내용입니다.5','제목5','20171012','yyy')
+insert into board values (3,'내용입니다.3','제목3','20171002','aaa');
+insert into board values (4,'내용입니다.4','제목4','20171014','aaa');
+insert into board values (5,'내용입니다.5','제목5','20171012','yyy');
 
 /* SEQUENCE 삭제*/
 		drop sequence  seq_item_num;
