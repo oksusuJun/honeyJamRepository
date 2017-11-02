@@ -203,9 +203,11 @@ insert into board values (5,'내용입니다.5','제목5','20171012','yyy')
 /*board end*/
 	
 create sequence seq_item_num
-
 create sequence board_seq
 	
+
+
+
 		
 		
 /* ############### Join 조회 Test################### */
