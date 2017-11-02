@@ -65,7 +65,6 @@ public class ReservationInsertServlet extends HttpServlet {
 			Date checkOutForm = dateForm.parse(checkOut);
 			Date checkInForm = dateForm.parse(checkIn);
 			
-			
 			Reservation reservation = new Reservation(reservationId, email, checkInForm, checkOutForm, numberOfGuests, roomId, gender, paymentStatus);
 			session.setAttribute("reservation", reservation);
 		} catch (ParseException e) {
