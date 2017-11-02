@@ -309,7 +309,15 @@ public class ReservationServiceImpl implements ReservationService{
 			Date checkInForm = dateForm.parse(checkIn);
 			Date checkOutForm = dateForm.parse(checkOut);
 			session = factory.openSession();
-			Reservation reservation = new Reservation(reservationId, email, checkInForm, checkOutForm, numberOfGuests, roomId, gender, paymentStatus);
+			
+			java.sql.Date checkin = 
+					new java.sql.Date(checkInForm.getYear(),checkInForm.getMonth(),checkInForm.getDate());
+			
+			java.sql.Date checkout = 
+					new java.sql.Date(checkOutForm.getYear(),checkOutForm.getMonth(),checkOutForm.getDate());
+			
+			
+			Reservation reservation = new Reservation(reservationId, email, checkin, checkout, numberOfGuests, roomId, gender, paymentStatus);
 			int result = dao.insertReservation(session, reservation);
 			return result;
 		} catch (Exception e) {
