@@ -36,23 +36,23 @@
 		</tr>
 		<tr>
 			<td>객실</td>
-			<td>202호</td>
+			<td>${sessionScope.roomId}호</td>
 		</tr>
 		<tr>
 			<td>날짜</td>
-			<td>2018년 1월 1일 ~ 2018년 1월 2일</td>
+			<td>${sessionScope.checkIn} ~ ${sessionScope.checkOut}</td>
 		</tr>
 		<tr>
 			<td>성별</td>
-			<td>남자</td>
+			<td>${sessionScope.gender}</td>
 		</tr>
 		<tr>
 			<td>인원</td>
-			<td>2명</td>
+			<td>${sessionScope.people}명</td>
 		</tr>
 		<tr>
 			<td>요금</td>
-			<td>30,000원</td>
+			<td>${sessionScope.price * sessionScope.people}원</td>
 		</tr>
 	</table>
 
