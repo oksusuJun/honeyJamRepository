@@ -142,8 +142,9 @@ option {
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 
 
-			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1"> <input type="text"
-				name="checkout" placeholder="checkout" class="calendar" id="input2"> <select class="combobox" name="people"
+			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1" autocomplete="off"> 
+			<input type="text" name="checkout" placeholder="checkout" class="calendar" id="input2" autocomplete="off"> 
+				<select class="combobox" name="people"
 				id="input3">
 				<option value="">인원을 선택해주세요</option>
 				<option value="1">1명</option>
