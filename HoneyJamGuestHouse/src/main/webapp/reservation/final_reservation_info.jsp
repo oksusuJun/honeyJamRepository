@@ -21,7 +21,9 @@ function radioCheck() {
 		alert("결제수단을 선택해주세요");
 	}
 }
+</script>
 </head>
+<style>
 *{
 	font-family: sans-serif; 
 }
@@ -73,7 +75,7 @@ button {
 	<jsp:include page="/WEB-INF/header.jsp" />
 	<h1>최종 예약정보</h1>
 	
-	<div class="content">
+	
 		<div class="content_top">
 
 			<div class="text1">방 번호 :</div>

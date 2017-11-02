@@ -7,6 +7,8 @@
 <title>HoneyJam</title>
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
+<script src="/HoneyJamGuestHouse/scripts/jquery-ui.js"></script>
+<link rel="stylesheet" href="/HoneyJamGuestHouse/css/cal.css">
 
 <style type="text/css">
 @font-face{
@@ -43,22 +45,6 @@
 	height: 500px;
 }
 
-table {
-	width: 100%;
-}
-
-table>thead>tr {
-	background: rgba(0, 0, 0, 0.2);
-	text-align: left;
-	margin-left: 5px;
-	height: 30px;
-}
-
-table>tbody>tr {
-	width: 100%;
-	height: 170px;
-	line-height: 170px;
-}
 
 button {
 	width: 100px;
@@ -112,6 +98,7 @@ p {
 <body>
 	<!-- header 가져오기 -->
 	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/nav.jsp"></jsp:include>
 
 	<!-- 성별이 없으면 메인에서 있다면 검색화면에서 옴 -->
 	<%
