@@ -97,12 +97,17 @@ font-size: 14px;
 	<br>
 	<br>
 	<%-- 검색 후 예약할 수 있는 방목록 --%>
+	
+	${sessionScope.checkIn}~${sessionScope.checkOut}
+	
 	<h1>예약가능한 방목록</h1>
 	<c:if test="${not empty requestScope.errorMessage }">
 		<script>
 			alert("에러: " + "${requestScope.errorMessage }");
 		</script>
 	</c:if>
+	
+	
 	<div class="content">
 
 		<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->

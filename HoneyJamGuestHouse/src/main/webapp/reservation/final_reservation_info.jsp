@@ -116,6 +116,7 @@ button {
 		</table>
 	</div>
 
+
 	<form name="form1" method="post"  action="/HoneyJamGuestHouse/reservationInsert" onsubmit="radioCheck();">
 		<p>
 			결제 방법 : <label>신용카드 : <input type="radio" name="payment" value="creditCard"></label>
