@@ -16,7 +16,7 @@
 .contents {
 	width: 100%;
 	height: 650px;
-	background-image: url("img/mainA.jpg");
+	background-image: url("img/mainB.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	font-family: myFont;
