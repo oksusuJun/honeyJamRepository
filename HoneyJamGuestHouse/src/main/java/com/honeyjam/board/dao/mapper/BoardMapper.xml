@@ -4,7 +4,7 @@
 
 
 	<sql id="select-board">
-		SELECT item_num, content, title, write_date, email
+		SELECT *
 		FROM board
 	</sql>
 
@@ -25,6 +25,16 @@
 	<select id="selectItemsById" parameterType="String" resultMap="board-resultmap">
 		<include refid="select-board"/>
 		where email= #{value}
+	</select>
+	
+	<select id="selectItemsByTitle" parameterType="string" resultMap="board-resultmap">
+		<include refid="select-board"/>
+		where title = #{value}
+	</select>
+	
+	<select id ="selectItemByNum" parameterType="int" resultMap="board-resultmap">
+		<include refid="select-board"/>
+		where item_num = #{value}
 	</select>
 	
 	<!-- insert -->

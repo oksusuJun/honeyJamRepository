@@ -169,7 +169,6 @@ delete from room where room_id=202
 select available_bed from Room where room_id ='602';
 
 
-
 drop table board cascade constraint;
 /* Board */
 create table Board (
@@ -181,7 +180,7 @@ create table Board (
 	constraint emailfk foreign key (email) references member(email)
 );
 
-select * from board;
+/*board start*/
 
 insert into board values (1,'내용입니다.','제목','20171102','yyy')
 insert into board values (2,'내용입니다.2','제목2','20171101','yyy')
@@ -189,6 +188,22 @@ insert into board values (3,'내용입니다.3','제목3','20171002','aaa')
 insert into board values (4,'내용입니다.4','제목4','20171014','aaa')
 insert into board values (5,'내용입니다.5','제목5','20171012','yyy')
 
+/* SEQUENCE 삭제*/
+		drop sequence  seq_item_num;
+/* SEQUENCE 생성*/
+		create sequence seq_item_num;
+
+	/* board 조회*/
+		select * from board;
+	
+	/*Board Dummy*/
+		insert into board values (seq_item_num.nextVal,'글내용글내용글내용','제목제목제목','20171013','aba@com');
+
+/*board end*/
+	
+	
+		
+		
 /* ############### Join 조회 Test################### */
 
 select 	r.reservation_id,

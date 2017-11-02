@@ -15,5 +15,9 @@ public interface BoardService {
 	void deleteBoard(String email);
 	
 	List<Board> selectAllItems();
+	
+	Board selectItemsByTitle(String title);
+	
+	Board selectItemByNum(int itemNum);
 
 }

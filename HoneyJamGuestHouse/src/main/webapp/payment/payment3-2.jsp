@@ -36,44 +36,26 @@
 				<td colspan="2">예약 정보</td>
 			</tr>
 			<tr>
-				<td>ID</td>
-				<td>test@test.com</td>
+				<td>방 번호</td>
+				<td>${sessionScope.reservation.roomId }</td>
 			</tr>
 			<tr>
-				<td>예약자</td>
-				<td>홍길동</td>
-			</tr>
-			<tr>
-				<td>연락처</td>
-				<td>010-5555-5555</td>
+				<td>예약자 ID</td>
+				<td>${sessionScope.reservation.email }</td>
 			</tr>
 			<tr>
 				<td>예약번호</td>
-				<td>A1234</td>
-			</tr>
-			<tr>
-				<td>객실이름</td>
-				<td>202호</td>
+				<td>${sessionScope.reservation.reservationId }</td>
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td>2018년 1월 1일 ~ 2018년 1월 2일</td>
+				<td>${sessionScope.reservation.checkIn } 
+					~
+					${sessionScope.reservation.checkOut }</td>
 			</tr>
 			<tr>
 				<td>결제수단</td>
 				<td>카드</td>
-			</tr>
-			<tr>
-				<td>승인번호</td>
-				<td>6532-7848-1548-2654</td>
-			</tr>
-			<tr>
-				<td>객실이름</td>
-				<td>202호</td>
-			</tr>
-			<tr>
-				<td>날짜</td>
-				<td>2018년 1월 1일 ~ 2018년 1월 2일</td>
 			</tr>
 		</table>
 
