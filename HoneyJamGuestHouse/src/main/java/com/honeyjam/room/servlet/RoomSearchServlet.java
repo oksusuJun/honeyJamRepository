@@ -48,9 +48,14 @@ public class RoomSearchServlet extends HttpServlet {
 		String checkOutForm = request.getParameter("checkout");
 
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
-		String[] femaleRoom = new String[] {"402", "602", "802"};
-		String[] maleRoom = new String[] {"401", "601", "801"};
+		String[] femaleRoom = new String[] {"202","402", "602", "802"};
+		String[] maleRoom = new String[] {"201","401", "601", "801"};
 		List<Room> availableRoomList = new ArrayList<>();
+		
+		session.setAttribute("gender", gender);
+		session.setAttribute("people", numberOfGuests);
+		session.setAttribute("checkIn", checkInForm);
+		session.setAttribute("checkOut", checkOutForm);
 
 		
 		try {
@@ -62,10 +67,7 @@ public class RoomSearchServlet extends HttpServlet {
 			// 로그인 여부 check
 			if (session.getAttribute("loginMember") == null) { // 로그인 x 라면
 				// session에 검색조건 parameter 저장
-				session.setAttribute("gender", gender);
-				session.setAttribute("people", numberOfGuests);
-				session.setAttribute("checkIn", checkInForm);
-				session.setAttribute("checkOut", checkOutForm);
+			
 
 				RoomService service = RoomServiceImpl.getInstance();
 				ReservationService resService = ReservationServiceImpl.getInstance();
@@ -89,7 +91,7 @@ public class RoomSearchServlet extends HttpServlet {
 					} else {
 						for (int i = 0; i<roomList.size(); i++) {
 							String room = roomList.get(i);
-							if (gender.equals("남성")) {
+							if (gender.contains("남성")) {
 								for(String r : maleRoom) {
 									if (r.equals(room)) {
 										int roomNum = Integer.parseInt(room);
@@ -99,7 +101,7 @@ public class RoomSearchServlet extends HttpServlet {
 									} 	
 								}
 								System.out.println(availableRoomList);
-							} else if(gender.equals("여성")) {
+							} else if(gender.contains("여성")) {
 								for(String r : femaleRoom) {
 									if (r.equals(room)) {
 										int roomNum = Integer.parseInt(room);
@@ -144,7 +146,7 @@ public class RoomSearchServlet extends HttpServlet {
 					} else {
 						for (int i = 0; i<roomList.size(); i++) {
 							String room = roomList.get(i);
-							if (gender.equals("남성")) {
+							if (gender.contains("남성")) {
 								for(String r : maleRoom) {
 									if (r.equals(room)) {
 										int roomNum = Integer.parseInt(room);
@@ -155,7 +157,7 @@ public class RoomSearchServlet extends HttpServlet {
 								}
 								
 								
-							} else if(gender.equals("여성")) {
+							} else if(gender.contains("여성")) {
 								for(String r : femaleRoom) {
 									if (r.equals(room)) {
 										int roomNum = Integer.parseInt(room);
@@ -166,7 +168,7 @@ public class RoomSearchServlet extends HttpServlet {
 								}
 								
 							}
-							
+						
 						}
 						session.setAttribute("availableRoomList", availableRoomList);
 						session.setAttribute("roomList", roomList);	
