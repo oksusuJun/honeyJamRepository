@@ -150,7 +150,7 @@ header {
 						<c:otherwise>
 							<ul class="submenu">
 								<li><a href="#">예약하기</a></li>
-								<li><a href="${initParam.rootPath }/member/login.jsp" onclick="pop1()">예약조회</a></li>
+								<li><a href="#">예약조회</a></li>
 							</ul>
 						</c:otherwise>
 					</c:choose>
