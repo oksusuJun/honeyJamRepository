@@ -24,15 +24,16 @@ table {
 	width: 100%;
 }
 
-th {
+tr {
 	height: 60px;
 	border-bottom: 1px solid #ccc;
 	line-height: 20px;
 	background: #fafafa;
 }
 
-td {
-	height: 30px;
+td{
+	font-weight:normal;
+	background: #fff
 }
 
 button {
@@ -41,6 +42,7 @@ button {
 	border: solid 1px pink;
 	background: #fff;
 	outline: 0;
+	border-radius: 30px;
 }
 
 .content_top {

@@ -9,6 +9,11 @@
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 
 <style type="text/css">
+@font-face{
+	font-family: myFont;
+	src: url('/HoneyJamGuestHouse/font/HoonWhitecatR.ttf');
+}
+
 * {
 	padding: 0;
 	margin: 0 auto;
@@ -63,6 +68,7 @@ button {
 	outline: 0;
 	color: #fff;
 	cursor: pointer;
+	border-radius: 30px;
 }
 
 .content {
@@ -138,14 +144,14 @@ width: 100%;
 		if (request.getParameter("roomId").equals("201") || request.getParameter("roomId").equals("202")) {
 	%>
 	<div class="body">
-		<div class="title">2인실</div>
+		<div class="title" style="font-family: myFont; font-size: 50px;">♥2인실♥</div>
 		<div class="img">
-			<img alt="img" src="../img/4인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/4인실_1.jpg"
+			<img alt="img" src="../img/2인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/2인실_1.jpg"
 				style="width: 40%">
 		</div>
 		<div class="content">
 			<div class="content_top">
-				<h1>시설안내</h1>
+				<h1 style="color: green">시설안내</h1>
 				<a href="${initParam.rootPath }/reservation/onReservation"><button>예약하기</button></a>
 
 			</div>
@@ -210,7 +216,7 @@ width: 100%;
 		} else if (request.getParameter("roomId").equals("401") || request.getParameter("roomId").equals("402")) {
 	%>
 	<div class="body">
-		<div class="title">4인실</div>
+		<div class="title" style="font-family: myFont; font-size: 50px;">♥4인실♥</div>
 		<div class="img">
 			<img alt="img" src="../img/4인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/4인실_1.jpg"
 				style="width: 40%">
@@ -282,7 +288,7 @@ width: 100%;
 		} else if (request.getParameter("roomId").equals("601") || request.getParameter("roomId").equals("602")) {
 	%>
 	<div class="body">
-		<div class="title">6인실</div>
+		<div class="title" style="font-family: myFont; font-size: 50px;">♥6인실♥</div>
 		<div class="img">
 			<img alt="img" src="../img/6인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/6인실_1.jpg"
 				style="width: 40%">
@@ -354,7 +360,7 @@ width: 100%;
 		} else if (request.getParameter("roomId").equals("801") || request.getParameter("roomId").equals("802")) {
 	%>
 	<div class="body">
-		<div class="title">8인실</div>
+		<div class="title" style="font-family: myFont; font-size: 50px;">♥8인실♥</div>
 		<div class="img">
 			<img alt="img" src="../img/8인실.jpg" style="width: 59.5%; margin-right: 0.5%"> <img alt="img" src="../img/8인실_1.jpg"
 				style="width: 40%">
