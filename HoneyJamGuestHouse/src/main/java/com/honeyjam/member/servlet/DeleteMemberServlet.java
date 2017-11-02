@@ -24,9 +24,11 @@ public class DeleteMemberServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			
+			
 			try {
 				HttpSession session = request.getSession();
 				MemberService service= MemberServiceImpl.getInstance();
+				
 				
 				if(!email.equals(((Member)session.getAttribute("loginMember")).getEmail())) {
 					throw new LoginFailException("현재 로그인한 이메일로 다시 입력하세요");

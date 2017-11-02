@@ -41,7 +41,7 @@ table {
 }
 
 td, tr {
-	border: 1px solid black;
+	border: 3px solid pink;
 }
 
 .content {
@@ -64,6 +64,7 @@ thead>tr>td {
 
 tbody>tr>td {
 	height: 40px;
+	width: 150px;
 }
 
 button {

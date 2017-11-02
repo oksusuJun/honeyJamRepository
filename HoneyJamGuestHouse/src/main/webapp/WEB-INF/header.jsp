@@ -150,7 +150,7 @@ header {
 						<c:otherwise>
 							<ul class="submenu">
 								<li><a href="#">예약하기</a></li>
-								<li><a href="${initParam.rootPath }/member/login.jsp" onclick="pop1()">예약조회</a></li>
+								<li><a href="#">예약조회</a></li>
 							</ul>
 						</c:otherwise>
 					</c:choose>
@@ -168,7 +168,9 @@ header {
 	<div class="header_right">
 		<c:choose>
 			<c:when test="${sessionScope.loginMember != null}">
+				
 				<ul>
+					
 					<li><a href="${initParam.rootPath }/logout">로그아웃</a></li>
 					<li><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
 				</ul>
