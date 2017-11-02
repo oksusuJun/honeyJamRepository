@@ -2,6 +2,8 @@
 <%@page import="java.text.DateFormat"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 .content {
 	min-width: 1080px;
 	width: 1080px;
-	min-height: 700px;
+	min-height: 400px;
 	margin-top: 50px;
 }
 
@@ -38,7 +40,7 @@ td {
 button {
 	width: 100px;
 	height: 40px;
-	border: solid 1px pink;
+	border: solid 1px tomato;
 	background: #fff;
 	outline: 0;
 }
@@ -75,12 +77,19 @@ button {
 						<td>${item.itemNum}</td>
 						<td><a href="${initParam.rootPath }/findBoard?item=${item.itemNum}">${item.title}</a></td>
 						<td>${item.email }</td>
-						<td>${item.writeDate}</td>
+						<td>
+						
+						<fmt:formatDate value="${item.writeDate}" pattern="yyyy-MM-dd"/>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	
+	
+		
+	<a href="/HoneyJamGuestHouse/board/write.jsp"><button>게시물 작성</button></a>
 	
 	<%-- 페이징 처리 --%>
 <p>
@@ -158,7 +167,6 @@ button {
 	
 </p>
 	
-	<a href="/HoneyJamGuestHouse/board/write.jsp"><button>게시물 작성</button></a>
 	
 	
 	

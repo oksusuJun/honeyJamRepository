@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,22 +124,21 @@ td, th {
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>A1234</td>
-						<td>test@test.com</td>
-						<td>2018년 1월 1일</td>
-						<td>2018년 1월 2일</td>
-						<td>2 명</td>
-						<td>202호</td>
-						<td>남</td>
-						<td>결제 완료</td>
-					</tr>
 					<c:forEach items="${requestScope.reservation }" var="reservation">
 						<tr>
 							<td style="width: 70px;">${reservation.reservationId }</td>
 							<td style="width: 100px">${reservation.email }</td>
-							<td style="width: 150px">${reservation.checkIn }</td>
-							<td style="width: 150px">${reservation.checkOut }</td>
+							
+
+							<td style="width: 150px">
+							<fmt:formatDate value="${reservation.checkIn}" pattern="yyyy-MM-dd"/>
+							</td>
+
+							<td style="width: 150px">
+							<fmt:formatDate value="${reservation.checkOut}" pattern="yyyy-MM-dd"/>
+							</td>
+
+
 							<td style="width: 50px">${reservation.numberOfGuests }</td>
 							<td style="width: 70px;">${reservation.roomId }</td>
 							<td style="width: 70px">${reservation.gender }</td>
