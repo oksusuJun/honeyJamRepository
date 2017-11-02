@@ -73,7 +73,7 @@ button {
 				<c:forEach items="${requestScope.itemList}" var="item">
 					<tr>
 						<td>${item.itemNum}</td>
-						<td>${item.title}</td>
+						<td><a href="${initParam.rootPath }/findBoard?item=${item.itemNum}">${item.title}</a></td>
 						<td>${item.email }</td>
 						<td>${item.writeDate}</td>
 					</tr>

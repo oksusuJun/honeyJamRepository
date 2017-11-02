@@ -120,6 +120,26 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	
+	public Board selectItemsByTitle(String title) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return boardDao.selectItemsByTitle(session, title);
+		}finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public Board selectItemByNum(int itemNum) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			return boardDao.selectItemByNum(session, itemNum);
+		}finally {
+			session.close();
+		}
+	}
 	
 	
 	

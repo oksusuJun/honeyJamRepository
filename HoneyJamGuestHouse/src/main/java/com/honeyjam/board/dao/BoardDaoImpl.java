@@ -52,6 +52,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
+
 	public List<Board> selectItemList(SqlSession session, int beginItemNum, int endItemNum) {
 		
 		HashMap<String,Integer> map = new HashMap<>();
@@ -63,6 +64,15 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int selectItemCount(SqlSession session) {
 		return session.selectOne(makeSqlId("selectItemCount"));
+	}
+	public Board selectItemsByTitle(SqlSession session, String title) {
+		return session.selectOne(makeSqlId("selectItemsByTitle"), title);
+	}
+
+	@Override
+	public Board selectItemByNum(SqlSession session, int itemNum) {
+		return session.selectOne(makeSqlId("selectItemByNum"), itemNum);
+
 	}
 	
 	

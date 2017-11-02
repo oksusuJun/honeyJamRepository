@@ -17,6 +17,11 @@ public interface BoardService {
 	
 	List<Board> selectAllItems();
 	
+
 	Map<String, Object> getItemList(int page);
+
+	Board selectItemsByTitle(String title);
+	
+	Board selectItemByNum(int itemNum);
 
 }
