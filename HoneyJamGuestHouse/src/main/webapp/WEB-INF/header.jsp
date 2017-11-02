@@ -168,7 +168,9 @@ header {
 	<div class="header_right">
 		<c:choose>
 			<c:when test="${sessionScope.loginMember != null}">
+				
 				<ul>
+					
 					<li><a href="${initParam.rootPath }/logout">로그아웃</a></li>
 					<li><a href="${initParam.rootPath }/member/mypage.jsp">마이페이지</a></li>
 				</ul>
