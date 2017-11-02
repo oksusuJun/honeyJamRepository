@@ -62,7 +62,6 @@ public class RoomSearchServlet extends HttpServlet {
 			
 			System.out.println(checkInForm);
 			System.out.println(checkOutForm);
-		
 
 			// 로그인 여부 check
 			if (session.getAttribute("loginMember") == null) { // 로그인 x 라면

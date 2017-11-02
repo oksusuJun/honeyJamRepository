@@ -296,7 +296,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public int addReservation(int reservationId, String email, String checkIn, 
+	public int addReservation(String reservationId, String email, String checkIn, 
 										String checkOut, int numberOfGuests,
 			int roomId, String gender, int paymentStatus) throws IOException {
 		SqlSession session = null;

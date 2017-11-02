@@ -35,45 +35,57 @@
 	color: #000;
 }
 
-table {
-	border-collapse: collapse;
-	width: 100%;
-}
-
-td, tr {
-	border: 3px solid pink;
-}
-
 .content {
 	width: 900px;
-	min-height: 600px;
-	height: 600px;
+	min-height: 850px;
+	height: 850px;
 }
 
 h1 {
 	margin-bottom: 50px;
 }
 
-thead>tr>td {
-	color: blue;
-	font-weight: bold;
-	font-family: myFont;
-	font-size: 30px;
-	height: 50px;
-}
-
-tbody>tr>td {
-	height: 40px;
-	width: 150px;
-}
-
 button {
-	width: 100px;
-	height: 30px;
+	width: 120px;
+	height: 40px;
 	background: #fff;
 	outline: 0;
 	border: 1px solid #FF5A5F !important;
 	cursor: pointer;
+}
+
+.box {
+	width: 100%;
+	height: 200px;
+	border: 1px solid gray;
+	margin-top: 10px;
+}
+
+img {
+	width: 27%;
+	height: 180px;
+	margin: 10px;
+	float: left;
+}
+.boxIsKing{
+width: 70%;
+height : 100%;
+float: right;
+font-size: 14px;
+}
+
+.box_top {
+	width: 33.3%;
+	height: 100px;;
+	float: left;
+	line-height: 100px; 
+}
+
+.box_bot {
+	width: 50%;
+	height: 100px;
+	line-height : 100px;
+	float: left;
 }
 </style>
 <body>
@@ -95,33 +107,42 @@ button {
 	
 	
 	<div class="content">
-		<table>
-			<thead>
-				<tr>
-					<td>방번호</td>
-					<td>성별</td>
-					<td>방 최대 수용 인원</td>
-					<td>가격</td>
-					<td>선택</td>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
-				<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
-				<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
-					<tr>
-						<td style="width: 70px;">${rooms.roomId}</td>
-						<td style="width: 150px">${rooms.gender}</td>
-						<td style="width: 150px">${rooms.availableBed}개</td>
-						<td style="width: 50px">${rooms.price}원</td>
-						<td><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}&price=${rooms.price}">
-								<button>상세보기</button>
-						</a></td>
-					</tr>
-				</c:forEach>
 
-			</tbody>
-		</table>
+		<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
+		<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
+		<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
+			<div class="box">
+				<c:choose>
+					<c:when test="${rooms.roomId eq '201' || rooms.roomId eq '202'}">
+						<img src="/HoneyJamGuestHouse/img/2인실.jpg" alt="img" title="img">
+					</c:when>
+					<c:when test="${rooms.roomId eq '401' || rooms.roomId eq '402'}">
+						<img src="/HoneyJamGuestHouse/img/4인실.jpg" alt="img" title="img">
+					</c:when>
+					<c:when test="${rooms.roomId eq '601' || rooms.roomId eq '602'}">
+						<img src="/HoneyJamGuestHouse/img/6인실.jpg" alt="img" title="img">
+					</c:when>
+					<c:when test="${rooms.roomId eq '801' || rooms.roomId eq '802'}">
+						<img src="/HoneyJamGuestHouse/img/8인실.jpg" alt="img" title="img">
+					</c:when>
+				</c:choose>
+				<div class="boxIsKing">
+					<div class="box_top"  style="width: 20%">Room : ${rooms.roomId}</div>
+					<div class="box_top" style="width: 46.6%">숙박가능한 성별 : ${rooms.gender}</div>
+					<div class="box_top">현재 예약가능한 인원 : ${rooms.availableBed}개</div>
+					<div class="box_bot">가격 : ${rooms.price}원</div>
+					<div class="box_bot">
+						<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}&price=${rooms.price}">
+							<button>상세보기</button>
+						</a>
+					</div>
+				</div>
+
+
+			</div>
+		</c:forEach>
+
+
 	</div>
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 </body>
