@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
-<title>Insert title here</title>
+<title>HoneyJam</title>
 </head>
 <style>
 * {
@@ -67,12 +67,20 @@
 
 table {
 	border-collapse: collapse;
+	margin: 20px auto;
 	width: 100%;
+	font-size: 13px;
+}
+
+thead {
+    font-weight: bold;
+	font-size: 14px;
 }
 
 td, th {
 	border: 1px solid black;
 	text-align: center;
+	padding: 10px;
 }
 </style>
 
@@ -97,23 +105,33 @@ td, th {
 		</div>
 
 		<div class="content">
-			<h1>내방 예약조회</h1>
-			<p>
-			<h2>예약목록</h2>
+			<h1>예약 조회</h1>
 			<table>
 				<thead>
 					<tr>
-						<td>예약번호</td>
-						<td>예약자 id</td>
-						<td>체크인 날짜</td>
-						<td>체크아웃 날짜</td>
-						<td>인원</td>
-						<td>방 번호</td>
+						<td>예약<br>번호</td>
+						<td>ID</td>
+						<td>체크 인</td>
+						<td>체크 아웃</td>
+						<td>예약 인원</td>
+						<td>객실</td>
 						<td>성별</td>
-						<td>방 결제현황</td>
+						<td>결제<br>현황
+						</td>
 					</tr>
 				</thead>
+
 				<tbody>
+					<tr>
+						<td>A1234</td>
+						<td>test@test.com</td>
+						<td>2018년 1월 1일</td>
+						<td>2018년 1월 2일</td>
+						<td>2 명</td>
+						<td>202호</td>
+						<td>남</td>
+						<td>결제 완료</td>
+					</tr>
 					<c:forEach items="${requestScope.reservation }" var="reservation">
 						<tr>
 							<td style="width: 70px;">${reservation.reservationId }</td>

@@ -44,6 +44,42 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	}
+
+	@Override
+	public void insertBoard(Board board) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			boardDao.insertBoard(session, board);
+			session.commit();
+		}finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void updateBoard(Board newBoard) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			boardDao.updateBoardById(session, newBoard);
+			session.commit();
+		}finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void deleteBoard(String email) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			boardDao.deleteBoardById(session, email);
+			session.commit();
+		}finally {
+			session.close();
+		}
+	}
 	
 
 	

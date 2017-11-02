@@ -9,6 +9,10 @@
 			$(this).children(".submenu").stop().slideUp();
 		});
 	});
+	function pop1() {
+		alert("로그인이 필요합니다.");
+		
+	}
 </script>
 <style type="text/css">
 * {
@@ -30,7 +34,8 @@ header {
 	width: 100%;
 	height: 49px;
 	border-bottom: 1px solid #000;
-	padding: 5px 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .header_left {
@@ -125,7 +130,7 @@ header {
 		</div>
 		<div class="header_left_menu">
 			<ul class="mainmenu">
-				<li><a href="#">소개</a>
+				<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=201&gender=0">소개</a>
 					<ul class="submenu">
 						<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=201&gender=0">2인실</a></li>
 						<li><a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=401&gender=0">4인실</a></li>
@@ -135,16 +140,27 @@ header {
 			</ul>
 			<ul class="mainmenu">
 				<li><a href="#">예약</a>
-					<ul class="submenu">
-						<li><a href="#">예약하기</a></li>
-						<li><a href="#">예약조회</a></li>
-					</ul></li>
+					<c:choose>
+						<c:when test="${sessionScope.loginMember != null}">
+							<ul class="submenu">
+								<li><a href="#">예약하기</a></li>
+								<li><a href="#">예약조회</a></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul class="submenu">
+								<li><a href="#">예약하기</a></li>
+								<li><a href="${initParam.rootPath }/member/login.jsp" onclick="pop1()">예약조회</a></li>
+							</ul>
+						</c:otherwise>
+					</c:choose>
+					</li>
 			</ul>
 			<ul class="mainmenu">
-				<li><a href="#">커뮤니티</a>
+				<li><a href="${initParam.rootPath }/board/QnA.jsp">커뮤니티</a>
 					<ul class="submenu">
-						<li><a href="#">QnA</a></li>
-						<li><a href="#">리뷰게시판</a></li>
+						<li><a href="${initParam.rootPath }/board/QnA.jsp">QnA</a></li>
+						<li><a href="${initParam.rootPath }/boardSelect">리뷰게시판</a></li>
 					</ul></li>
 			</ul>
 		</div>
