@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.ws.FaultAction;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -16,8 +18,10 @@ import com.honeyjam.reservation.dao.ReservationDao;
 import com.honeyjam.reservation.dao.ReservationDaoImpl;
 import com.honeyjam.room.dao.RoomDao;
 import com.honeyjam.room.dao.RoomDaoImpl;
+import com.honeyjam.room.service.RoomServiceImpl;
 import com.honeyjam.util.SqlSessionFactoryManager;
 import com.honeyjam.vo.Reservation;
+import com.honeyjam.vo.Room;
 
 public class ReservationServiceImpl implements ReservationService{
 
@@ -25,6 +29,10 @@ public class ReservationServiceImpl implements ReservationService{
 
 	private SqlSessionFactory factory;
 	private ReservationDao dao;
+
+
+
+
 	
 	private ReservationServiceImpl() throws IOException{
 		factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
@@ -285,6 +293,34 @@ public class ReservationServiceImpl implements ReservationService{
 		System.out.println(service.emptyRoomsByDate(2, "20171011", "20171013"));
 
 
+	}
+
+	@Override
+	public int addReservation(int reservationId, String email, String checkIn, 
+										String checkOut, int numberOfGuests,
+			int roomId, String gender, int paymentStatus) throws IOException {
+		SqlSession session = null;
+		
+		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
+
+		
+		try {
+			
+			Date checkInForm = dateForm.parse(checkIn);
+			Date checkOutForm = dateForm.parse(checkOut);
+			session = factory.openSession();
+			Reservation reservation = new Reservation(reservationId, email, checkInForm, checkOutForm, numberOfGuests, roomId, gender, paymentStatus);
+			int result = dao.insertReservation(session, reservation);
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}  finally {
+			session.close();
+		}
+		
+		return 0;
+		
+	
 	}
 }
 

@@ -82,7 +82,7 @@ thead>tr>td {
 			<tbody>
 				<!-- List에 담겨온 예약가능한 room을 for문으로 선택가능하도록 만들어준다. -->
 					<!-- 현준 : jstl 로 작성하면 다시 이 값을 던져줄 수 있지 않을까...... -->
-
+				
 		 		<c:forEach items="${sessionScope.availableRoomList }" var="rooms">
 					<tr>
 						<c:set var="roomId" scope="session" value="${rooms.roomId}"/>
