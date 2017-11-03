@@ -12,7 +12,9 @@
 	margin: 0 auto;
 	padding: 0;
 }
-
+  
+  
+  
 .content {
 	width: 600px;
 	height: 620px;
