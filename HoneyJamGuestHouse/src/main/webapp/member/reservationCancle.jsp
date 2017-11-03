@@ -3,39 +3,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>결제</title>
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
+<title>HoneyJam</title>
 <style>
-	table {
-		margin: 10px;
-		border-collapse: collapse;
-		margin: 10px auto;
-		width : 90%;
-	}
-	
-	table td {
-		padding: 12px 10px;
-		border: 1px solid black;
-	}
-	
-	.wrapper {
-		width: 960px;
-		margin: 0 auto;
-	}
+.content {
+	width: 900px;
+	min-width: 900px;
+	height: 600px;
+	min-height: 600px;
+	margin-top: 50px;
+}
+
+.content_bot {
+	margin-top: 30px;
+}
+
+button {
+	border-radius: 10px;
+	background: #0283df;
+	border: 0;
+	outline: 0;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 30px;
+}
+
+.content_top {
+	margin-bottom: 20px;
+	font-size: 30px;
+}
 </style>
 </head>
 <body>
-<div class="wrapper">
-<h1>예약 취소</h1>
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<div class="content">
+		<div class="content_top">
+			<h1>예약 취소 완료</h1>
+		</div>
 
-<div style="text-align: center;">
-<p>예약이 정상적으로 취소 되었습니다.</p>
-<p>다음에 꼭 다시 이용해주세요!</p>
-</div>
-		
-		<div style="text-align: center;">
-		<button onclick="location.href='/HoneyJamGuestHouse'" style="padding:10px 50px;">홈</button>
-		<button onclick="location.href='/HoneyJamGuestHouse/member/reservation_view.jsp'" style="padding:10px 50px;">예약확인(마이페이지)</button>
+
+		<div class="content_bot">
+			<button onclick="location.href='/HoneyJamGuestHouse'" style="padding: 10px 50px;">홈</button>
+			<a href="${initParam.rootPath }/reservationSelectById"><button style="padding: 10px 50px;">예약확인(마이페이지)</button></a>
+		</div>
+
 	</div>
-	</div>
+	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
+
 </body>
 </html>

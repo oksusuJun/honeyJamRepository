@@ -81,7 +81,7 @@ button {
 					<tr>
 						<td>${item.itemNum}</td>
 						<td><a href="${initParam.rootPath }/findBoard?item=${item.itemNum}">${item.title}</a></td>
-						<td>${item.email }</td>
+						<td>${item.member.nickname }</td>
 						<td>
 						
 						<fmt:formatDate value="${item.writeDate}" pattern="yyyy-MM-dd"/>

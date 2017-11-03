@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
-<title>Honey</title>
+<title>HoneyJam</title>
 <style>
 .content {
 	width: 900px;

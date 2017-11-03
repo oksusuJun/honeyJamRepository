@@ -14,11 +14,14 @@
 	
 	<sql id="select-member-join-reservation-sql">
 		SELECT m.email,
+			   m.password,
 			   m.nickname,
 			   m.phone_num,
+			   m.admin,
 			   r.reservation_id, r.check_in, r.check_out, r.number_of_guests, r.room_id, r.gender, r.payment_status					
 		FROM member m, reservation r
 	</sql>
+	
 	
 	<resultMap type="member" id="member-resultmap">
 		<id column="email" property="email"/>
@@ -27,6 +30,20 @@
 		<result column="phone_num" property="phoneNum"/>
 		<result column="admin" property="admin"/>
 	</resultMap>
+	
+	<resultMap type="member" id="member-join-reservation-resultmap" extends="member-resultmap">
+		<collection property="reservationList" ofType="reservation">
+			<id column="reservation_id" property="reservationId"/>
+			<result column="check_in" property="checkIn"/>
+			<result column="check_out" property="checkOut"/>
+			<result column="number_of_guests" property="numberOfGuests"/>
+			<result column="room_id" property="roomId"/>
+			<result column="gender" property="gender"/>
+			<result column="payment_status" property="paymentStatus"/>
+		</collection>
+	</resultMap>
+	
+	
 	
 	<update id="updateMemberById" parameterType="member">
 		UPDATE member
@@ -45,20 +62,34 @@
 	</insert>
 
 
-	<select id="selectMemberById" resultMap="member-resultmap" parameterType="string">
+	<!-- <select id="selectMemberById" resultMap="member-resultmap" parameterType="string">
 		<include refid="select-sql" />
 		WHERE email = #{value}
+	</select> -->
+	
+	<select id="selectMemberById" resultMap="member-join-reservation-resultmap" parameterType="string">
+		<include refid="select-member-join-reservation-sql" />
+		WHERE m.email=r.email(+)
+		and m.email=#{value}
 	</select>
+	
+	<select id="selectMemberByPhone" resultMap="member-join-reservation-resultmap" parameterType="string">
+		<include refid="select-member-join-reservation-sql" />
+		WHERE m.email=r.email(+)
+		and m.phone_num=#{value}
+	</select>
+	
+	
 	
 	<select id="selectMemberByNickname" resultMap="member-resultmap" parameterType="string">
 		<include refid="select-sql" />
 		WHERE nickname = #{value}
 	</select>
 	
-	<select id="selectMemberByPhone" resultMap="member-resultmap" parameterType="string">
+<!-- 	<select id="selectMemberByPhone" resultMap="member-resultmap" parameterType="string">
 		<include refid="select-sql" />
 		WHERE phone_num = #{value}
-	</select>
+	</select> -->
 	
 	<delete id="deleteMemberById" parameterType="string">
 		delete from member where email = #{value}

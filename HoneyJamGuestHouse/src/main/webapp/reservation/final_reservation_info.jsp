@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
-<title>Insert title here</title>
+<title>HoneyJam</title>
 <script>
 
 function radioCheck() {

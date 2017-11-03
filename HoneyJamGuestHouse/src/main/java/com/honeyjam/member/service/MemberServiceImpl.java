@@ -64,12 +64,11 @@ public class MemberServiceImpl implements MemberService {
 
 		@Override
 		public Member findMemberById(String email) {
-			SqlSession session = null;
+			SqlSession session = null; 
 			try {
 				session = factory.openSession();
-				Member member = dao.selectMemberById(session, email);
-				return member;
-			} finally {
+				return dao.selectMemberById(session, email);
+			}finally {
 				session.close();
 			}
 		}

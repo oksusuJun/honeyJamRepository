@@ -23,6 +23,8 @@ insert into MEMBER values('777', '4545', '회원5', '010-4545-4545', 1);
 insert into MEMBER values('aaa', '2323', '회원7', '010-2323-2323', 1);
 insert into MEMBER values('aba@com', '4543', 'aba', '010-3344-3928', 1);
 
+select * from BOARD
+
 
 
 
@@ -205,6 +207,28 @@ create table Board (
 	email varchar2(50),
 	constraint emailfk foreign key (email) references member(email)
 );
+
+
+select item_num, title, write_date, email, nickname 
+	      from(
+	      
+	         select rownum rn, item_num, title , write_date, email, nickname
+	            from(
+	                  select b.item_num, b.title, b.write_date, b.email, m.nickname from board b, member m where b.email = m.email(+) order by item_num desc 
+	               )
+	            
+	         where rownum <= 10
+	         )
+	      where rn>= 1  
+
+SELECT m.email,
+	   m.nickname,
+	   m.phone_num,
+	   b.item_num, b.content, b.title, b.write_date, b.email
+FROM member m, board b
+where b.email = m.email(+)
+and b.item_num = 3
+
 
 /*board start*/
 delete from board
