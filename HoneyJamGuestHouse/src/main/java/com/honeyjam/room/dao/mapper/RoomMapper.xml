@@ -110,4 +110,8 @@
 	<select id="selectMaxById"	parameterType="_int" resultType="_int">
 		select max_bed from room where room_id = #{value}
 	</select>
+	
+	<select id="selectRoomIds" resultType="_int">
+		select room_id from room 
+	</select>
 </mapper>	

@@ -11,16 +11,40 @@
 
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 
-<h1>관리자가 할 수 있는 일들을 추가해볼까요?</h1>
 
 
-<h1>1.회원 조회 기능.</h1>
+<c:if test="${sessionScope.loginMember.email != 'admin'}">
+		<jsp:forward page="/main.jsp" />
+	</c:if>
+	
+	
+
+<h1>관리자 메뉴</h1>
+
+<br>
+<h2>1.회원 email로 조회, 회원 강퇴 시키기</h2>
+<br>
+
 <form action="${initParam.rootPath}/adminSearchMember" method="post">
-조회하고자 하는 회원의 email(id): <input type="text" name="search_email"><button>회원 조회</button>
+조회하고자 하는 회원의 email(id): <input type="text" name="search_email">
+<button>회원 조회</button>
 </form>
 
+<c:if test="${requestScope.errorMessage !=null}">
+	<span style="{color:red;}">${requestScope.errorMessage}</span>
+</c:if>
 
-<h1>3. reservation 삭제 기능 등 </h1>
+<br>
+<br>
+<br>
+<br>
+
+<h2>2.특정 날짜의 예약현황 보기</h2>
+<form action="${initParam.rootPath}/reservationSelectByDate" method="post">
+조회하고자 하는 날짜(20171011 형태로 입력) : <input type="text" name="date">
+<button>해당날짜 조회</button>
+</form>
+
 
 </body>
 </html>

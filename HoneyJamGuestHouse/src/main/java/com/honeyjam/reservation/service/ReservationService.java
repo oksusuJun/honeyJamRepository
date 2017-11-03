@@ -13,6 +13,8 @@ public interface ReservationService {
 	
 	Map<String,Integer> selectReservationByDate(java.sql.Date date); 
 	
+	List<Reservation> selectAllReservationByDate(Date date);
+	
 	void insertReservation(Reservation reservation) throws IOException;
 
 
