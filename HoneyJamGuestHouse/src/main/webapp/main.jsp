@@ -121,8 +121,10 @@ option {
 				alert("인원수를 선택해주세요.");
 			} else if ($("#input4").val() == "") {
 				alert("성별을 선택해주세요.");
+			} else if ($("#input1").val() >= $("#input2").val()) {
+				alert("체크인,체크아웃 날짜를 확인해주세요.");
 			} else {
-				$(".submit").attr("type","submit");
+				$(".submit").attr("type", "submit");
 			}
 
 		});
@@ -142,10 +144,9 @@ option {
 
 		<form class="nav" action="/HoneyJamGuestHouse/roomSearch">
 
-			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1" autocomplete="off"> 
-			<input type="text" name="checkout" placeholder="checkout" class="calendar" id="input2" autocomplete="off"> 
-
-				<select class="combobox" name="people" id="input3">
+			<input type="text" name="checkin" placeholder="checkin" class="calendar" id="input1" autocomplete="off"> <input
+				type="text" name="checkout" placeholder="checkout" class="calendar" id="input2" autocomplete="off"> <select
+				class="combobox" name="people" id="input3">
 				<option value="">인원을 선택해주세요</option>
 				<option value="1">1명</option>
 				<option value="2">2명</option>
