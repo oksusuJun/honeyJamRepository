@@ -107,6 +107,10 @@ function checkVals(){
 </script>
 
 <body>
+<%
+	String id = "id";
+	String pw = "pw";
+%>
 	<div class="logo">
 		<a href="${initParam.rootPath }/main.jsp	"><img src="/HoneyJamGuestHouse/img/logo.png" alt="img"></a>
 	</div>
@@ -116,7 +120,8 @@ function checkVals(){
 				placeholder="password"><br>
 
 			<div class="loginform_help">
-				<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a>
+				<a href="${initParam.rootPath }/member/findMemberInfo.jsp?find=<%=id%>">아이디 찾기</a> 
+				<a href="${initParam.rootPath }/member/findMemberInfo.jsp?find=<%=pw%>">비밀번호 찾기</a>
 			</div>
 			<button>로그인</button>
 			<div class="loginform_bot">
