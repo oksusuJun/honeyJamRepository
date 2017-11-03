@@ -32,7 +32,7 @@ public class AdminSearchMember extends HttpServlet {
 		
 		if(member == null) {
 			request.setAttribute("errorMessage", "없는 회원입니다");
-			request.getRequestDispatcher("admin.jsp").forward(request, response);
+			request.getRequestDispatcher("/member/admin.jsp").forward(request, response);
 			
 		}else {
 			request.setAttribute("member", member);
