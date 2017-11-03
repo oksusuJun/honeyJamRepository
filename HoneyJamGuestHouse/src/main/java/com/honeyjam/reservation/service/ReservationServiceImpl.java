@@ -313,7 +313,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public int deleteReservationById(int reservationId, String checkIn) {
+	public int deleteReservationByEmailDate(int reservationId, String checkIn) {
 		SqlSession session = null;
 		List<Object> list = new ArrayList<>();
 		
@@ -325,7 +325,7 @@ public class ReservationServiceImpl implements ReservationService{
 				checkInForm = dateForm.parse(checkIn);
 				list.add(reservationId);
 				list.add(checkInForm);
-				int deleteRow = dao.deleteReservationById(session, list);
+				int deleteRow = dao.deleteReservationByEmailDate(session, list);
 				
 				session = factory.openSession();
 				session.commit();
@@ -340,6 +340,20 @@ public class ReservationServiceImpl implements ReservationService{
 			
 			return 0;
 		
+	}
+
+	@Override
+	public int deleteReservationByNum(int reservationId) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			int result = dao.deleteReservationById(session, reservationId);
+			System.out.println("ServiceImpl - reservationId : " + reservationId +"/ result : " + result);
+			session.commit();
+			return result;
+		} finally {
+			session.close();
+		}
 	}
 }
 

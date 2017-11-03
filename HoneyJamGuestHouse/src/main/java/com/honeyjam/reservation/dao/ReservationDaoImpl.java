@@ -36,7 +36,7 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 
 	@Override
-	public int deleteReservationById(SqlSession session, List<Object> list) {
+	public int deleteReservationByEmailDate(SqlSession session, List<Object> list) {
 		return session.selectOne(makeSqlId("deleteReservationById"), list);
 	}
 
@@ -57,4 +57,25 @@ public class ReservationDaoImpl implements ReservationDao{
 		return session.selectOne(makeSqlId("selectReservationIdByEmail"), email);
 	}
 
+	@Override
+	public int deleteReservationById(SqlSession session, int reservationId) {
+		System.out.println("DaoImpl - reservationId : " + reservationId + "session : " + session);
+		return session.delete(makeSqlId("deleteReservationById"), reservationId);
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

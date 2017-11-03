@@ -70,11 +70,26 @@
 		
 	</select>
 	
-	<delete id="deleteReservationById" parameterType="list">
+	<delete id="deleteReservationByEmailDate" parameterType="list">
 		DELETE FROM 	reservation
 		WHERE			email = #{email}
 		AND				check_in = #{checkIn}
 	</delete>
 	
+	<delete id="deleteReservationById" parameterType="_int">
+		DELETE FROM	 	reservation 
+		WHERE			reservation_id = #{value}
+	</delete>
+	
 </mapper>
+
+
+
+
+
+
+
+
+
+
 
