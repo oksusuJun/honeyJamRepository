@@ -1,5 +1,7 @@
 package com.honeyjam.member.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.honeyjam.vo.Member;
@@ -19,4 +21,6 @@ public interface MemberDao {
 	Member selectMemberByNickname(SqlSession session, String nickname);
 	
 	Member selectMemberByPhone(SqlSession session, String phoneNum);
+	
+	Member selectMemberByIdnPhone(SqlSession session, Map<String, String> map);
 }

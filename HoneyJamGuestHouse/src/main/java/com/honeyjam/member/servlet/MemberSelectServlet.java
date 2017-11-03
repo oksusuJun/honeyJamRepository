@@ -1,6 +1,7 @@
 package com.honeyjam.member.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,8 +44,9 @@ public class MemberSelectServlet extends HttpServlet {
 			String findInfo = request.getParameter("phoneNum"); // 아이디 조회 parameter
 			if (findInfo == null) { // 아이디로 패스워드 조회
 				findInfo = request.getParameter("email");
-				System.out.println("아이디로 패스워드 조회- email : " + findInfo);
-				member = service.findMemberById(findInfo);
+				String findInPhone = request.getParameter("PhoneNumber");
+				System.out.println("아이디로 패스워드 조회- email : " + findInfo + "&" + findInPhone);
+				member = service.findMemberByIdnPhone(findInfo, findInPhone);
 				System.out.println("핸드폰번호로 ID 조회 - "+member);
 				String password = member.getPassword();
 				System.out.println(password);

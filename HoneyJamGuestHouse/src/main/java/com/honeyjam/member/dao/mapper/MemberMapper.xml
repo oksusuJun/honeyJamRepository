@@ -86,6 +86,12 @@
 		WHERE nickname = #{value}
 	</select>
 	
+	<select id="selectMemberByIdnPhone" parameterType="map" resultMap="member-resultmap">
+		<include refid="select-sql"/>
+		WHERE 	email = #{email}
+		AND		phone_num = #{phoneNum}
+	</select>
+	
 <!-- 	<select id="selectMemberByPhone" resultMap="member-resultmap" parameterType="string">
 		<include refid="select-sql" />
 		WHERE phone_num = #{value}

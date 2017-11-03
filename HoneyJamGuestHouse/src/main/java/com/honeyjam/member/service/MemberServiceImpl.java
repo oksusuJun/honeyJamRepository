@@ -1,6 +1,7 @@
 package com.honeyjam.member.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -138,6 +139,20 @@ public class MemberServiceImpl implements MemberService {
 				session = factory.openSession();
 				Member member = dao.selectMemberByPhone(session, phoneNum);
 				return member;
+			} finally {
+				session.close();
+			}
+		}
+
+		@Override
+		public Member findMemberByIdnPhone(String email, String phoneNum) {
+			SqlSession session = null;
+			HashMap<String, String> map = new HashMap<>();
+			try {
+				session = factory.openSession();
+				map.put("email", email);
+				map.put("phoneNum", phoneNum);
+				return dao.selectMemberByIdnPhone(session, map);
 			} finally {
 				session.close();
 			}
