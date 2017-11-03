@@ -17,12 +17,6 @@
 삭제하고자 하는 회원의 email(id): <input type="text" name="delete_email"><button>회원 삭제하기</button>
 </form>
 
-<h1>2. 리뷰 게시글 삭제 :</h1>
-<form action="${initParam.rootPath }/boardDelete" method="post">
-<input type="text" name="num" placeholder="삭제할 게시물의 번호를 입력하세요.">
-<button type="submit">제출</button>
-</form>
-
 
 <h1>3. reservation 삭제 기능 등 </h1>
 

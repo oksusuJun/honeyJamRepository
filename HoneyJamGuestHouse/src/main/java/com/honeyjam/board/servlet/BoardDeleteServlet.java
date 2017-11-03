@@ -21,11 +21,13 @@ public class BoardDeleteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String num2 = request.getParameter("num");
+		
+		String num2 = request.getParameter("itemNum");
 		int num = Integer.parseInt(num2);
-		System.out.println(num);
+		System.out.println("삭제할 게시물 번호 : "+num);
+		
 		BoardService service = BoardServiceImpl.getInstance();
 		service.deleteBoardByNum(num);
 		
