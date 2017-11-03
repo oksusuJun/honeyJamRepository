@@ -25,42 +25,18 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>카드 결제, 예약 완료</h1>
+<h1>예약 취소</h1>
 
 <div style="text-align: center;">
-<p>예약이 완료 되었습니다.</p>
-<p>꿀잠을 이용해 주셔서 감사합니다.</p>
+<p>예약이 정상적으로 취소 되었습니다.</p>
+<p>다음에 꼭 다시 이용해주세요!</p>
 </div>
 		<table>
 			<tr>
-				<td colspan="2">예약 정보</td>
-			</tr>
-			<tr>
-				<td>방 번호</td>
-				<td>${sessionScope.roomId }</td>
-			</tr>
-			<tr>
-				<td>예약자 ID</td>
-				<td>${sessionScope.email }</td>
-			</tr>
-			<!--  ####### 예약번호 나오게 수정해야함 ########
-			<tr>
-				<td>예약번호</td>
-				<td>${sessionScope.reservationId }</td>   
-			</tr>
-			-->
-			<tr>
-				<td>날짜</td>
-				<td>${sessionScope.checkIn } 
-					~
-					${sessionScope.checkOut }</td>
-			</tr>
-			<tr>
-				<td>결제수단</td>
-				<td>${sessionScope.paymentStatus }</td>
+				<td colspan="2">예약 취소 정보</td>
 			</tr>
 		</table>
-
+		
 		<div style="text-align: center;">
 		<button onclick="location.href='/HoneyJamGuestHouse'" style="padding:10px 50px;">홈</button>
 		<button onclick="location.href='/HoneyJamGuestHouse/member/reservation_view.jsp'" style="padding:10px 50px;">예약확인(마이페이지)</button>

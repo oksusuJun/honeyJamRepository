@@ -52,7 +52,7 @@
 	<selectKey keyProperty="reservationId" resultType="_int" order="BEFORE">
 	select  reservation_id_seq.NEXTVAL from dual
 	</selectKey>
-		INSERT INTO reservation VALUES (reservation_id_seq.NEXTVAL ,#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender},#{paymentStatus})
+		INSERT INTO reservation VALUES (#{reservationId} ,#{email},#{checkIn},#{checkOut},#{numberOfGuests},#{roomId},#{gender},#{paymentStatus})
 	</insert>	
 	
 	<select id="selectReservationById" parameterType="string" resultMap="reservation-join-member-resultmap">
@@ -61,7 +61,6 @@
 		AND r.email = #{value}
 	</select>
 	
-	
 	<select id="selectReservationByDate" parameterType="java.sql.Date" resultMap="reservation-resultmap">
 		<!-- <include refid="select-reservation-sql"/> -->
 		select * from reservation
@@ -69,7 +68,12 @@
 		and check_out > #{value}
 		
 	</select>
-
+	
+	<delete id="deleteReservationById" parameterType="list">
+		DELETE FROM 	reservation
+		WHERE			email = #{email}
+		AND				check_in = #{checkIn}
+	</delete>
 	
 </mapper>
 

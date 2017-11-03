@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Reservation implements Serializable{
-	private String reservationId;
+	private int reservationId;
 	private String email;
 	private Date checkIn;
 	private Date checkOut;
@@ -17,7 +17,7 @@ public class Reservation implements Serializable{
 	
 	public Reservation() {}
 
-	public Reservation(String reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
+	public Reservation(int reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
 			String gender, int paymentStatus) {
 		this.reservationId = reservationId;
 		this.email = email;
@@ -26,9 +26,10 @@ public class Reservation implements Serializable{
 		this.numberOfGuests = numberOfGuests;
 		this.roomId = roomId;
 		this.gender = gender;
+		this.paymentStatus = paymentStatus;
 	}
 
-	public Reservation(String reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
+	public Reservation(int reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
 			String gender, int paymentStatus, Member member) {
 		this.reservationId = reservationId;
 		this.email = email;
@@ -38,6 +39,7 @@ public class Reservation implements Serializable{
 		this.roomId = roomId;
 		this.gender = gender;
 		this.member = member;
+		this.paymentStatus = paymentStatus;
 	}
 
 	public int getPaymentStatus() {
@@ -48,11 +50,11 @@ public class Reservation implements Serializable{
 		this.paymentStatus = paymentStatus;
 	}
 
-	public String getReservationId() {
+	public int getReservationId() {
 		return reservationId;
 	}
 
-	public void setReservationId(String reservationId) {
+	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}
 
@@ -130,7 +132,7 @@ public class Reservation implements Serializable{
 		result = prime * result + ((member == null) ? 0 : member.hashCode());
 		result = prime * result + numberOfGuests;
 		result = prime * result + paymentStatus;
-		result = prime * result + ((reservationId == null) ? 0 : reservationId.hashCode());
+		result = prime * result + reservationId;
 		result = prime * result + roomId;
 		return result;
 	}
@@ -173,16 +175,14 @@ public class Reservation implements Serializable{
 			return false;
 		if (paymentStatus != other.paymentStatus)
 			return false;
-		if (reservationId == null) {
-			if (other.reservationId != null)
-				return false;
-		} else if (!reservationId.equals(other.reservationId))
+		if (reservationId != other.reservationId)
 			return false;
 		if (roomId != other.roomId)
 			return false;
 		return true;
 	}
 
+	
 
 	
 }

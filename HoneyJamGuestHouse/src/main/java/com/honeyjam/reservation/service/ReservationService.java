@@ -20,9 +20,13 @@ public interface ReservationService {
 	
 	List<String> emptyRoomsByDate(int guests, String checkin, String checkout) throws IOException, ParseException;
 
-	int addReservation(String reservationId, String email, String checkIn, 
+	int addReservation(int reservationId, String email, String checkIn, 
 								String checkOut, int numberOfGuests, int roomId, 
 								String gender, int paymentStatus) throws IOException;
+	
+	int findReservationIdByEmail(String email);
+	
+	int deleteReservationById(int reservationId, String checkIn);
 }
 
 
