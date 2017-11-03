@@ -166,8 +166,7 @@ td, th {
 								</c:choose></td>
 							<td style="width: 150px"><c:set scope="page" var="current" value="<%=new Date(System.currentTimeMillis())%>" /> <c:choose>
 									<c:when test="${reservation.checkIn >= current }">
-										<button type="button"
-											onclick="location.href='/HoneyJamGuestHouse/reservationDelete?reservationId=${reservation.reservationId}&checkIn=${reservation.checkIn }'">
+										<button type="button" onclick="location.href='/HoneyJamGuestHouse/reservationDelete?reservationId=${reservation.reservationId}&checkIn=${reservation.checkIn }'">
 											예약 취소</button>
 									</c:when>
 									<c:otherwise>
