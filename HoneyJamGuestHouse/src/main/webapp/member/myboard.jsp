@@ -91,11 +91,15 @@
 					<li><a href="${initParam.rootPath }/reservationSelectById">예약조회</a></li>
 					<li><a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰 </a></li>
 					<li><a href="${initParam.rootPath }/member/delete.jsp">탈퇴 </a></li>
+					
+					
+						<c:if test="${sessionScope.loginMember.email == 'admin'}">
+					<li><a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a></li>
+				</c:if>
+					
 				</ul>
 
-				<c:if test="${sessionScope.loginMember.email == 'admin'}">
-					<a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a>
-				</c:if>
+			
 
 				<br>
 			</div>

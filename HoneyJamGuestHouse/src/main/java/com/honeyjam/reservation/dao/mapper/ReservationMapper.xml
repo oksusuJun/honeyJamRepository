@@ -33,7 +33,13 @@
 	</sql>
 	
 	<resultMap type="reservation" id="reservation-join-member-resultmap" extends="reservation-resultmap">
-		<collection property="member" resultMap="com.honeyjam.member.dao.mapper.memberMapper.member-resultmap"/>
+		<association property="member" javaType="member">
+		<id column ="email" property="email"/>
+		<result column="password" property="password"/>
+		<result column="nickname" property="nickname"/>
+		<result column="phone_num" property="phoneNum"/>
+		<result column="admin" property="admin"/>
+		</association>
 	</resultMap>
 	
 	<resultMap type="reservation" id="reservation-resultmap">
@@ -69,6 +75,8 @@
 		and check_out > #{value}
 		
 	</select>
+	
+	
 	
 	<delete id="deleteReservationByEmailDate" parameterType="list">
 		DELETE FROM 	reservation

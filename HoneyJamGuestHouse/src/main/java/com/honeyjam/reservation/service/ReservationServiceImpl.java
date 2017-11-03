@@ -55,7 +55,21 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 		
 	}
+	
+	
 		
+	@Override
+	public List<Reservation> selectAllReservationByDate(Date date) {
+		
+		SqlSession session = null;
+		try {
+			session=factory.openSession();
+			return dao.selectReservationByDate(session, new java.sql.Date(date.getYear(),date.getMonth(),date.getDate()));
+		}finally {
+			session.close();
+		}
+	}
+
 	// 하나의 날짜를 기준으로 방들의 현황을 조회하는 것. 날짜 하루를 조회하면 그날 방의 현황을 map으로 리턴. 
 	@Override
 	public Map<String,Integer> selectReservationByDate(java.sql.Date date) {

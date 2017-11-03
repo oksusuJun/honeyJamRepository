@@ -20,6 +20,14 @@ import com.honeyjam.vo.Member;
 public class AdminDeleteMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		doPost(req,resp);
+	}
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
