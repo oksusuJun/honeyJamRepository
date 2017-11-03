@@ -50,7 +50,8 @@ public class ReservationDeleteServlet extends HttpServlet {
 
 		ReservationService service = ReservationServiceImpl.getInstance();
 
-		int result = service.deleteReservationById(reservationId, checkInForm);
+//		int result = service.deleteReservationByEmailDate(reservationId, checkInForm);
+		int result = service.deleteReservationByNum(reservationId);
 		if (result == 0) {
 			System.out.println("예약 취소 실패!!");
 			request.getRequestDispatcher("/main.jsp").forward(request, response);

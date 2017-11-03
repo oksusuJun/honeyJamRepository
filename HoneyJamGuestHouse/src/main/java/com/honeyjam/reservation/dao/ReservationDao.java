@@ -13,7 +13,9 @@ public interface ReservationDao {
 	
 	int updateReservationById(SqlSession session, Reservation reservation);
 	
-	int deleteReservationById(SqlSession session, List<Object> list);
+	int deleteReservationByEmailDate(SqlSession session, List<Object> list);
+	
+	int deleteReservationById(SqlSession session, int reservationId);
 	
 	List<Reservation> selectReservationById(SqlSession session, String email);
 	

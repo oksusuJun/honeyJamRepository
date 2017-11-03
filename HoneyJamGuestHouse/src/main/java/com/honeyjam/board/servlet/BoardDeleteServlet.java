@@ -31,7 +31,7 @@ public class BoardDeleteServlet extends HttpServlet {
 		BoardService service = BoardServiceImpl.getInstance();
 		service.deleteBoardByNum(num);
 		
-		response.sendRedirect("/HoneyJamGuestHouse/member/admin.jsp");
+		response.sendRedirect("/HoneyJamGuestHouse/BoardViewServlet");
 		
 	}
 
