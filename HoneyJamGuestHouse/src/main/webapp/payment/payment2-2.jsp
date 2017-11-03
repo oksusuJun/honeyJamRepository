@@ -84,10 +84,12 @@ font-size: 30px;
 			</tr>
 		</table>
 
+
 		<div class="content_bot">
 			<button onclick="location.href='/HoneyJamGuestHouse'" style="padding: 10px 50px;">홈</button>
-			<a href="${initParam.rootPath }/reservationSelect"><button style="padding: 10px 50px;">예약확인(마이페이지)</button></a>
+			<a href="${initParam.rootPath}/reservationSelectById"><button style="padding: 10px 50px;">예약확인(마이페이지)</button></a>
 		</div>
+
 	</div>
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 

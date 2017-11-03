@@ -27,5 +27,7 @@ public interface BoardDao {
 	Board selectItemsByTitle(SqlSession session, String title);
 	
 	Board selectItemByNum(SqlSession session, int itemNum);
+	
+	int deleteBoardByNum(SqlSession session, int itemNum);
 
 }

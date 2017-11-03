@@ -22,5 +22,5 @@ insert into reservation values(5,'777','2017-10-11','2017-10-20', 2, 401,'남성
 insert into reservation values(7,'bbb','2017-10-09','2017-10-12', 5, 602,'남성',0);
 insert into reservation values(8,'777','2017-10-08','2017-10-11', 6, 601,'남성',0);
 
-
+create sequence reservation_id_seq
 

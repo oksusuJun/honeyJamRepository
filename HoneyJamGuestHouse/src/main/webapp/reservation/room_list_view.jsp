@@ -50,8 +50,10 @@ button {
 	height: 40px;
 	background: #fff;
 	outline: 0;
-	border: 1px solid #FF5A5F !important;
+	border: 2px solid #FF5A5F !important;
 	cursor: pointer;
+	border-radius: 30px;
+	font-weight: bold;
 }
 
 .box {

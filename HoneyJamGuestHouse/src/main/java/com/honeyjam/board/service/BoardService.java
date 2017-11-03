@@ -24,4 +24,5 @@ public interface BoardService {
 	
 	Board selectItemByNum(int itemNum);
 
+	void deleteBoardByNum(int itemNum);
 }
