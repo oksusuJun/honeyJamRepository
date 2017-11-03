@@ -129,7 +129,6 @@ public class MemberServiceImpl implements MemberService {
 				}finally {
 					session.close();
 				}
-			
 		}
 
 		@Override
