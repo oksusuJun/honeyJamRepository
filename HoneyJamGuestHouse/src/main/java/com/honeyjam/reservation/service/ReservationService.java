@@ -26,7 +26,9 @@ public interface ReservationService {
 	
 	int findReservationIdByEmail(String email);
 	
-	int deleteReservationById(int reservationId, String checkIn);
+	int deleteReservationByEmailDate(int reservationId, String checkIn);
+	
+	int deleteReservationByNum(int reservationId);
 }
 
 

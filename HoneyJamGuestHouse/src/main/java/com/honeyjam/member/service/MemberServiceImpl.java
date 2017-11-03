@@ -64,8 +64,13 @@ public class MemberServiceImpl implements MemberService {
 
 		@Override
 		public Member findMemberById(String email) {
-			// TODO Auto-generated method stub
-			return null;
+			SqlSession session = null; 
+			try {
+				session = factory.openSession();
+				return dao.selectMemberById(session, email);
+			}finally {
+				session.close();
+			}
 		}
 
 		@Override

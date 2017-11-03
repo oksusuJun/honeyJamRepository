@@ -34,7 +34,12 @@
 	background: #a4a4a4;
 }
 
-.menu>a {
+.menu > ul > li :hover{
+background: #555555;
+color: #fff;
+}
+
+.menu>ul>li>a {
 	border-bottom: 0.1px solid grey;
 	color: #fff;
 	width: 90%;
@@ -89,11 +94,12 @@ form>button {
 	font-size: 20px;
 	cursor: pointer;
 }
-.content_text{
-width: 100%;
-height: 100px;
-line-height: 100px;
-font-size: 24px;
+
+.content_text {
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+	font-size: 24px;
 }
 </style>
 </head>
@@ -130,14 +136,18 @@ font-size: 24px;
 				${sessionScope.loginMember.email } 님<br> 환영합니다.
 			</div>
 			<div class="menu">
-				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/reservationSelectById">예약조회</a> <a href="${initParam.rootPath}/boardSelect">내가
-					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a>
-					
+				<ul>
+					<li><a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a></li>
+					<li><a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a></li>
+					<li><a href="${initParam.rootPath }/reservationSelectById">예약조회</a></li>
+					<li><a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰 </a></li>
+					<li><a href="${initParam.rootPath }/member/delete.jsp">탈퇴 </a></li>
+				</ul>
+
 				<c:if test="${sessionScope.loginMember.email == 'admin'}">
-				<a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a>
+					<a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a>
 				</c:if>
-					<br>
+				<br>
 			</div>
 		</div>
 		<div class="content">
