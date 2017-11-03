@@ -30,7 +30,7 @@
 	<td>${reservation.reservationId}</td>
 	<td><fmt:formatDate value="${reservation.checkIn}" pattern="yyyy-MM-dd"/></td>
 	<td><fmt:formatDate value="${reservation.checkOut}" pattern="yyyy-MM-dd"/></td>
-	<td><button type="button" onclick="location.href='#'">예약건 삭제</button></td>
+	<td><button type="button" onclick="location.href='/HoneyJamGuestHouse/reservationDelete?reservationId=${reservation.reservationId}'">예약건 삭제</button></td>
 </tr>
 </c:forEach>
 
@@ -40,7 +40,7 @@
 <br>
 
 해당 회원을 삭제하겠습니까? (회원삭제 ) : 
-<button type="button" onclick="location.href='#'">삭제</button>
+<button type="button" onclick="location.href='/HoneyJamGuestHouse/AdminDeleteMember?delete_email=${requestScope.member.email}'">삭제</button>
 
 
 
