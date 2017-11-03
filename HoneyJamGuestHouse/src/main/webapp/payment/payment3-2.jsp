@@ -63,7 +63,7 @@
 
 		<div style="text-align: center;">
 		<button onclick="location.href='/HoneyJamGuestHouse'" style="padding:10px 50px;">홈</button>
-		<button onclick="location.href='/HoneyJamGuestHouse/member/reservation_view.jsp'" style="padding:10px 50px;">예약확인(마이페이지)</button>
+		<button onclick="location.href='/HoneyJamGuestHouse/reservationSelectById'" style="padding:10px 50px;">예약확인(마이페이지)</button>
 	</div>
 	</div>
 </body>
