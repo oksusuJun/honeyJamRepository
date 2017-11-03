@@ -1,6 +1,7 @@
 package com.honeyjam.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Member implements Serializable {
 
@@ -9,16 +10,28 @@ public class Member implements Serializable {
 	private String nickname;
 	private String phoneNum;
 	private int admin;
+	private List<Reservation> reservationList;
 	
 	public Member() {}
 
 	public Member(String id, String password, String nickname, String phoneNum, int admin) {
-		super();
 		this.email = id;
 		this.password = password;
 		this.nickname = nickname;
 		this.phoneNum = phoneNum;
 		this.admin = admin;
+	}
+	
+	
+
+	public Member(String email, String password, String nickname, String phoneNum, int admin,
+			List<Reservation> reservationList) {
+		this.email = email;
+		this.password = password;
+		this.nickname = nickname;
+		this.phoneNum = phoneNum;
+		this.admin = admin;
+		this.reservationList = reservationList;
 	}
 
 	public String getEmail() {
@@ -60,6 +73,22 @@ public class Member implements Serializable {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
+	
+	
+
+	public List<Reservation> getReservationList() {
+		return reservationList;
+	}
+
+	public void setReservationList(List<Reservation> reservationList) {
+		this.reservationList = reservationList;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Member [email=%s, password=%s, nickname=%s, phoneNum=%s, admin=%s, reservationList=%s]",
+				email, password, nickname, phoneNum, admin, reservationList);
+	}
 
 	@Override
 	public int hashCode() {
@@ -70,6 +99,7 @@ public class Member implements Serializable {
 		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phoneNum == null) ? 0 : phoneNum.hashCode());
+		result = prime * result + ((reservationList == null) ? 0 : reservationList.hashCode());
 		return result;
 	}
 
@@ -104,15 +134,15 @@ public class Member implements Serializable {
 				return false;
 		} else if (!phoneNum.equals(other.phoneNum))
 			return false;
+		if (reservationList == null) {
+			if (other.reservationList != null)
+				return false;
+		} else if (!reservationList.equals(other.reservationList))
+			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [email=" + email + ", password=" + password + ", nickname=" + nickname + ", phoneNum=" + phoneNum
-				+ ", admin=" + admin + "]";
-	}
-
+	
 	
 	
 }
