@@ -140,6 +140,19 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
+
+	@Override
+	public void deleteBoardByNum(int itemNum) {
+		SqlSession session = null;
+		try {
+			session = factory.openSession();
+			boardDao.deleteBoardByNum(session, itemNum);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		
+	}
 	
 	
 	

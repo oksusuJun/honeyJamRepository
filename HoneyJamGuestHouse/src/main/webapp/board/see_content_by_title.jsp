@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +74,10 @@ button {
 			</tbody>
 		</table>
 	</div>
-	<a href="/HoneyJamGuestHouse/board/ContentView.jsp"><button>뒤로가기</button></a>
+	<a href="/HoneyJamGuestHouse/BoardViewServlet"><button>뒤로가기</button></a>
+	<c:if test="${sessionScope.loginMember.email == 'admin'}">
+		<a href="${initParam.rootPath }/boardDelete?itemNum=${requestScope.item.itemNum}"><button>삭제</button></a>	
+	</c:if>
 	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 
 </body>

@@ -59,6 +59,7 @@
 		<include refid="com.honeyjam.member.dao.mapper.memberMapper.select-member-join-reservation-sql"/>
 		WHERE m.email = r.email(+)
 		AND r.email = #{value}
+		order by reservation_id desc
 	</select>
 	
 	<select id="selectReservationByDate" parameterType="java.sql.Date" resultMap="reservation-resultmap">

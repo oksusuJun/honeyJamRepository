@@ -58,6 +58,10 @@
 		DELETE from board where email = #{value}
 	</delete>
 	
+	<delete id="deleteBoardByNum" parameterType="_int">
+		DELETE from board where item_num = #{value}
+	</delete>
+	
 	
 	<!-- 페이징용!!!! -->
 	<select id="selectItemCount" resultType="_int">

@@ -18,8 +18,8 @@ import com.honeyjam.vo.Reservation;
 /**
  * Servlet implementation class ReservationSelectServlet
  */
-@WebServlet("/reservationSelect")
-public class ReservationSelectServlet extends HttpServlet {
+@WebServlet("/reservationSelectById")
+public class ReservationSelectByIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**

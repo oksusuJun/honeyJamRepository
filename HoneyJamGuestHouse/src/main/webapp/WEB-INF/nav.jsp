@@ -19,6 +19,8 @@
 				alert("인원수를 선택해주세요.");
 			} else if ($("#input4").val() == "") {
 				alert("성별을 선택해주세요.");
+			} else if ($("#input1").val() >= $("#input2").val()) {
+				alert("체크인,체크아웃 날짜를 확인해주세요.");
 			} else {
 				$(".submit").attr("type", "submit");
 			}

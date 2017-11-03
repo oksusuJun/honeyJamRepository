@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,16 +51,17 @@
 	float: left;
 	padding-left: 10%;
 }
-.num{
+
+.num {
 	width: 100px;
 	border-bottom: 1px solid gray;
 	border-right: 1px solid gray;
 	height: 30px;
-
 }
-.title{
+
+.title {
 	width: 500px;
-	height:30px;
+	height: 30px;
 	border-bottom: 1px solid gray;
 }
 </style>
@@ -79,14 +80,16 @@
 				${sessionScope.loginMember.email } 님<br> 환영합니다.
 			</div>
 			<div class="menu">
-				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> <a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> <a
-					href="${initParam.rootPath}/member/reservation_view.jsp">예약조회</a> <a href="${initParam.rootPath}/boardSelect">내가
-					작성한 리뷰 </a> <a href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a>
-					<c:if test="${sessionScope.loginMember.email == 'admin'}">
-				<a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a>
+				<a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a> 
+				<a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a> 
+				<a	 href="${initParam.rootPath}/reservationSelectById">예약조회</a> 
+				<a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰 </a> 
+				<a	 href="${initParam.rootPath}/member/delete.jsp">탈퇴 </a>
+				<c:if test="${sessionScope.loginMember.email == 'admin'}">
+					<a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a>
 				</c:if>
-					
-					<br>
+
+				<br>
 			</div>
 		</div>
 
