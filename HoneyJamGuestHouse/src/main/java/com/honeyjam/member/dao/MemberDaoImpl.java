@@ -4,12 +4,10 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.honeyjam.vo.Member;
 
+public class MemberDaoImpl implements MemberDao {
 
+	private static MemberDaoImpl instance;
 
-public class MemberDaoImpl implements MemberDao{
-	
-private static MemberDaoImpl instance;
-	
 	private MemberDaoImpl() {
 	}
 
@@ -21,9 +19,9 @@ private static MemberDaoImpl instance;
 	}
 
 	private String makeSqlId(String id) {
-		return "com.honeyjam.member.dao.mapper.memberMapper."+id;
+		return "com.honeyjam.member.dao.mapper.memberMapper." + id;
 	}
-	
+
 	@Override
 	public int insertMember(SqlSession session, Member member) {
 		return session.insert(makeSqlId("insertMember"), member);
@@ -36,7 +34,7 @@ private static MemberDaoImpl instance;
 
 	@Override
 	public int deleteMemberById(SqlSession session, String email) {
-		return session.delete(makeSqlId("deleteMemberById"),email);
+		return session.delete(makeSqlId("deleteMemberById"), email);
 	}
 
 	@Override
@@ -46,16 +44,12 @@ private static MemberDaoImpl instance;
 
 	@Override
 	public Member selectMemberByNickname(SqlSession session, String nickname) {
-		return session.selectOne(makeSqlId("selectMemberByNickname"),nickname);
+		return session.selectOne(makeSqlId("selectMemberByNickname"), nickname);
 	}
 
 	@Override
 	public Member selectMemberByPhone(SqlSession session, String phoneNum) {
-		return session.selectOne(makeSqlId("selectMemberByPhone"),phoneNum);
+		return session.selectOne(makeSqlId("selectMemberByPhone"), phoneNum);
 	}
 
-	
-
-	
-	
 }

@@ -76,6 +76,8 @@
 		
 	</select>
 	
+	
+	
 	<delete id="deleteReservationByEmailDate" parameterType="list">
 		DELETE FROM 	reservation
 		WHERE			email = #{email}

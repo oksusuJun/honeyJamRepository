@@ -46,8 +46,6 @@ create table Reservation (
 	constraint room_id_fk foreign key (room_id) references room(room_id)
 );
 
-create sequence reservation_id_seq;
-
 select * from Reservation where email='yyy'
 
 select * from reservation
@@ -65,41 +63,71 @@ insert into reservation values(8,'777','2017-10-19','2017-10-23', 2, 601,'남성
 
 delete from reservation where reservation_id = 49
 
-
-drop table Reserved_Room;
+drop table Reserved_Room cascade constraint;;
 /* Reserved_Room */
+-- ###### 기존의 reserved_room
 create table Reserved_Room (
 	room_id	number(3) not null,
 	number_of_beds	number(3) not null,
 	check_in date,
 	check_out date,
-	status	varchar2(20)	not null,
 	reservation_id	number(10) primary key,
 	gender varchar2(10) not null,
 	constraint roomid_fk foreign key (room_id) references room(room_id)
 );
-
-select * from reservation
+create sequence reservatied_id_seq;
 
 select * from reserved_room
 
+
+select reservatied_id_seq.nextval from dual
+insert into reserved_room values (401, 2, '2017-10-10', '2017-10-12', 99, '남성');
+insert into reserved_room values (401, 1, '2017-10-11', '2017-10-12', 100, '남성');
+insert into reserved_room values (401, 1, '2017-10-12', '2017-10-13', 101, '남성');
+insert into reserved_room values (601, 2, '2017-10-10', '2017-10-12', 102, '남성');
+insert into reserved_room values (401, 2, '2017-10-10', '2017-10-12', 103, '남성')
+
+
+
+/* Reserved_Room Table */
+create table Reserved_room (
+	email varchar2(50) not null,
+	reserved_date date not null,
+	reserved_beds number(2) not null,
+	gender varchar2(10) not null,
+	room_id number(3) not null,
+	constraint roomid_fk foreign key (room_id) references room(room_id)
+);
+
+
+select * from reservation
+
+select * from reserved_room order by email
+
+select room_id, check_in, check_out
+from reserved_room
+where check_in <= '20171221'
+and check_out >= '20171214'
+and gender like '%남성%'
+
+
 /* dummy */
-insert into reserved_room values (401, 1, '20171230', '20180101', '가능','170001', '남성');
-insert into reserved_room values (601, 2, '20171227', '20180101', '가능','170002', '남성');
-insert into reserved_room values (601, 2, '20171225', '20171228', '가능','170003', '남성');
-insert into reserved_room values (601, 2, '20171220', '20171225', '가능','170004', '남성');
-insert into reserved_room values (601, 1, '20171216', '20171219', '가능','170005', '남성');
-insert into reserved_room values (402, 2, '20171216', '20171219', '가능','170006', '여성');
-insert into reserved_room values (402, 1, '20171216', '20171219', '가능','170007', '여성');
-insert into reserved_room values (402, 2, '20171220', '20171221', '가능','170008', '여성');
-insert into reserved_room values (401, 2, '20171216', '20171217', '가능','170009', '남성');
-insert into reserved_room values (201, 2, '20171219', '20171220', '가능','170010', '남성');
-insert into reserved_room values (202, 2, '20171228', '20171230', '가능','170011', '남성');
+insert into RESERVED_ROOM values ('hj', '20171111', 2, '남성', 401);
+insert into RESERVED_ROOM values ('hj1', '20171111', 1, '남성', 601);
+insert into RESERVED_ROOM values ('hj2', '20171111', 1, '남성', 601);
+insert into RESERVED_ROOM values ('hj3', '20171111', 2, '남성', 401);
+insert into RESERVED_ROOM values ('hj4', '20171111', 1, '남성', 601);
+insert into RESERVED_ROOM values ('hj', '20171112', 2, '남성', 401);
+insert into RESERVED_ROOM values ('hj', '20171113', 2, '남성', 401);
+insert into RESERVED_ROOM values ('hj1', '20171112', 2, '남성', 601);
+insert into RESERVED_ROOM values ('hj2', '20171112', 1, '남성', 601);
+insert into RESERVED_ROOM values ('hj3', '20171110', 2, '남성', 401);
+insert into RESERVED_ROOM values ('hj4', '20171110', 2, '남성', 601);
+
 
 
 /* test */
 /* 날짜 중복 조회 쿼리 */
-
 
 	SELECT 	a.room_id, 
 			a.available_bed, 
@@ -130,14 +158,6 @@ and b.gender like '%성%'
 and a.available_bed >= 1
 and not b.check_in <= to_date('20171216', 'YYYYMMDD') and not b.check_out >= to_date('20171214', 'YYYYMMDD')
 -- ##########################################
-
-
-select room_id, check_in, check_out
-from reserved_room
-where check_in <= '20171221'
-and check_out >= '20171214'
-and gender like '%남성%'
-
 
 
 drop table Room cascade constraint;

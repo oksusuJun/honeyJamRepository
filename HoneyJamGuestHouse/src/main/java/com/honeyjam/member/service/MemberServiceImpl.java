@@ -132,6 +132,18 @@ public class MemberServiceImpl implements MemberService {
 			
 		}
 
+		@Override
+		public Member findMemberByPhone(String phoneNum) {
+			SqlSession session = null;
+			try {
+				session = factory.openSession();
+				Member member = dao.selectMemberByPhone(session, phoneNum);
+				return member;
+			} finally {
+				session.close();
+			}
+		}
+
 
 
 	}
