@@ -14,8 +14,11 @@
 		<result column="title" property="title" />
 		<result column="write_date" property="writeDate" />
 		<result column="email" property="email" />
+		<association property="member" resultMap="com.honeyjam.member.dao.mapper.memberMapper.member-resultmap"/>
 	</resultMap>
-
+	
+	
+	
 	
 	<select id="selectAllItems" resultMap="board-resultmap">
 		<include refid="select-board"/>	order by item_num desc
@@ -71,21 +74,20 @@
 	
 	<!-- 특정 페이지의 항목들을 조회하는 메소드 -->
 	<select id="selectItemList" parameterType="map" resultMap="board-resultmap">
-	<![CDATA[
-		select item_num, title, write_date, email 
-		from(
-		
-			select rownum rn, item_num, title , write_date, email
-				from(
-						select item_num, title, write_date,email from board order by item_num desc 
-					)
-				
-			where rownum <= #{end}
-			)
-		where rn>= #{begin}  
-	]]>
-
-	</select>
+	   <![CDATA[
+		select item_num, title, write_date, email, nickname 
+	      from(
+	      
+	         select rownum rn, item_num, title , write_date, email, nickname
+	            from(
+	                  select b.item_num, b.title, b.write_date, b.email, m.nickname from board b, member m where b.email = m.email(+) order by item_num desc 
+	               )
+	            
+	         where rownum <= #{end}
+	         )
+	      where rn>= #{begin}  
+	   ]]>
+   </select>
 
 	
 </mapper>

@@ -20,6 +20,7 @@
 		FROM member m, reservation r
 	</sql>
 	
+	
 	<resultMap type="member" id="member-resultmap">
 		<id column="email" property="email"/>
 		<result column="password" property="password"/>

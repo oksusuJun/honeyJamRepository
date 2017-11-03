@@ -47,9 +47,9 @@ public class BoardViewServlet extends HttpServlet {
 
 		BoardService service = BoardServiceImpl.getInstance();
 		Map<String,Object> map = service.getItemList(page);
+		System.out.println(map.get("list"));
 
-
-		//3. 응답 처리 : ltem_list.jsp로 이동 - 요청디스패치
+		//3. 응답 처리 : ContentView.jsp로 이동 - 요청디스패치
 
 		request.setAttribute("list", map.get("list"));
 		request.setAttribute("pageBean", map.get("pageBean"));
