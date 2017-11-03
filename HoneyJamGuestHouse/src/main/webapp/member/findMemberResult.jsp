@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>HoneyJam</title>
 <script>
 	function findIdCheck() {
 		var f = document.form1;
@@ -80,7 +81,7 @@ font-size: 30px;
 </style>
 </head>
 <body>
-	
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	<div class="content">
 		<div class="content_top">
 			<p>회원 정보 찾기가 완료되었습니다.</p>

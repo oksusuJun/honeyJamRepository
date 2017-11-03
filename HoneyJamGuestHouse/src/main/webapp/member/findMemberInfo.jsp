@@ -4,8 +4,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>HoneyJam</title>
+<style type="text/css">
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+.content {
+	width: 600px;
+	height: 620px;
+}
+.contents {
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+	padding-top: 180px;
+}
+
+#phoneNum {
+	width: 39%;
+	height: 50px;
+	float: left;
+}
+
+#value {
+	width: 59%;
+	height: 50px;
+	float: right;
+}
+</style>
 <script>
 	function findIdCheck() {
 		var f = document.form1;
@@ -32,7 +62,7 @@
 		var f = document.form1;
 		var email = f.email.value;
 		var flag = false;
-		
+
 		if (email.lengh == 0) {
 			alert("가입시 등록하신 Email(ID)를 입력하시면 비밀번호를 찾아드릴게요~!!");
 			return flag;
@@ -45,29 +75,31 @@
 </head>
 <body>
 	${requestScope.find }
-
-	<%
-		if (request.getParameter("find").equals("id")) {
-	%>
-	<form name="form1" action="${initParam.rootPath }/memberSelect"
-		method="post" onsubmit="return findIdCheck();">
-		<input type="text" name="phoneNum" placeholder="Phone Number"
-			id="phoneNum"> <br> 
-		<input type="submit" value="아이디 찾기">
-		<br>
-	</form>
-	<%
-		} else if (request.getParameter("find").equals("pw")) {
-	%>
-	<form name="form1" action="${initParam.rootPath }/memberSelect"
-		method="post" onsubmit="return findPwCheck();">
-		<input type="text" name="email" placeholder="Id(Email)" id="email">
-		<br> 
-		<input type="submit" value="비밀번호 찾기"> <br>
-	</form>
-	<%
-		}
-	%>
-
+	<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
+	<div class="content">
+		<div class="contents">
+	
+			<%
+				if (request.getParameter("find").equals("id")) {
+			%>
+				<h1>ID 찾기</h1>
+			<form name="form1" action="${initParam.rootPath }/memberSelect" method="post" onsubmit="return findIdCheck();">
+				<input type="text" name="phoneNum" placeholder="Phone Number" id="phoneNum"> <input type="submit"
+					value="아이디 찾기" id="value">
+			</form>
+			<%
+				} else if (request.getParameter("find").equals("pw")) {
+			%>
+				<h1>Password 찾기</h1>
+			<form name="form1" action="${initParam.rootPath }/memberSelect" method="post" onsubmit="return findPwCheck();">
+				<input type="text" name="email" placeholder="Id(Email)" id="email"> <input type="submit" value="비밀번호 찾기">
+			
+			</form>
+			<%
+				}
+			%>
+		</div>
+	</div>
+	<jsp:include page="/WEB-INF/footer_ver2.jsp"></jsp:include>
 </body>
 </html>
