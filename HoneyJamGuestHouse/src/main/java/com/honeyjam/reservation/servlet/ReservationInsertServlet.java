@@ -55,7 +55,7 @@ public class ReservationInsertServlet extends HttpServlet {
 		} else if(payment.equals("무통장입금")) {
 			paymentStatus = 1;
 		} 
-		
+		System.out.println(paymentStatus);
 		
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
 		

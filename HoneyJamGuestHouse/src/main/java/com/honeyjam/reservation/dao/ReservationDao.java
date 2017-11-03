@@ -13,11 +13,12 @@ public interface ReservationDao {
 	
 	int updateReservationById(SqlSession session, Reservation reservation);
 	
-	int deleteReservationById(SqlSession session, String email);
+	int deleteReservationById(SqlSession session, List<Object> list);
 	
 	List<Reservation> selectReservationById(SqlSession session, String email);
 	
 	List<Reservation> selectReservationByDate(SqlSession session, Date date);
 	
 	int selectReservationIdByEmail(SqlSession session, String email);
+	
 }

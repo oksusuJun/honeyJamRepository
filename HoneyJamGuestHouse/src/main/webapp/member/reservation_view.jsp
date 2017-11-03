@@ -1,7 +1,10 @@
+<%@page import="java.sql.Date"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 
+<jsp:useBean id="now" class="java.util.Date"/>
+<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="toDay"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,7 +125,8 @@ td, th {
 						<td>예약 인원</td>
 						<td>객실</td>
 						<td>성별</td>
-						<td>결제<br>현황
+						<td>결제 현황</td>
+						<td>예약 취소
 						</td>
 					</tr>
 				</thead>
@@ -135,11 +139,11 @@ td, th {
 							
 
 							<td style="width: 150px">
-							<fmt:formatDate value="${reservation.checkIn}" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${reservation.checkIn}" pattern="yyyyMMdd"/>
 							</td>
 
 							<td style="width: 150px">
-							<fmt:formatDate value="${reservation.checkOut}" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${reservation.checkOut}" pattern="yyyyMMdd"/>
 							</td>
 
 
@@ -155,6 +159,20 @@ td, th {
 										무통장 입금 - 입금 대기
 									</c:when>
 								</c:choose>
+							</td>
+							<td style="width: 150px">
+							<c:set scope="page" var="current" value="<%=new Date(System.currentTimeMillis()) %>"/>
+							<c:choose>
+							<c:when test="${reservation.checkIn >= current }">
+							<button type="button" onclick="location.href='/HoneyJamGuestHouse/reservationDelete?reservationId=${reservation.reservationId}&checkIn=${reservation.checkIn }'"> 
+								예약 취소
+								</button>
+							</c:when>
+							<c:otherwise>
+								예약 확정
+							</c:otherwise>
+							</c:choose>
+						
 							</td>
 						</tr>
 					</c:forEach>

@@ -30,10 +30,6 @@ public class ReservationServiceImpl implements ReservationService{
 	private SqlSessionFactory factory;
 	private ReservationDao dao;
 
-
-
-
-	
 	private ReservationServiceImpl() throws IOException{
 		factory = SqlSessionFactoryManager.getInstance().getSqlSessionFactory();
 		dao = ReservationDaoImpl.getInstance();
@@ -107,16 +103,13 @@ public class ReservationServiceImpl implements ReservationService{
 			roomMap.put("602", r_602);
 			roomMap.put("801", r_801);
 			roomMap.put("802", r_802);
-			
-			
+				
 			return roomMap;
 
 		}finally {
 			session.close();
 		}
 	}
-	
-	
 	
 	//최종적으로 쓰는 메소드 
 	// 체크인, 체크아웃 날짜를 입력하면 그 기간 내내 예약 가능한 방의 id (룸 넘버) 를 List로 리턴. 
@@ -137,8 +130,7 @@ public class ReservationServiceImpl implements ReservationService{
 			int differ = service.dayBetween(checkin, checkout);
 			Map<String,Boolean> mapOfTruth = new HashMap<String,Boolean>();
 			List<Map<String,Integer>> listOfMap = new ArrayList<>();
-			List<String> listOfRoomsAvail = new ArrayList<>();
-			
+			List<String> listOfRoomsAvail = new ArrayList<>();	
 			
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			Date checkin_date = format.parse(checkin);
@@ -149,8 +141,7 @@ public class ReservationServiceImpl implements ReservationService{
 	        	java.sql.Date newDate = new java.sql.Date(checkin_date.getYear(),checkin_date.getMonth(),i);
 	        	listOfMap.add(service.selectReservationByDate(newDate));
 	        }
-	        
-	        
+	               
 	        mapOfTruth.put("201", true);
 	        mapOfTruth.put("202", true);
 	        mapOfTruth.put("401", true);
@@ -200,35 +191,22 @@ public class ReservationServiceImpl implements ReservationService{
 	        	listOfRoomsAvail.add("802");
 	        }
 	        
-	        
-	        
 	        return listOfRoomsAvail;
 	        
-	        
-	        
-	        
-	        
-			
 		}finally {
 			session.close();
 		}
 		
-		
 	}
-	
-	
 	
 	//두 날짜 사이의 날짜 수를 계산하는거. 가령 11/1~11/4 조회하면 3 나옴 
 	public int dayBetween(String checkin, String checkout) throws ParseException {
 		
-		
 		     // String Type을 Date Type으로 캐스팅하면서 생기는 예외로 인해 여기서 예외처리 해주지 않으면 컴파일러에서 에러가 발생해서 컴파일을 할 수 없다.
-		       
 		    	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		        // date1, date2 두 날짜를 parse()를 통해 Date형으로 변환.
 		        Date FirstDate = format.parse(checkin);
 		        Date SecondDate = format.parse(checkout); 
-		        
 		        
 		        // Date로 변환된 두 날짜를 계산한 뒤 그 리턴값으로 long type 변수를 초기화 하고 있다.
 		        // 연산결과 -950400000. long type 으로 return 된다.
@@ -239,11 +217,8 @@ public class ReservationServiceImpl implements ReservationService{
 		        long calDateDays = calDate / ( 24*60*60*1000); 
 		 
 		        calDateDays = Math.abs(calDateDays);
-		    
 		        
 		        return (int)calDateDays;
-		   
-
 		
 	}
 	@Override
@@ -261,9 +236,6 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 	
 	}
-	
-	
-
 	
 	public static void main(String[] args) throws IOException, ParseException {
 		
@@ -292,7 +264,6 @@ public class ReservationServiceImpl implements ReservationService{
 		//401,601,801,802 나와야함 
 		System.out.println(service.emptyRoomsByDate(2, "20171011", "20171013"));
 
-
 	}
 
 	@Override
@@ -302,7 +273,6 @@ public class ReservationServiceImpl implements ReservationService{
 		SqlSession session = null;
 		
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
-
 		
 		try {
 			
@@ -315,7 +285,6 @@ public class ReservationServiceImpl implements ReservationService{
 			
 			java.sql.Date checkout = 
 					new java.sql.Date(checkOutForm.getYear(),checkOutForm.getMonth(),checkOutForm.getDate());
-			
 			
 			Reservation reservation = new Reservation(reservationId, email, checkin, checkout, numberOfGuests, roomId, gender, paymentStatus);
 			int result = dao.insertReservation(session, reservation);
@@ -330,7 +299,6 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 		
 		return 0;
-		
 	
 	}
 
@@ -346,6 +314,36 @@ public class ReservationServiceImpl implements ReservationService{
 		} finally {
 			session.close();
 		}
+	}
+
+	@Override
+	public int deleteReservationById(int reservationId, String checkIn) {
+		SqlSession session = null;
+		List<Object> list = new ArrayList<>();
+		
+		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMdd");
+		
+			
+			Date checkInForm;
+			try {
+				checkInForm = dateForm.parse(checkIn);
+				list.add(reservationId);
+				list.add(checkInForm);
+				int deleteRow = dao.deleteReservationById(session, list);
+				
+				session = factory.openSession();
+				session.commit();
+				return deleteRow;
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				session.close();
+			}
+			
+			return 0;
+		
 	}
 }
 

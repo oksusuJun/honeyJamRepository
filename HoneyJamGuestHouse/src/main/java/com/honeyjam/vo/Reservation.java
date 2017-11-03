@@ -26,6 +26,7 @@ public class Reservation implements Serializable{
 		this.numberOfGuests = numberOfGuests;
 		this.roomId = roomId;
 		this.gender = gender;
+		this.paymentStatus = paymentStatus;
 	}
 
 	public Reservation(int reservationId, String email, Date checkIn, Date checkOut, int numberOfGuests, int roomId,
@@ -38,6 +39,7 @@ public class Reservation implements Serializable{
 		this.roomId = roomId;
 		this.gender = gender;
 		this.member = member;
+		this.paymentStatus = paymentStatus;
 	}
 
 	public int getPaymentStatus() {

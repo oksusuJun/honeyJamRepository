@@ -36,9 +36,8 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 
 	@Override
-	public int deleteReservationById(SqlSession session, String email) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteReservationById(SqlSession session, List<Object> list) {
+		return session.selectOne(makeSqlId("deleteReservationById"), list);
 	}
 
 	@Override

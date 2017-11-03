@@ -25,6 +25,8 @@ public interface ReservationService {
 								String gender, int paymentStatus) throws IOException;
 	
 	int findReservationIdByEmail(String email);
+	
+	int deleteReservationById(int reservationId, String checkIn);
 }
 
 

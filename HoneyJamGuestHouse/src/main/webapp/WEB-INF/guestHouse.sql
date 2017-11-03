@@ -61,6 +61,8 @@ insert into reservation values(6,'yyy','2017-10-17','2017-10-21', 2, 401,'남성
 insert into reservation values(7,'bbb','2017-10-18','2017-10-22', 2, 601,'남성',0);
 insert into reservation values(8,'777','2017-10-19','2017-10-23', 2, 601,'남성',0);
 
+delete from reservation where reservation_id = 49
+
 
 drop table Reserved_Room;
 /* Reserved_Room */
