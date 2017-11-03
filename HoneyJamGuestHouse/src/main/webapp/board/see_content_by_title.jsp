@@ -74,7 +74,7 @@ button {
 			</tbody>
 		</table>
 	</div>
-	<a href="/HoneyJamGuestHouse/board/ContentView.jsp"><button>뒤로가기</button></a>
+	<a href="/HoneyJamGuestHouse/BoardViewServlet"><button>뒤로가기</button></a>
 	<c:if test="${sessionScope.loginMember.email == 'admin'}">
 		<a href="${initParam.rootPath }/boardDelete?itemNum=${requestScope.item.itemNum}"><button>삭제</button></a>	
 	</c:if>
