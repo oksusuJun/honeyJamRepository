@@ -73,7 +73,7 @@ footer {
 		<div class="info">
 			<div class="info_top">CS CENTER</div>
 			<div class="info_bot">
-				<p>010.4000.0474</p>
+				<p>010.7942.1311</p>
 				<p>kakao : HoneyJam</p>
 				<p>071.783.3838</p>
 			</div>
@@ -81,7 +81,7 @@ footer {
 		<div class="info">
 			<div class="info_top">BankInfo</div>
 			<div class="info_bot">
-				<p style="font-size: 18px;">신한 100-011-101011</p>
+				<p style="font-size: 18px;">HJBank 595-1311-131179</p>
 
 			</div>
 		</div>
