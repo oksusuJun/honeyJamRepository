@@ -10,6 +10,18 @@
 <head>
 <meta charset="UTF-8">
 <script src="/HoneyJamGuestHouse/scripts/jquery.js"></script>
+<script>
+	function cancelCheck() {
+		var flag = false;
+		var cancel = confirm("정말 예약을 취소하시겠습니까?");
+		if (cancel == true) {
+			flag = true;
+			return true;
+		} else {
+			return flag;
+		}
+	}
+</script>
 <title>HoneyJam</title>
 </head>
 <style>
@@ -112,8 +124,8 @@ td, th {
 					<li><a href="${initParam.rootPath }/member/mypage.jsp">내 정보 조회 </a></li>
 					<li><a href="${initParam.rootPath}/member/edit.jsp">내 정보 수정 </a></li>
 					<li><a href="${initParam.rootPath }/reservationSelectById">예약조회</a></li>
-					<li><a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰 </a></li>
-					<li><a href="${initParam.rootPath }/member/delete.jsp">탈퇴 </a></li>
+					<li><a href="${initParam.rootPath}/boardSelect">내가 작성한 리뷰</a></li>
+					<li><a href="${initParam.rootPath }/member/delete.jsp">탈퇴</a></li>
 				</ul>
 
 				<c:if test="${sessionScope.loginMember.email == 'admin'}">
@@ -163,16 +175,23 @@ td, th {
 									<c:when test="${reservation.paymentStatus == 1 }">
 										무통장 입금 - 입금 대기
 									</c:when>
-								</c:choose></td>
-							<td style="width: 150px"><c:set scope="page" var="current" value="<%=new Date(System.currentTimeMillis())%>" /> <c:choose>
-									<c:when test="${reservation.checkIn >= current }">
-										<button type="button" onclick="location.href='/HoneyJamGuestHouse/reservationDelete?reservationId=${reservation.reservationId}&checkIn=${reservation.checkIn }'">
-											예약 취소</button>
+								</c:choose>
+								</td>
+							<td style="width: 150px"><c:set scope="page" var="current"
+									value="<%=new Date(System.currentTimeMillis())%>" /> 
+								<c:choose>
+										<c:when test="${reservation.checkIn >= current }">
+										<form action="/HoneyJamGuestHouse/reservationDelete" onsubmit="return cancelCheck();">
+											<input type="hidden" name="reservationId" value="${reservation.reservationId }"/>
+											<input type="hidden" name="checkIn" value="${reservation.checkIn }"/>
+										<input type="submit" value="예약 취소">
+										</form>
 									</c:when>
 									<c:otherwise>
-								예약 확정
-							</c:otherwise>
-								</c:choose></td>
+										예약 확정
+									</c:otherwise>
+								</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
