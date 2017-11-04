@@ -58,12 +58,9 @@ insert into room values (201, '2인실', '여성남성', 2, 2, 30000);
 insert into room values (202, '2인실', '여성남성', 2, 2, 30000);
 insert into room values (401, '4인실', '남성', 4, 4, 25000);
 insert into room values (402, '4인실', '여성', 4, 4, 25000);
-insert into room values (403, '4인실', '혼숙', 4, 4, 25000);
 insert into room values (601, '6인실', '남성', 6, 6, 22000);
 insert into room values (602, '6인실', '여성', 6, 6, 22000);
-insert into room values (603, '6인실', '혼숙', 6, 6, 22000);
 insert into room values (801, '8인실', '남성', 8, 8, 20000);
 insert into room values (802, '8인실', '여성', 8, 8, 20000);
-insert into room values (803, '8인실', '혼숙', 8, 8, 20000);
 
 

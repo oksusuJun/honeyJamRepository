@@ -131,7 +131,7 @@ font-size: 14px;
 				<div class="boxIsKing">
 					<div class="box_top"  style="width: 20%">Room : ${rooms.roomId}</div>
 					<div class="box_top" style="width: 46.6%">숙박가능한 성별 : ${rooms.gender}</div>
-					<div class="box_top">현재 예약가능한 인원 : ${rooms.availableBed}개</div>
+					<div class="box_top">방 최대 수용인원 : ${rooms.availableBed} 명</div>
 					<div class="box_bot">가격 : ${rooms.price}원</div>
 					<div class="box_bot">
 						<a href="${initParam.rootPath }/roomInfo/room_info.jsp?roomId=${rooms.roomId}&gender=${rooms.gender}&price=${rooms.price}">
