@@ -14,7 +14,7 @@
 .content {
 	min-width: 1080px;
 	width: 1080px;
-	min-height: 700px;
+	min-height: 300px;
 	margin-top: 50px;
 }
 

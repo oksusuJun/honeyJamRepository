@@ -95,7 +95,7 @@
 					
 						<c:if test="${sessionScope.loginMember.email == 'admin'}">
 					<li><a href="${initParam.rootPath }/member/admin.jsp">관리자 페이지</a></li>
-				</c:if>
+						</c:if>
 					
 				</ul>
 

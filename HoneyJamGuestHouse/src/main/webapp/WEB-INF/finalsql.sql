@@ -64,3 +64,4 @@ insert into room values (801, '8인실', '남성', 8, 8, 20000);
 insert into room values (802, '8인실', '여성', 8, 8, 20000);
 
 
+
