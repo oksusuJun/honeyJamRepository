@@ -51,8 +51,8 @@
 			%>
 				<h1>ID 찾기</h1>
 			<form name="form1" action="${initParam.rootPath }/memberSelect" method="post">
-				<input type="text" name="phoneNum" placeholder="Phone Number" id="phoneNum" required> <input type="submit"
-					value="아이디 찾기" id="value">
+				<input type="text" name="phoneNum" placeholder="Phone Number" id="phoneNum" required>
+				 <input type="submit" value="아이디 찾기" id="value">
 			</form>
 			<%
 				} else if (request.getParameter("find").equals("pw")) {

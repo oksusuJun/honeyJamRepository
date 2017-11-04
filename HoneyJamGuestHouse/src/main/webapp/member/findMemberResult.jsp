@@ -125,7 +125,7 @@ font-size: 30px;
 
 		<div class="content_bot">
 			<button onclick="location.href='/HoneyJamGuestHouse'" style="padding: 10px 50px;">홈</button>
-			<a href="${initParam.rootPath }/reservationSelectById"><button style="padding: 10px 50px;">예약확인(마이페이지)</button></a>
+			<a href="${initParam.rootPath }/member/login.jsp"><button style="padding: 10px 50px;">로그인</button></a>
 		</div>
 
 	</div>
