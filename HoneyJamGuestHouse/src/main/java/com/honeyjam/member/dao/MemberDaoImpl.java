@@ -1,5 +1,8 @@
 package com.honeyjam.member.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.honeyjam.vo.Member;
@@ -50,6 +53,12 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public Member selectMemberByPhone(SqlSession session, String phoneNum) {
 		return session.selectOne(makeSqlId("selectMemberByPhone"), phoneNum);
+
+	}
+
+	@Override
+	public Member selectMemberByIdnPhone(SqlSession session, Map<String, String> map) {
+		return session.selectOne(makeSqlId("selectMemberByIdnPhone"), map);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.honeyjam.member.service;
 
+
 import com.honeyjam.exception.DuplicatedIdException;
 import com.honeyjam.exception.DuplicatedNicknameException;
 import com.honeyjam.exception.DuplicatedPhoneException;
@@ -19,5 +20,7 @@ public interface MemberService {
 	void removeMemberById(String email);
 	
 	Member findMemberByPhone(String phoneNum);
+	
+	Member findMemberByIdnPhone(String email, String phoneNum);
 
 }

@@ -99,7 +99,7 @@ create table Reserved_room (
 	constraint roomid_fk foreign key (room_id) references room(room_id)
 );
 
-
+    
 select * from reservation
 
 select * from reserved_room order by email
