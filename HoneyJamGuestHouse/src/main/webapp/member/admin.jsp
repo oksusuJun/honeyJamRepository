@@ -22,7 +22,7 @@
 <h1>관리자 메뉴</h1>
 
 <br>
-<h2>1.회원 email로 조회, 회원 강퇴 시키기</h2>
+<h2>1.회원 정보 조회, 회원 강퇴 시키기</h2>
 <br>
 
 <form action="${initParam.rootPath}/adminSearchMember" method="post">
@@ -30,9 +30,19 @@
 <button>회원 조회</button>
 </form>
 
+<br>
+
+
+<!-- 여기 삭제 -->
+<form action="${initParam.rootPath}/adminSearchByNickname" method="post">
+조회하고자 하는 회원의 닉네임: <input type="text" name="search_nickname">
+<button>회원 조회</button>
+</form>
+
 <c:if test="${requestScope.errorMessage !=null}">
 	<span style="{color:red;}">${requestScope.errorMessage}</span>
 </c:if>
+
 
 <br>
 <br>

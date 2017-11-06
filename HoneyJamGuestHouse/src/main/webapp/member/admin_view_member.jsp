@@ -29,9 +29,10 @@ table, th, td {
 	
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 	
-	
-<h1> 조회하는 회원 id: ${requestScope.member.email}</h1>
-회원 전화번호 : ${requestScope.member.phoneNum}<br><br><br>
+<br>
+<h2> 조회하는 회원 id: ${requestScope.member.email}</h2>
+<h2> 조회하는 회원 닉네임: ${requestScope.member.nickname}</h2>
+<h3>회원 전화번호 : ${requestScope.member.phoneNum}</h3><br><br><br>
 
 해당 회원의 예약들 <br>
 

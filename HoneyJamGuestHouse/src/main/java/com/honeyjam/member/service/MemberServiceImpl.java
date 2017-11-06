@@ -73,6 +73,20 @@ public class MemberServiceImpl implements MemberService {
 				session.close();
 			}
 		}
+		
+		
+		
+
+		@Override
+		public Member findMemberNickname(String nickname) {
+			SqlSession session = null; 
+			try {
+				session = factory.openSession();
+				return dao.selectMemberByNickname(session,nickname);
+			}finally {
+				session.close();
+			}
+		}
 
 		@Override
 		public void addMember(Member member) throws DuplicatedIdException, DuplicatedNicknameException, DuplicatedPhoneException {

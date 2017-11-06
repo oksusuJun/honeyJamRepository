@@ -80,11 +80,12 @@
 	</select>
 	
 	
-	
-	<select id="selectMemberByNickname" resultMap="member-resultmap" parameterType="string">
-		<include refid="select-sql" />
-		WHERE nickname = #{value}
+	<select id="selectMemberByNickname" resultMap="member-join-reservation-resultmap" parameterType="string">
+		<include refid="select-member-join-reservation-sql" />
+		WHERE m.email=r.email(+)
+		and m.nickname=#{value}
 	</select>
+	
 	
 	<select id="selectMemberByIdnPhone" parameterType="map" resultMap="member-resultmap">
 		<include refid="select-sql"/>

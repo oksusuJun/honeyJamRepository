@@ -13,6 +13,8 @@ public interface MemberService {
 	
 	Member findMemberById(String email);
 	
+	Member findMemberNickname(String nickname);
+	
 	void addMember(Member member) throws DuplicatedIdException, DuplicatedNicknameException, DuplicatedPhoneException;
 	
 	void updateMember(Member newData) throws DuplicatedNicknameException, DuplicatedPhoneException;
