@@ -1,2 +1,2 @@
-# honeyJamRepository
-Mini Project Test Repository
+# honeyJam 숙박 예약 웹사이트 
+2,4,6,8인실이 있는 숙박업체의 예약 서비스를 제공하는 웹 어플리케이션. 
